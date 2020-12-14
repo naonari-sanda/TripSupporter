@@ -1,0 +1,9 @@
+.select:hover>.dropdown-menu {
+    display: block;
+    transition: all .3s;
+
+}
+
+.delete::after {
+    display: none;
+}

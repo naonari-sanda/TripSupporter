@@ -1,0 +1,26 @@
+.detail {
+    .nav {
+        li {
+            width: 25%;
+            text-align: center;
+            line-height: 3;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+
+    .active {
+        color: $blue;
+        border-bottom: 2px solid $blue;
+    }
+
+    article {
+        padding: 20px;
+
+        h2 {
+            margin-bottom: 20px;
+            margin-left: 10px;
+        }
+    }
+}

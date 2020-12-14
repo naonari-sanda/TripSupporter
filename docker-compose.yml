@@ -1,0 +1,47 @@
+version: "3"
+# コンテナを破棄しても永続化したいのでボリュームとして定義
+volumes:
+  db-store:
+services:
+  web:
+    container_name: web
+    build: ./docker
+    ports:
+      - 80:80
+    privileged: true
+    volumes:
+      - ./server:/var/www/html:delegated
+    # dbコンテナが起動後にwebを起動する
+    depends_on:
+      - db
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: docker
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: secret
+      TZ: "Asia/Tokyo"
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      # - ./docker/db/data:/var/lib/mysql
+      # ボリュームをコンテナにマウントする
+      - db-store:/var/lib/mysql
+      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker/db/sql:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+    ports:
+      - 8080:80
+    # webコンテナが起動後にphpmyadminを起動する
+    depends_on:
+      - web
