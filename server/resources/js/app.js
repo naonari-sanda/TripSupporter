@@ -12,7 +12,7 @@ import LoginComponent from './components/pages/LoginComponent'
 import RegisterComponent from './components/pages/RegisterComponent'
 import ForgetPassComponent from './components/pages/ForgetPassComponent'
 import ReviewComponent from './components/pages/ReviewComponent'
-
+import AcountComponent from './components/pages/AcountComponent'
 
 Vue.prototype.$http = axios;
 
@@ -26,6 +26,7 @@ const app = new Vue({
         isActive: 1,
         guestModal: false,
         reviewModal: false,
+        profileModal: false,
     },
     components: {
         LikeComponent,
@@ -34,6 +35,7 @@ const app = new Vue({
         RegisterComponent,
         ForgetPassComponent,
         ReviewComponent,
+        AcountComponent
     },
     props: {
         authId: {
@@ -41,14 +43,25 @@ const app = new Vue({
         },
     },
     methods: {
+        //タグの変更
         tabChange: function (num) {
             this.isActive = num;
         },
+        //レビューのモーダルレビューを表示
         showReview: function () {
             this.reviewModal = true;
         },
+        //レビューのモーダルレビューを非表示
         closeReview: function () {
             this.reviewModal = false;
+        },
+        //レビューのモーダルレビューを表示
+        showProfile: function () {
+            this.profileModal = true;
+        },
+        //レビューのモーダルレビューを非表示
+        closeProfile: function () {
+            this.profileModal = false;
         },
     }
 });

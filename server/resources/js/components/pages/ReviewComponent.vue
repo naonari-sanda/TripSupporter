@@ -1,5 +1,5 @@
 <template>
-  <div id="overlay" v-on:click="clickEvent">
+  <div id="overlay" @click="clickEvent">
     <div class="wrapper">
       <div class="header d-flex align-items-center">
         <h5 class="title">レビューを投稿</h5>
@@ -8,12 +8,12 @@
           class="close"
           data-dismiss="modal"
           aria-label="閉じる"
-          v-on:click="clickEvent"
+          @click="clickEvent"
         >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="body" v-on:click="stopEvent">
+      <div class="body" @click="stopEvent">
         <div
           v-if="
             (errors.safe,

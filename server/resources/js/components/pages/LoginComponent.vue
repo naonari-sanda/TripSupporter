@@ -237,6 +237,7 @@ export default {
 
     .wrapper {
       margin: 0;
+      max-width: 100%;
     }
   }
 }

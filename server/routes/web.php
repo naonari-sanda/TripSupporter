@@ -19,12 +19,16 @@ Route::get('/', 'CountriesController@index')->name('main');
 //国詳細ページ移動
 Route::get('/detail/{id}', 'CountriesController@detail')->name('detail');
 
-//レビュー送信
-Route::post('/detail/create/review', 'CountriesController@createReview')->name('review');
 
-Route::post('/detail/review/post', 'ReviewController@createReview');
+Route::group(['middleware' => ['auth']], function () {
+    //レビュー送信
+    Route::post('/detail/review/post', 'ReviewController@createReview');
 
-//マイページ遷移
-Route::get('mypage', 'MypageController@index')->name('mypage');
+    //マイページ遷移
+    Route::get('/mypage', 'MypageController@index')->name('mypage');
+    //プロフィール追加
+});
+// Route::post('/mypage/create/profile', 'MypageController@create');
+
 
 Auth::routes();

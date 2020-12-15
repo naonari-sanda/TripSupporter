@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+//お気に入り追加
 Route::post('/{id}/like', 'LikesController@like');
 Route::post('/{id}/unlike', 'LikesController@unlike');
+//アカウント情報追加
+Route::post('/mypage/create/profile', 'MypageController@create');

@@ -10,7 +10,6 @@ use App\Models\Review;
 use App\Models\Country;
 use Session;
 use Illuminate\Http\Request;
-use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
@@ -45,8 +44,6 @@ class CountriesController extends Controller
         $country = Country::findOrFail($id);
         $user = User::where('id', $user_id)->first();
 
-        return view('pages.detail', ['id' => $country->id], compact('country', 'user'));
-
-        // return view('detail', compact('country', 'reviews'));
+        return view('pages.detail', ['id' => $country->id], compact('country'));
     }
 }
