@@ -2060,13 +2060,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])("required", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_2__["required"]), {}, {
   message: "{_field_}は必須です"
 }));
-Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])("email", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_2__["email"]), {}, {
-  message: "{_field_}は必須です"
+Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])("max", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_2__["max"]), {}, {
+  message: "{_field_}は最大でも{length}文字までです"
 }));
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2100,16 +2101,13 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])("email", _objectSpre
     uploadfile: function uploadfile(event) {
       //   const path = this.$refs.file.files[0];
       //   this.preview = URL.createObjectURL(path);
-      //   let formData = new FormData();
-      //   this.icon = formData.append("file", this.preview);
-      var file = event.target.files[0];
-      this.icon = file.name;
+      this.icon = event.target.files[0];
     },
     acount: function acount() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var isValid;
+        var isValid, formData;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -2121,20 +2119,19 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])("email", _objectSpre
                 isValid = _context.sent;
 
                 if (isValid) {
-                  axios.post("/api/mypage/create/profile", {
-                    user_id: _this.userId,
-                    gender: _this.gender,
-                    age: _this.age,
-                    profile: _this.profile,
-                    hobby: _this.hobby,
-                    icon: _this.icon
-                  }).then(function (response) {
+                  formData = new FormData();
+                  formData.append("user_id", _this.userId);
+                  formData.append("gender", _this.gender);
+                  formData.append("age", _this.age);
+                  formData.append("profile", _this.profile);
+                  formData.append("hobby", _this.hobby);
+                  formData.append("icon", _this.icon);
+                  axios.post("/mypage/create/profile", formData).then(function (response) {
                     window.location.href = "/mypage";
                   })["catch"](function (error) {
                     _this.errors = error.response.data.errors;
                     _this.success = false;
                   });
-                } else {// alert("失敗");
                 }
 
               case 4:
@@ -3056,6 +3053,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -3082,6 +3081,8 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("image", _objectSpre
       english: 0,
       review: "",
       imgpath: "",
+      errors: {},
+      success: false,
       min: false,
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute("content")
     };
@@ -3097,9 +3098,6 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("image", _objectSpre
     },
     userId: {
       type: Object | Array
-    },
-    errors: {
-      type: Object | Array
     }
   },
   computed: {
@@ -3110,11 +3108,14 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("image", _objectSpre
     }
   },
   methods: {
+    uploadfile: function uploadfile(event) {
+      this.imgpath = event.target.files[0];
+    },
     onSubmit: function onSubmit() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var isValid;
+        var formData, isValid;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -3125,17 +3126,34 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_2__["extend"])("image", _objectSpre
                   _this.min = true;
                 }
 
-                _context.next = 3;
+                formData = new FormData();
+                formData.append("user_id", _this.userId);
+                formData.append("country_id", _this.countryId);
+                formData.append("recommend", _this.recommend);
+                formData.append("safe", _this.safe);
+                formData.append("cost", _this.cost);
+                formData.append("fun", _this.fun);
+                formData.append("tourism", _this.tourism);
+                formData.append("food", _this.food);
+                formData.append("english", _this.english);
+                formData.append("review", _this.review);
+                formData.append("imgpath", _this.imgpath);
+                _context.next = 15;
                 return _this.$refs.observer.validate();
 
-              case 3:
+              case 15:
                 isValid = _context.sent;
 
                 if (isValid) {
-                  document.querySelector("#review").submit();
+                  axios.post("/detail/create/review", formData).then(function (response) {
+                    window.location.reload();
+                  })["catch"](function (error) {
+                    _this.errors = error.response.data.errors;
+                    _this.success = false;
+                  });
                 }
 
-              case 5:
+              case 17:
               case "end":
                 return _context.stop();
             }
@@ -7662,7 +7680,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#overlay[data-v-8a5bb442] {\n  z-index: 1;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.wrapper[data-v-8a5bb442] {\n  top: -10%;\n  max-width: 340px;\n  background: #fff;\n  position: relative;\n}\n.header[data-v-8a5bb442] {\n  padding: 18px 20px;\n  border-bottom: 2px solid #eee;\n  margin-bottom: 8px;\n}\n.header h5[data-v-8a5bb442] {\n  font-size: 15px;\n  margin-bottom: 0;\n  margin-right: auto;\n}\n.body[data-v-8a5bb442] {\n  padding: 0 20px;\n  padding-bottom: 80px;\n}\nlabel[data-v-8a5bb442] {\n  margin-bottom: 0;\n}\n.star[data-v-8a5bb442] {\n  width: 80%;\n  margin: 0 auto;\n  margin-bottom: 6px;\n}\n.star label[data-v-8a5bb442] {\n  margin-bottom: 0;\n  width: 20%;\n}\n.button[data-v-8a5bb442] {\n  width: 100%;\n  height: 100%;\n  padding: 10px 10px;\n  background: #2196f3;\n  color: #fff;\n  display: block;\n  border: none;\n  margin-top: 20px;\n  max-height: 60px;\n  border: 0px solid rgba(0, 0, 0, 0.1);\n  border-radius: 0 0 2px 2px;\n  transform: rotateZ(0deg);\n  transition: all 0.1s ease-out;\n  border-bottom-width: 7px;\n  position: absolute;\n  left: 0px;\n}\n.button .spinner[data-v-8a5bb442] {\n  display: block;\n  width: 40px;\n  height: 40px;\n  position: absolute;\n  border: 4px solid #ffffff;\n  border-top-color: rgba(255, 255, 255, 0.3);\n  border-radius: 100%;\n  left: 50%;\n  top: 0;\n  opacity: 0;\n  margin-left: -20px;\n  margin-top: -20px;\n  -webkit-animation: spinner 0.6s infinite linear;\n          animation: spinner 0.6s infinite linear;\n  transition: top 0.3s 0.3s ease, opacity 0.3s 0.3s ease, border-radius 0.3s ease;\n  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);\n}\n.input-group[data-v-8a5bb442] {\n  width: 100%;\n  margin: 0 auto;\n}\n.custom-file[data-v-8a5bb442] {\n  overflow: hidden;\n}\n.custom-file-label[data-v-8a5bb442] {\n  white-space: nowrap;\n}\n.alert[data-v-8a5bb442] {\n  margin-bottom: 5px;\n  padding: 0.5rem 1.25rem;\n}", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n#overlay[data-v-8a5bb442] {\n  z-index: 1;\n  position: fixed;\n  top: 0;\n  bottom: -100%;\n  left: 0;\n  width: 100%;\n  height: -100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.wrapper[data-v-8a5bb442] {\n  top: 0%;\n  max-width: 340px;\n  background: #fff;\n  position: relative;\n}\n.header[data-v-8a5bb442] {\n  padding: 18px 20px;\n  border-bottom: 2px solid #eee;\n  margin-bottom: 8px;\n}\n.header h5[data-v-8a5bb442] {\n  font-size: 15px;\n  margin-bottom: 0;\n  margin-right: auto;\n}\n.body[data-v-8a5bb442] {\n  padding: 0 20px;\n  padding-bottom: 80px;\n}\nlabel[data-v-8a5bb442] {\n  margin-bottom: 0;\n}\n.star[data-v-8a5bb442] {\n  width: 80%;\n  margin: 0 auto;\n  margin-bottom: 6px;\n}\n.star label[data-v-8a5bb442] {\n  margin-bottom: 0;\n  width: 20%;\n}\n.button[data-v-8a5bb442] {\n  width: 100%;\n  height: 100%;\n  padding: 10px 10px;\n  background: #2196f3;\n  color: #fff;\n  display: block;\n  border: none;\n  margin-top: 20px;\n  max-height: 60px;\n  border: 0px solid rgba(0, 0, 0, 0.1);\n  border-radius: 0 0 2px 2px;\n  transform: rotateZ(0deg);\n  transition: all 0.1s ease-out;\n  border-bottom-width: 7px;\n  position: absolute;\n  left: 0px;\n}\n.button .spinner[data-v-8a5bb442] {\n  display: block;\n  width: 40px;\n  height: 40px;\n  position: absolute;\n  border: 4px solid #ffffff;\n  border-top-color: rgba(255, 255, 255, 0.3);\n  border-radius: 100%;\n  left: 50%;\n  top: 0;\n  opacity: 0;\n  margin-left: -20px;\n  margin-top: -20px;\n  -webkit-animation: spinner 0.6s infinite linear;\n          animation: spinner 0.6s infinite linear;\n  transition: top 0.3s 0.3s ease, opacity 0.3s 0.3s ease, border-radius 0.3s ease;\n  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);\n}\n.input-group[data-v-8a5bb442] {\n  width: 100%;\n  margin: 0 auto;\n}\n.custom-file[data-v-8a5bb442] {\n  overflow: hidden;\n}\n.custom-file-label[data-v-8a5bb442] {\n  white-space: nowrap;\n}\n.alert[data-v-8a5bb442] {\n  margin-bottom: 5px;\n  padding: 0.5rem 1.25rem;\n}\n@media screen and (max-width: 767px) {\n  /*　画面サイズが767px以下の場合読み込む　*/\n#overlay[data-v-8a5bb442] {\n    position: fixed;\n}\n#overlay .wrapper[data-v-8a5bb442] {\n    margin: 0;\n    max-width: 100%;\n}\n}", ""]);
 
 // exports
 
@@ -43389,7 +43407,12 @@ var render = function() {
                                 _c("input", {
                                   ref: "file",
                                   staticClass: "custom-file-input",
-                                  attrs: { type: "file", id: "customFile" },
+                                  attrs: {
+                                    type: "file",
+                                    name: "file",
+                                    id: "customFile",
+                                    accept: ".png, .jpg, .svg"
+                                  },
                                   on: { change: _vm.uploadfile }
                                 }),
                                 _vm._v(" "),
@@ -43458,7 +43481,7 @@ var render = function() {
                 { staticClass: "fill" },
                 [
                   _c("validation-provider", {
-                    attrs: { name: "趣味", rules: "max:30" },
+                    attrs: { name: "趣味", rules: "max:50" },
                     scopedSlots: _vm._u([
                       {
                         key: "default",
@@ -43601,21 +43624,6 @@ var render = function() {
               on: { click: _vm.clickEvent }
             },
             [_vm._v("ー 戻る ー")]
-          ),
-          _vm._v(
-            "\n    " +
-              _vm._s(_vm.gender) +
-              ":" +
-              _vm._s(_vm.age) +
-              ":" +
-              _vm._s(_vm.hobby) +
-              ":" +
-              _vm._s(_vm.profile) +
-              ":" +
-              _vm._s(_vm.icon) +
-              ":" +
-              _vm._s(_vm.preview) +
-              "\n  "
           )
         ],
         1
@@ -44776,13 +44784,7 @@ var render = function() {
               {
                 ref: "observer",
                 staticClass: "form-horizontal",
-                attrs: {
-                  enctype: "multipart/form-data",
-                  action: "/detail/review/post",
-                  method: "post",
-                  id: "review",
-                  tag: "form"
-                },
+                attrs: { id: "review", tag: "form" },
                 on: {
                   submit: function($event) {
                     $event.preventDefault()
@@ -44791,26 +44793,6 @@ var render = function() {
                 }
               },
               [
-                _c("input", {
-                  attrs: { type: "hidden", name: "_token" },
-                  domProps: { value: _vm.csrf }
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  attrs: { type: "hidden", name: "country_id" },
-                  domProps: { value: _vm.countryId }
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  attrs: { type: "hidden", name: "user_id" },
-                  domProps: { value: _vm.userId }
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  attrs: { type: "hidden", name: "recommend" },
-                  domProps: { value: _vm.recommend }
-                }),
-                _vm._v(" "),
                 _c(
                   "validation-provider",
                   { attrs: { rules: "required|min_value:1" } },
@@ -44844,7 +44826,7 @@ var render = function() {
                             }),
                             _vm._v(" "),
                             _c("input", {
-                              attrs: { type: "hidden", name: "safe" },
+                              attrs: { type: "hidden" },
                               domProps: { value: _vm.safe }
                             })
                           ],
@@ -44885,7 +44867,7 @@ var render = function() {
                             }),
                             _vm._v(" "),
                             _c("input", {
-                              attrs: { type: "hidden", name: "cost" },
+                              attrs: { type: "hidden" },
                               domProps: { value: _vm.cost }
                             })
                           ],
@@ -44926,7 +44908,7 @@ var render = function() {
                             }),
                             _vm._v(" "),
                             _c("input", {
-                              attrs: { type: "hidden", name: "tourism" },
+                              attrs: { type: "hidden" },
                               domProps: { value: _vm.tourism }
                             })
                           ],
@@ -44967,7 +44949,7 @@ var render = function() {
                             }),
                             _vm._v(" "),
                             _c("input", {
-                              attrs: { type: "hidden", name: "food" },
+                              attrs: { type: "hidden" },
                               domProps: { value: _vm.food }
                             })
                           ],
@@ -45008,7 +44990,7 @@ var render = function() {
                             }),
                             _vm._v(" "),
                             _c("input", {
-                              attrs: { type: "hidden", name: "english" },
+                              attrs: { type: "hidden" },
                               domProps: { value: _vm.english }
                             })
                           ],
@@ -45049,8 +45031,7 @@ var render = function() {
                             }),
                             _vm._v(" "),
                             _c("input", {
-                              staticClass: "form-control",
-                              attrs: { type: "hidden", name: "fun" },
+                              attrs: { type: "hidden" },
                               domProps: { value: _vm.fun }
                             })
                           ],
@@ -45072,13 +45053,14 @@ var render = function() {
                           _c("div", { staticClass: "input-group mb-1" }, [
                             _c("div", { staticClass: "custom-file" }, [
                               _c("input", {
+                                ref: "file",
                                 staticClass: "custom-file-input",
                                 attrs: {
                                   type: "file",
                                   id: "customFile",
-                                  name: "imgpath",
                                   accept: ".png, .jpg, .svg"
-                                }
+                                },
+                                on: { change: _vm.uploadfile }
                               }),
                               _vm._v(" "),
                               _c(
@@ -45163,7 +45145,6 @@ var render = function() {
                                     }
                                   ],
                                   staticClass: "form-control",
-                                  attrs: { name: "review" },
                                   domProps: { value: _vm.review },
                                   on: {
                                     input: function($event) {
@@ -45212,7 +45193,7 @@ var render = function() {
                             [
                               _vm._v(
                                 "\n              " +
-                                  _vm._s(_vm.errors.review) +
+                                  _vm._s(_vm.errors.review[0]) +
                                   "\n            "
                               )
                             ]

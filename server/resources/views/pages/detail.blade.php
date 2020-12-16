@@ -103,14 +103,14 @@
                 <tr>
                     <th>総合</th>
                     <td>
-                        <star-rating v-bind:increment="0.5" v-bind:rating="{{ $country->reviews->avg('recommend') ?? '0' }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="25"></star-rating>
+                        <star-rating v-bind:increment="0.5" v-bind:rating="{{ $review->avg('recommend') ?? '0' }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="25"></star-rating>
                     </td>
                 </tr>
 
                 <tr>
                     <th>治安</th>
                     <td>
-                        <star-rating v-bind:increment="0.5" v-bind:rating="{{ $country->reviews->avg('safe') ?? '0' }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="25"></star-rating>
+                        <star-rating v-bind:increment="0.5" v-bind:rating="{{ $review->avg('safe') ?? '0' }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="25"></star-rating>
 
                     </td>
                 </tr>
@@ -118,7 +118,7 @@
                 <tr>
                     <th>物価</th>
                     <td>
-                        <star-rating v-bind:increment="0.5" v-bind:rating="{{ $country->reviews->avg('cost') ?? '0' }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="25"></star-rating>
+                        <star-rating v-bind:increment="0.5" v-bind:rating="{{ $review->avg('cost') ?? '0' }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="25"></star-rating>
 
                     </td>
                 </tr>
@@ -126,7 +126,7 @@
                 <tr>
                     <th>料理</th>
                     <td>
-                        <star-rating v-bind:increment="0.5" v-bind:rating="{{ $country->reviews->avg('food') ?? '0' }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="25"></star-rating>
+                        <star-rating v-bind:increment="0.5" v-bind:rating="{{ $review->avg('food') ?? '0' }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="25"></star-rating>
 
                     </td>
                 </tr>
@@ -134,7 +134,7 @@
                 <tr>
                     <th>英語力</th>
                     <td>
-                        <star-rating v-bind:increment="0.5" v-bind:rating="{{ $country->reviews->avg('english') ?? '0' }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="25"></star-rating>
+                        <star-rating v-bind:increment="0.5" v-bind:rating="{{ $review->avg('english') ?? '0' }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="25"></star-rating>
 
                     </td>
                 </tr>
@@ -142,7 +142,7 @@
             </tbody>
         </table>
 
-        @if( isset($country->imgpath))
+        @if($review->imgpath !== "")
         <img src="{{ asset('/storage/' . $review->imgpath) }}" alt="{{ $country->name }}" style="width: 300px;">
         @endif
 
@@ -180,7 +180,7 @@
 </div>
 
 
-<review-component v-show="reviewModal" @review-child="closeReview" :country-id="{{ $country->id }}" :user-id="{{ Auth::id() ?? '[]' }}" :errors={{ $errors }} />
+<review-component v-show="reviewModal" @review-child="closeReview" :country-id="{{ $country->id }}" :user-id="{{ Auth::id() ?? '[]' }}" />
 
 
 

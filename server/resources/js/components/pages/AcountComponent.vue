@@ -99,9 +99,11 @@
               <div class="custom-file">
                 <input
                   type="file"
+                  name="file"
                   class="custom-file-input"
                   id="customFile"
                   ref="file"
+                  accept=".png, .jpg, .svg"
                   @change="uploadfile"
                 />
                 <label
@@ -124,7 +126,7 @@
         </div>
 
         <div class="fill">
-          <validation-provider name="趣味" rules="max:30" v-slot="{ errors }">
+          <validation-provider name="趣味" rules="max:50" v-slot="{ errors }">
             <input
               class="form-control"
               type="text"
@@ -165,23 +167,22 @@
       </ValidationObserver>
 
       <a class="forget btn-link text-center" @click="clickEvent">ー 戻る ー</a>
-      {{ gender }}:{{ age }}:{{ hobby }}:{{ profile }}:{{ icon }}:{{ preview }}
     </div>
   </div>
 </template>
 
 <script>
 import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
-import { required, email } from "vee-validate/dist/rules";
+import { required, max } from "vee-validate/dist/rules";
 
 extend("required", {
   ...required,
   message: "{_field_}は必須です",
 });
 
-extend("email", {
-  ...email,
-  message: "{_field_}は必須です",
+extend("max", {
+  ...max,
+  message: "{_field_}は最大でも{length}文字までです",
 });
 
 export default {
@@ -217,23 +218,21 @@ export default {
       //   const path = this.$refs.file.files[0];
       //   this.preview = URL.createObjectURL(path);
 
-      //   let formData = new FormData();
-      //   this.icon = formData.append("file", this.preview);
-      var file = event.target.files[0];
-      this.icon = file.name;
+      this.icon = event.target.files[0];
     },
     async acount() {
       const isValid = await this.$refs.observer.validate();
       if (isValid) {
+        const formData = new FormData();
+        formData.append("user_id", this.userId);
+        formData.append("gender", this.gender);
+        formData.append("age", this.age);
+        formData.append("profile", this.profile);
+        formData.append("hobby", this.hobby);
+        formData.append("icon", this.icon);
+
         axios
-          .post("/api/mypage/create/profile", {
-            user_id: this.userId,
-            gender: this.gender,
-            age: this.age,
-            profile: this.profile,
-            hobby: this.hobby,
-            icon: this.icon,
-          })
+          .post("/mypage/create/profile", formData)
           .then((response) => {
             window.location.href = "/mypage";
           })
@@ -241,8 +240,6 @@ export default {
             this.errors = error.response.data.errors;
             this.success = false;
           });
-      } else {
-        // alert("失敗");
       }
     },
   },

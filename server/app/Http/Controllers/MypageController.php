@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Acount;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProfileRequest;
 
 class MypageController extends Controller
 {
@@ -17,11 +18,13 @@ class MypageController extends Controller
         return view('pages.mypage', compact('user'));
     }
 
-    public function create(Request $request)
+    public function create(ProfileRequest $request)
     {
         if ($file = $request->icon) {
-            $fileName = time() . '.' . $file;
-            // $file->storeAs('public', $fileName);
+            $fileName = time() . '.' . $file->getClientOriginalName();
+            $file->storeAs('public', $fileName);
+        } else {
+            $fileName = '';
         }
 
         Acount::create([

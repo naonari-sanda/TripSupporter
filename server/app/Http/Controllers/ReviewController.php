@@ -9,29 +9,6 @@ use App\Http\Requests\ReviewRequest;
 
 class ReviewController extends Controller
 {
-    //レビュー作成
-    // public function createReview(ReviewRequest $request, Review $review)
-    // {
-    //     $data = $request->all();
-
-    // if ($file = $request->file('img_path')) {
-    //     $fileName = time() . $file->getClientOriginalName();
-    //     $target_path = public_path('uploads/');
-    //     $file->move($target_path, $fileName);
-    // } else {
-    //     $fileName = "";
-    // }
-
-    // $data['img_path'] = $fileName;
-
-    //     $message = $review->createReview($data);
-
-    //     $review->createReview($data);
-    //     Session::flash('flash_message', $message);
-    //     // $review = $review->createReview($data);
-    //     // return response()->json(['review' => $review]);
-    // }
-
     public function createReview(ReviewRequest $request)
     {
         if ($file = $request->imgpath) {
@@ -55,8 +32,6 @@ class ReviewController extends Controller
             'imgpath' => $fileName,
         ]);
 
-        Session::flash('flash_message', 'レビューを投稿しました');
-
-        return redirect()->route('detail', ['id' => $request->country_id]);
+        session()->flash('flash_message', 'レビューを投稿しました');
     }
 }

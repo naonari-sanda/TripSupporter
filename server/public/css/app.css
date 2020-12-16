@@ -10903,11 +10903,6 @@ body {
   background-color: #fff !important;
 }
 
-.jumbotron {
-  background-color: #000;
-  border-radius: 0%;
-}
-
 .star-ratings-sprite {
   background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
   font-size: 0;
@@ -10939,9 +10934,9 @@ a {
   text-decoration: none !important;
 }
 
-.dropdown-item.active,
-.dropdown-item:active {
-  background-color: #fff;
+.jumbotron {
+  background-color: #000;
+  border-radius: 0%;
 }
 
 body {
@@ -11118,6 +11113,15 @@ footer {
 
 .delete::after {
   display: none;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: #fff;
+}
+
+.main nav {
+  margin: 0 auto;
 }
 
 .detail .nav li {

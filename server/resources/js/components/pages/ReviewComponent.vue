@@ -27,23 +27,29 @@
         >
           評価は１以上で記入してください
         </div>
+        <!-- <div v-if="Object.keys(errors).length > 0">
+          <ul class="alert alert-danger text-center">
+            <template v-for="(message, key) in errors">
+              <li
+                v-for="(value, i) in message"
+                :key="key + i"
+                style="list-style: none"
+              >
+                {{ value }}
+              </li>
+            </template>
+          </ul>
+        </div> -->
         <div v-show="min" class="alert alert-danger text-center">
           評価は１以上で記入してください
         </div>
         <ValidationObserver
           class="form-horizontal"
-          enctype="multipart/form-data"
           ref="observer"
-          action="/detail/review/post"
-          method="post"
           id="review"
           tag="form"
           @submit.prevent="onSubmit()"
         >
-          <input type="hidden" name="_token" :value="csrf" />
-          <input type="hidden" name="country_id" :value="countryId" />
-          <input type="hidden" name="user_id" :value="userId" />
-          <input type="hidden" name="recommend" :value="recommend" />
           <validation-provider rules="required|min_value:1">
             <div class="star d-flex align-items-center">
               <label class="">治安</label>
@@ -55,7 +61,7 @@
                   v-bind:star-size="28"
                 ></star-rating>
 
-                <input type="hidden" name="safe" :value="safe" />
+                <input type="hidden" :value="safe" />
               </div>
             </div>
           </validation-provider>
@@ -71,7 +77,7 @@
                   v-bind:star-size="28"
                 ></star-rating>
 
-                <input type="hidden" name="cost" :value="cost" />
+                <input type="hidden" :value="cost" />
               </div>
             </div>
           </validation-provider>
@@ -87,7 +93,7 @@
                   v-bind:star-size="28"
                 ></star-rating>
 
-                <input type="hidden" name="tourism" :value="tourism" />
+                <input type="hidden" :value="tourism" />
               </div>
             </div>
           </validation-provider>
@@ -103,7 +109,7 @@
                   v-bind:star-size="28"
                 ></star-rating>
 
-                <input type="hidden" name="food" :value="food" />
+                <input type="hidden" :value="food" />
               </div>
             </div>
           </validation-provider>
@@ -119,7 +125,7 @@
                   v-bind:star-size="28"
                 ></star-rating>
 
-                <input type="hidden" name="english" :value="english" />
+                <input type="hidden" :value="english" />
               </div>
             </div>
           </validation-provider>
@@ -135,12 +141,7 @@
                   v-bind:star-size="28"
                 ></star-rating>
 
-                <input
-                  class="form-control"
-                  type="hidden"
-                  name="fun"
-                  :value="fun"
-                />
+                <input type="hidden" :value="fun" />
               </div>
             </div>
           </validation-provider>
@@ -152,8 +153,9 @@
                   type="file"
                   class="custom-file-input"
                   id="customFile"
-                  name="imgpath"
                   accept=".png, .jpg, .svg"
+                  ref="file"
+                  @change="uploadfile"
                 />
                 <label
                   class="custom-file-label"
@@ -181,7 +183,7 @@
                 rules="required|max:200"
                 v-slot="{ errors }"
               >
-                <textarea class="form-control" name="review" v-model="review" />
+                <textarea class="form-control" v-model="review" />
 
                 <div class="alert alert-danger" v-show="errors[0]">
                   {{ errors[0] }}
@@ -191,7 +193,7 @@
                 v-if="errors.review"
                 class="error alert alert-danger text-center"
               >
-                {{ errors.review }}
+                {{ errors.review[0] }}
               </div>
             </div>
           </div>
@@ -241,6 +243,8 @@ export default {
       english: 0,
       review: "",
       imgpath: "",
+      errors: {},
+      success: false,
 
       min: false,
       csrf: document
@@ -260,9 +264,6 @@ export default {
     userId: {
       type: Object | Array,
     },
-    errors: {
-      type: Object | Array,
-    },
   },
   computed: {
     recommend: function () {
@@ -279,6 +280,9 @@ export default {
     },
   },
   methods: {
+    uploadfile(event) {
+      this.imgpath = event.target.files[0];
+    },
     async onSubmit() {
       if (
         this.safe >= 1 &&
@@ -291,9 +295,31 @@ export default {
       } else {
         this.min = true;
       }
+
+      const formData = new FormData();
+      formData.append("user_id", this.userId);
+      formData.append("country_id", this.countryId);
+      formData.append("recommend", this.recommend);
+      formData.append("safe", this.safe);
+      formData.append("cost", this.cost);
+      formData.append("fun", this.fun);
+      formData.append("tourism", this.tourism);
+      formData.append("food", this.food);
+      formData.append("english", this.english);
+      formData.append("review", this.review);
+      formData.append("imgpath", this.imgpath);
+
       const isValid = await this.$refs.observer.validate();
       if (isValid) {
-        document.querySelector("#review").submit();
+        axios
+          .post("/detail/create/review", formData)
+          .then((response) => {
+            window.location.reload();
+          })
+          .catch((error) => {
+            this.errors = error.response.data.errors;
+            this.success = false;
+          });
       }
     },
     clickEvent: function () {
@@ -312,9 +338,10 @@ $primary: #2196f3;
   z-index: 1;
   position: fixed;
   top: 0;
+  bottom: -100%;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: -100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
@@ -322,7 +349,7 @@ $primary: #2196f3;
 }
 
 .wrapper {
-  top: -10%;
+  top: 0%;
   max-width: 340px;
   background: #fff;
   position: relative;
@@ -410,5 +437,15 @@ label {
 .alert {
   margin-bottom: 5px;
   padding: 0.5rem 1.25rem;
+}
+@media screen and (max-width: 767px) {
+  /*　画面サイズが767px以下の場合読み込む　*/
+  #overlay {
+    position: fixed;
+    .wrapper {
+      margin: 0;
+      max-width: 100%;
+    }
+  }
 }
 </style>

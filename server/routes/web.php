@@ -22,13 +22,13 @@ Route::get('/detail/{id}', 'CountriesController@detail')->name('detail');
 
 Route::group(['middleware' => ['auth']], function () {
     //レビュー送信
-    Route::post('/detail/review/post', 'ReviewController@createReview');
+    Route::post('/detail/create/review', 'ReviewController@createReview');
 
     //マイページ遷移
     Route::get('/mypage', 'MypageController@index')->name('mypage');
     //プロフィール追加
+    Route::post('/mypage/create/profile', 'MypageController@create');
 });
-// Route::post('/mypage/create/profile', 'MypageController@create');
 
 
 Auth::routes();

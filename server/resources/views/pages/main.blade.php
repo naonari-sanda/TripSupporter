@@ -45,7 +45,7 @@
 
     <hr class="featurette-divider" style="margin: 3rem 0;">
 
-    <div class="container">
+    <div class="container main">
         <div class="row">
 
             @foreach ($countries ?? '' as $country)

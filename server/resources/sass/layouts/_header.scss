@@ -7,3 +7,8 @@
 .delete::after {
     display: none;
 }
+
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: #fff;
+}
