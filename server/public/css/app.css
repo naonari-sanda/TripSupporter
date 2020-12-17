@@ -11143,8 +11143,37 @@ footer {
 }
 
 .detail article h2 {
-  margin-bottom: 20px;
-  margin-left: 10px;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.fevorite table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.fevorite table tr {
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+
+.fevorite table tr:hover {
+  background-color: #d4f0fd;
+}
+
+.fevorite table th,
+.fevorite table td {
+  text-align: center;
+  width: 25%;
+  padding: 15px 0;
+}
+
+.fevorite table td.icon {
+  background-size: 35px;
+  background-position: left 5px center;
+  background-repeat: no-repeat;
+  padding-left: 30px;
 }
 
 .mypage .nav li {
@@ -11162,21 +11191,29 @@ footer {
 }
 
 .mypage article {
-  padding: 20px;
+  padding: 20px 0;
 }
 
 .mypage article h2 {
-  margin-bottom: 20px;
-  margin-left: 10px;
+  font-size: 2rem;
+  margin-bottom: 40px;
 }
 
-.mypage img {
+.profile img {
   display: block;
-  width: 130px;
-  height: 130px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.profile .text {
+  height: 150px;
+}
+
+.profile .br {
+  white-space: pre-wrap;
 }
 
 #form {
