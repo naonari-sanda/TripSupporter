@@ -11147,6 +11147,38 @@ footer {
   margin-left: 10px;
 }
 
+.mypage .nav li {
+  width: 25%;
+  text-align: center;
+  line-height: 3;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.mypage .active {
+  color: #1da1f2;
+  border-bottom: 2px solid #1da1f2;
+}
+
+.mypage article {
+  padding: 20px;
+}
+
+.mypage article h2 {
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+.mypage img {
+  display: block;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 #form {
   width: 100%;
   display: flex;

@@ -5,7 +5,7 @@
 <section class="jumbotron text-center d-flex align-items-center">
     <div class="container">
         <h1 class="jumbotron-heading text-light mb-0">
-            {{ $user->name }}
+            マイページ
         </h1>
         <p class="lead text-muted">
             Something short and leading about the collection below—its contents,
@@ -13,12 +13,15 @@
             don't simply skip over it entirely.
         </p>
 
+        @if(!isset($user->acounts))
         <button type="button" class="btn btn-primary" @click="showProfile">プロフィールを追加する</button>
-
+        @else
+        <button type="button" class="btn btn-primary" @click="showProfile">HOME</button>
+        @endif
     </div>
 </section>
 
-<div class="container detail">
+<div class="container mypage">
 
     <ul class="nav d-flex justify-content-around nav nav-tabs">
         <li @click="tabChange(1)" :class="{'active': isActive === 1}">プロフィール</li>
@@ -30,27 +33,36 @@
     <article v-if="isActive === 1" class="detail mb-5">
 
         <h2>詳細</h2>
-        <table class="table table-striped">
 
+        @if(isset($user->acounts->icon))
+        <img class="img-thumbnail mb-4" src="{{ asset('/storage/' . $user->acounts->icon ) }}" alt="" />
+
+        @endif
+
+        <table class="table table-striped mb-0">
             <tr>
                 <th>アカウント名</th>
-                <td></td>
+                <td>{{ $user->name }}</td>
             </tr>
             <tr>
                 <th>年齢</th>
-                <td></td>
+                <td>{{ $user->acounts->age }}</td>
             </tr>
             <tr>
                 <th>性別</th>
-                <td></td>
-            </tr>
-            <tr>
-                <th>プロフィール</th>
-                <td></td>
+                <td>{{ $user->acounts->gender }}</td>
             </tr>
             <tr>
                 <th>趣味</th>
-                <td></td>
+                <td>{{ $user->acounts->hobby }}</td>
+            </tr>
+        </table>
+        <table class="table table-striped">
+            <tr>
+                <td>プロフィール</td>
+            </tr>
+            <tr>
+                <td>{{ $user->acounts->profile }}</td>
             </tr>
         </table>
     </article>
