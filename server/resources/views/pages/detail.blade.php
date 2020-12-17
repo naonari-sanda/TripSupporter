@@ -173,8 +173,35 @@
 
     </article>
 
-    <article v-else-if="isActive === 4">
+    <article class="favorite" v-else-if="isActive === 4">
         <h2>いいねユーザー</h2>
+
+        <table>
+            <tr>
+                <th>お名前</th>
+                <th>性別</th>
+                <th>趣味</th>
+                <th>住所</th>
+            </tr>
+            <tr>
+                <td class="icon bird">トリさん</td>
+                <td>空を飛ぶこと</td>
+                <td>グリーン</td>
+                <td>山</td>
+            </tr>
+            <tr>
+                <td class="icon whale">クジラさん</td>
+                <td>潮を吹くこと</td>
+                <td>ブルー</td>
+                <td>海</td>
+            </tr>
+            <tr>
+                <td class="icon crab">カニさん</td>
+                <td>反復横飛び</td>
+                <td>レッド</td>
+                <td>川</td>
+            </tr>
+        </table>
     </article>
 
 </div>

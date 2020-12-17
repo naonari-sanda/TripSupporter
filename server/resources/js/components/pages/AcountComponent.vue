@@ -449,8 +449,8 @@ $primary: #2196f3;
       img {
         display: block;
         margin: 0 auto;
-        width: 160px;
-        height: 160px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
         object-fit: cover;
       }
@@ -458,7 +458,6 @@ $primary: #2196f3;
       .row th,
       .row td {
         width: 100%;
-
         display: block;
       }
     }

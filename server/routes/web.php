@@ -28,6 +28,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/mypage', 'MypageController@index')->name('mypage');
     //プロフィール追加
     Route::post('/mypage/create/profile', 'MypageController@create');
+    //レビュー削除
+    Route::post('review/delete', 'ReviewController@delete')->name('review.delete');
 });
 
 

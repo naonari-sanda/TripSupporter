@@ -14,9 +14,9 @@
         </p>
 
         @if(!isset($user->acounts))
-        <button type="button" class="btn btn-primary" @click="showProfile">プロフィールを追加する</button>
+        <button type="button" class="btn btn-denger" @click="showProfile">プロフィールを追加する</button>
         @else
-        <button type="button" class="btn btn-primary" @click="showProfile">HOME</button>
+        <a href="{{ route('main') }}" type="button" class="btn btn-primary">お気に入りの国をさがそう！</a>
         @endif
     </div>
 </section>
@@ -30,53 +30,20 @@
         <li @click="tabChange(4)" :class="{'active': isActive === 4}">いいね</li>
     </ul>
 
-    <article v-if="isActive === 1" class="detail mb-5">
-
-        <h2>詳細</h2>
-
-        @if(isset($user->acounts->icon))
-        <img class="img-thumbnail mb-4" src="{{ asset('/storage/' . $user->acounts->icon ) }}" alt="" />
-
-        @endif
-
-        <table class="table table-striped mb-0">
-            <tr>
-                <th>アカウント名</th>
-                <td>{{ $user->name }}</td>
-            </tr>
-            <tr>
-                <th>年齢</th>
-                <td>{{ $user->acounts->age }}</td>
-            </tr>
-            <tr>
-                <th>性別</th>
-                <td>{{ $user->acounts->gender }}</td>
-            </tr>
-            <tr>
-                <th>趣味</th>
-                <td>{{ $user->acounts->hobby }}</td>
-            </tr>
-        </table>
-        <table class="table table-striped">
-            <tr>
-                <td>プロフィール</td>
-            </tr>
-            <tr>
-                <td>{{ $user->acounts->profile }}</td>
-            </tr>
-        </table>
+    <article v-if="isActive === 1" class="profile mb-5">
+        @include('includes.mypage.user')
     </article>
 
-    <article v-else-if="isActive === 2" class="mb-5">
-        <h2>レビュー 一覧</h2>
+    <article v-else-if="isActive === 2" class="review mb-5">
+        @include('includes.mypage.review')
     </article>
 
     <article v-else-if="isActive === 3">
-        <h2>チャット</h2>
+        <h2 font-weight-bold>Chat</h2>
     </article>
 
     <article v-else-if="isActive === 4">
-        <h2>いいね</h2>
+        <h2 font-weight-bold>Favorite</h2>
     </article>
 
     <acount-component v-show="profileModal" @profile-child="closeProfile" :user-id="{{ $user->id }}" />

@@ -34,4 +34,14 @@ class ReviewController extends Controller
 
         session()->flash('flash_message', 'レビューを投稿しました');
     }
+
+    public function delete(Request $request)
+    {
+        $review = Review::findOrFail($request->id);
+        $review->delete();
+
+        session()->flash('flash_message', 'レビューを削除しました');
+
+        return redirect()->route('mypage');
+    }
 }

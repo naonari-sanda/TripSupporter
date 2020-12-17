@@ -21,9 +21,4 @@ class Country extends Model
     {
         return $this->hasMany('App\Models\Like');
     }
-
-    // public function CountryWithReviews($id)
-    // {
-    //     return $this->get()->reviews;
-    // }
 }
