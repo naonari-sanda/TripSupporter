@@ -2061,6 +2061,91 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])("required", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_2__["required"]), {}, {
@@ -2082,6 +2167,8 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])("max", _objectSpread
       profile: "",
       icon: "",
       preview: "",
+      addModal: true,
+      confirmModal: false,
       errors: {},
       success: false
     };
@@ -2098,16 +2185,27 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])("max", _objectSpread
     stopEvent: function stopEvent() {
       event.stopPropagation();
     },
+    confirmEvent: function confirmEvent() {
+      this.addModal = false;
+      this.confirmModal = true;
+    },
+    backEvent: function backEvent() {
+      this.addModal = true;
+      this.confirmModal = false;
+    },
+    iconReset: function iconReset() {
+      this.preview = "";
+    },
     uploadfile: function uploadfile(event) {
-      //   const path = this.$refs.file.files[0];
-      //   this.preview = URL.createObjectURL(path);
+      var path = this.$refs.file.files[0];
+      this.preview = URL.createObjectURL(path);
       this.icon = event.target.files[0];
     },
-    acount: function acount() {
+    check: function check() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var isValid, formData;
+        var isValid;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -2119,19 +2217,8 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])("max", _objectSpread
                 isValid = _context.sent;
 
                 if (isValid) {
-                  formData = new FormData();
-                  formData.append("user_id", _this.userId);
-                  formData.append("gender", _this.gender);
-                  formData.append("age", _this.age);
-                  formData.append("profile", _this.profile);
-                  formData.append("hobby", _this.hobby);
-                  formData.append("icon", _this.icon);
-                  axios.post("/mypage/create/profile", formData).then(function (response) {
-                    window.location.href = "/mypage";
-                  })["catch"](function (error) {
-                    _this.errors = error.response.data.errors;
-                    _this.success = false;
-                  });
+                  _this.addModal = false;
+                  _this.confirmModal = true;
                 }
 
               case 4:
@@ -2141,6 +2228,23 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])("max", _objectSpread
           }
         }, _callee);
       }))();
+    },
+    confirm: function confirm() {
+      var _this2 = this;
+
+      var formData = new FormData();
+      formData.append("user_id", this.userId);
+      formData.append("gender", this.gender);
+      formData.append("age", this.age);
+      formData.append("profile", this.profile);
+      formData.append("hobby", this.hobby);
+      formData.append("icon", this.icon);
+      axios.post("/mypage/create/profile", formData).then(function (response) {
+        window.location.href = "/mypage";
+      })["catch"](function (error) {
+        _this2.errors = error.response.data.errors;
+        _this2.success = false;
+      });
     }
   }
 });
@@ -7604,7 +7708,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n#overlay[data-v-6aac97a9] {\n  z-index: 1;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#overlay .wrapper[data-v-6aac97a9] {\n  margin: auto;\n  position: relative;\n  top: 0%;\n  max-width: 360px;\n  width: 100%;\n  border: 1px solid #dbdbdb;\n  background-color: #fff;\n  padding: 20px 30px;\n}\n#overlay .wrapper h2[data-v-6aac97a9] {\n  font-size: 18px;\n  font-weight: bold;\n}\n#overlay .wrapper hr[data-v-6aac97a9] {\n  margin-bottom: 30px;\n}\n#overlay .wrapper .fill[data-v-6aac97a9] {\n  margin-bottom: 15px;\n}\n#overlay .wrapper input[data-v-6aac97a9],\n#overlay .wrapper select[data-v-6aac97a9],\n#overlay .wrapper textarea[data-v-6aac97a9] {\n  background-color: #fafafa;\n}\n#overlay .wrapper .button .btn[data-v-6aac97a9] {\n  width: 100%;\n}\n#overlay .wrapper .button .ff4742 .btn-success[data-v-6aac97a9] {\n  width: 100%;\n}\n#overlay .wrapper .forget[data-v-6aac97a9] {\n  display: block;\n  margin: 0 auto;\n}\n#overlay .wrapper .else[data-v-6aac97a9] {\n  margin: 18px 0;\n  justify-content: center;\n  align-items: center;\n}\n#overlay .wrapper .else .line[data-v-6aac97a9] {\n  background-color: #dbdbdb;\n  height: 1px;\n  width: 40%;\n}\n#overlay .wrapper .else .text[data-v-6aac97a9] {\n  font-size: 13px;\n  margin: 0 10px;\n  white-space: nowrap;\n}\n#overlay .alert[data-v-6aac97a9] {\n  padding: 0.5rem 1.25rem;\n}\n#overlay .input-group[data-v-6aac97a9] {\n  width: 100%;\n  margin: 0 auto;\n}\n#overlay .custom-file[data-v-6aac97a9] {\n  overflow: hidden;\n}\n#overlay .custom-file-label[data-v-6aac97a9] {\n  white-space: nowrap;\n}\n#overlay .btn-group[data-v-6aac97a9] {\n  width: 100%;\n}\n#overlay .btn-group .btn[data-v-6aac97a9] {\n  width: 25%;\n}\n@media screen and (max-width: 767px) {\n  /*　画面サイズが767px以下の場合読み込む　*/\n#overlay[data-v-6aac97a9] {\n    position: absolute;\n}\n#overlay .wrapper[data-v-6aac97a9] {\n    margin: 0;\n    max-width: 100%;\n}\n}", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n#overlay[data-v-6aac97a9] {\n  z-index: 1;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#overlay .wrapper[data-v-6aac97a9] {\n  margin: auto;\n  position: relative;\n  top: 0%;\n  max-width: 360px;\n  width: 100%;\n  border: 1px solid #dbdbdb;\n  background-color: #fff;\n  padding: 20px 30px;\n}\n#overlay .wrapper h2[data-v-6aac97a9] {\n  font-size: 18px;\n  font-weight: bold;\n}\n#overlay .wrapper hr[data-v-6aac97a9] {\n  margin-bottom: 30px;\n}\n#overlay .wrapper .fill[data-v-6aac97a9] {\n  margin-bottom: 15px;\n}\n#overlay .wrapper input[data-v-6aac97a9],\n#overlay .wrapper select[data-v-6aac97a9],\n#overlay .wrapper textarea[data-v-6aac97a9] {\n  background-color: #fafafa;\n}\n#overlay .wrapper .input-group[data-v-6aac97a9] {\n  width: 100%;\n  margin: 0 auto;\n}\n#overlay .wrapper .custom-file[data-v-6aac97a9] {\n  overflow: hidden;\n}\n#overlay .wrapper .custom-file-label[data-v-6aac97a9] {\n  white-space: nowrap;\n}\n#overlay .wrapper .btn-group[data-v-6aac97a9] {\n  width: 100%;\n}\n#overlay .wrapper .btn-group .btn[data-v-6aac97a9] {\n  width: 25%;\n}\n#overlay .wrapper .button .btn[data-v-6aac97a9] {\n  width: 100%;\n}\n#overlay .wrapper .button .ff4742 .btn-success[data-v-6aac97a9] {\n  width: 100%;\n}\n#overlay .wrapper .else[data-v-6aac97a9] {\n  margin: 18px 0;\n  justify-content: center;\n  align-items: center;\n}\n#overlay .wrapper .else .line[data-v-6aac97a9] {\n  background-color: #dbdbdb;\n  height: 1px;\n  width: 40%;\n}\n#overlay .wrapper .else .text[data-v-6aac97a9] {\n  font-size: 13px;\n  margin: 0 10px;\n  white-space: nowrap;\n}\n#overlay .wrapper .confirm hr[data-v-6aac97a9] {\n  margin-bottom: 20px;\n}\n#overlay .wrapper .confirm .forget[data-v-6aac97a9] {\n  display: block;\n  margin: 0 auto;\n}\n#overlay .wrapper .confirm img[data-v-6aac97a9] {\n  display: block;\n  margin: 0 auto;\n  width: 160px;\n  height: 160px;\n  border-radius: 50%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n#overlay .wrapper .confirm .row th[data-v-6aac97a9],\n#overlay .wrapper .confirm .row td[data-v-6aac97a9] {\n  width: 100%;\n  display: block;\n}\n#overlay .forget[data-v-6aac97a9] {\n  display: block;\n  margin: 0 auto;\n}\n@media screen and (max-width: 767px) {\n  /*　画面サイズが767px以下の場合読み込む　*/\n#overlay[data-v-6aac97a9] {\n    position: absolute;\n}\n#overlay .wrapper[data-v-6aac97a9] {\n    margin: 0;\n    max-width: 100%;\n}\n}", ""]);
 
 // exports
 
@@ -43060,7 +43164,18 @@ var render = function() {
     [
       _c(
         "div",
-        { staticClass: "wrapper", on: { click: _vm.stopEvent } },
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.addModal,
+              expression: "addModal"
+            }
+          ],
+          staticClass: "wrapper",
+          on: { click: _vm.stopEvent }
+        },
         [
           _vm._m(0),
           _vm._v(" "),
@@ -43102,7 +43217,7 @@ var render = function() {
               on: {
                 submit: function($event) {
                   $event.preventDefault()
-                  return _vm.acount()
+                  return _vm.check()
                 }
               }
             },
@@ -43435,7 +43550,8 @@ var render = function() {
                                   {
                                     staticClass:
                                       "btn btn-outline-secondary reset",
-                                    attrs: { type: "button" }
+                                    attrs: { type: "button" },
+                                    on: { click: _vm.iconReset }
                                   },
                                   [
                                     _vm._v(
@@ -43611,7 +43727,7 @@ var render = function() {
                 _c(
                   "button",
                   { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-                  [_vm._v("\n          プロフィール追加\n        ")]
+                  [_vm._v("確認")]
                 )
               ])
             ]
@@ -43627,6 +43743,170 @@ var render = function() {
           )
         ],
         1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.confirmModal,
+              expression: "confirmModal"
+            }
+          ],
+          staticClass: "wrapper",
+          on: { click: _vm.stopEvent }
+        },
+        [
+          _c("div", { staticClass: "confirm" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            Object.keys(_vm.errors).length > 0
+              ? _c("div", [
+                  _c(
+                    "ul",
+                    { staticClass: "alert alert-danger text-center" },
+                    [
+                      _vm._l(_vm.errors, function(message, key) {
+                        return _vm._l(message, function(value, i) {
+                          return _c(
+                            "li",
+                            {
+                              key: key + i,
+                              staticStyle: { "list-style": "none" }
+                            },
+                            [
+                              _vm._v(
+                                "\n              " +
+                                  _vm._s(value) +
+                                  "\n            "
+                              )
+                            ]
+                          )
+                        })
+                      })
+                    ],
+                    2
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("div", { staticClass: "fill mb-4" }, [
+              _vm.preview
+                ? _c("img", {
+                    staticClass: "img-thumbnail",
+                    attrs: { src: _vm.preview, alt: "" }
+                  })
+                : _vm.gender === "男性"
+                ? _c("img", {
+                    attrs: { src: "http://localhost/storage/men.png", alt: "" }
+                  })
+                : _vm.gender === "女性"
+                ? _c("img", {
+                    attrs: {
+                      src: "http://localhost/storage/women.png",
+                      alt: ""
+                    }
+                  })
+                : _c("img", {
+                    attrs: { src: "http://localhost/storage/none.png", alt: "" }
+                  })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "fill mb-3" }, [
+              _c("table", { staticClass: "table mb-0" }, [
+                _c("tbody", [
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "row" } }, [_vm._v("年齢")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(_vm.age))])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "row" } }, [_vm._v("性別")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(_vm.gender))])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("table", { staticClass: "table mb-0" }, [
+                _c("tbody", [
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _vm.hobby
+                      ? _c(
+                          "td",
+                          {
+                            staticClass: "pt-0",
+                            staticStyle: { "border-top": "none" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(_vm.hobby) +
+                                "\n              "
+                            )
+                          ]
+                        )
+                      : _vm._e()
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("table", { staticClass: "table" }, [
+                _c("tbody", [
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _vm.profile
+                      ? _c(
+                          "td",
+                          {
+                            staticClass: "pt-0",
+                            staticStyle: { "border-top": "none" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(_vm.profile) +
+                                "\n              "
+                            )
+                          ]
+                        )
+                      : _vm._e()
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "button mb-3" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { type: "submit" },
+                  on: { click: _vm.confirm }
+                },
+                [_vm._v("\n          プロフィール追加\n        ")]
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "forget btn-link text-center",
+                on: { click: _vm.backEvent }
+              },
+              [_vm._v("ー 戻る ー")]
+            )
+          ])
+        ]
       )
     ]
   )
@@ -43638,6 +43918,38 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "header" }, [
       _c("h2", [_vm._v("プロフィールを追加する")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "header" }, [
+      _c("h2", [_vm._v("プロフィールを確認する")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c(
+        "th",
+        { staticStyle: { "white-space": "nowrap" }, attrs: { scope: "row" } },
+        [_vm._v("趣味")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c(
+        "th",
+        { staticStyle: { "white-space": "nowrap" }, attrs: { scope: "row" } },
+        [_vm._v("プロフィール")]
+      )
     ])
   }
 ]

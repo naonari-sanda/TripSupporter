@@ -1,6 +1,6 @@
 <template>
   <div id="overlay" @click="clickEvent">
-    <div class="wrapper" @click="stopEvent">
+    <div class="wrapper" @click="stopEvent" v-show="addModal">
       <div class="header">
         <h2>プロフィールを追加する</h2>
       </div>
@@ -18,7 +18,7 @@
           </template>
         </ul>
       </div>
-      <ValidationObserver @submit.prevent="acount()" ref="observer" tag="form">
+      <ValidationObserver @submit.prevent="check()" ref="observer" tag="form">
         <div class="fill">
           <validation-provider name="年齢" rules="required" v-slot="{ errors }">
             <select
@@ -114,7 +114,11 @@
                 >
               </div>
               <div class="input-group-append">
-                <button type="button" class="btn btn-outline-secondary reset">
+                <button
+                  @click="iconReset"
+                  type="button"
+                  class="btn btn-outline-secondary reset"
+                >
                   取消
                 </button>
               </div>
@@ -160,13 +164,94 @@
         </div>
 
         <div class="button mb-3">
-          <button type="submit" class="btn btn-primary">
-            プロフィール追加
-          </button>
+          <button type="submit" class="btn btn-primary">確認</button>
         </div>
       </ValidationObserver>
 
       <a class="forget btn-link text-center" @click="clickEvent">ー 戻る ー</a>
+    </div>
+
+    <div class="wrapper" @click="stopEvent" v-show="confirmModal">
+      <div class="confirm">
+        <div class="header">
+          <h2>プロフィールを確認する</h2>
+        </div>
+        <hr />
+        <div v-if="Object.keys(errors).length > 0">
+          <ul class="alert alert-danger text-center">
+            <template v-for="(message, key) in errors">
+              <li
+                v-for="(value, i) in message"
+                :key="key + i"
+                style="list-style: none"
+              >
+                {{ value }}
+              </li>
+            </template>
+          </ul>
+        </div>
+        <div class="fill mb-4">
+          <img v-if="preview" class="img-thumbnail" :src="preview" alt="" />
+          <img
+            v-else-if="gender === '男性'"
+            src="http://localhost/storage/men.png"
+            alt=""
+          />
+          <img
+            v-else-if="gender === '女性'"
+            src="http://localhost/storage/women.png"
+            alt=""
+          />
+          <img v-else src="http://localhost/storage/none.png" alt="" />
+        </div>
+
+        <div class="fill mb-3">
+          <table class="table mb-0">
+            <tbody>
+              <tr>
+                <th scope="row">年齢</th>
+                <td>{{ age }}</td>
+              </tr>
+              <tr>
+                <th scope="row">性別</th>
+                <td>{{ gender }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table mb-0">
+            <tbody>
+              <tr>
+                <th scope="row" style="white-space: nowrap">趣味</th>
+              </tr>
+              <tr>
+                <td v-if="hobby" class="pt-0" style="border-top: none">
+                  {{ hobby }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row" style="white-space: nowrap">プロフィール</th>
+              </tr>
+              <tr>
+                <td v-if="profile" class="pt-0" style="border-top: none">
+                  {{ profile }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="button mb-3">
+          <button @click="confirm" type="submit" class="btn btn-primary">
+            プロフィール追加
+          </button>
+        </div>
+
+        <a class="forget btn-link text-center" @click="backEvent">ー 戻る ー</a>
+      </div>
     </div>
   </div>
 </template>
@@ -198,6 +283,8 @@ export default {
       profile: "",
       icon: "",
       preview: "",
+      addModal: true,
+      confirmModal: false,
       errors: {},
       success: false,
     };
@@ -214,33 +301,49 @@ export default {
     stopEvent: function () {
       event.stopPropagation();
     },
+    confirmEvent: function () {
+      this.addModal = false;
+      this.confirmModal = true;
+    },
+    backEvent: function () {
+      this.addModal = true;
+      this.confirmModal = false;
+    },
+    iconReset: function () {
+      this.preview = "";
+    },
     uploadfile(event) {
-      //   const path = this.$refs.file.files[0];
-      //   this.preview = URL.createObjectURL(path);
+      const path = this.$refs.file.files[0];
+      this.preview = URL.createObjectURL(path);
 
       this.icon = event.target.files[0];
     },
-    async acount() {
+
+    async check() {
       const isValid = await this.$refs.observer.validate();
       if (isValid) {
-        const formData = new FormData();
-        formData.append("user_id", this.userId);
-        formData.append("gender", this.gender);
-        formData.append("age", this.age);
-        formData.append("profile", this.profile);
-        formData.append("hobby", this.hobby);
-        formData.append("icon", this.icon);
-
-        axios
-          .post("/mypage/create/profile", formData)
-          .then((response) => {
-            window.location.href = "/mypage";
-          })
-          .catch((error) => {
-            this.errors = error.response.data.errors;
-            this.success = false;
-          });
+        this.addModal = false;
+        this.confirmModal = true;
       }
+    },
+    confirm: function () {
+      const formData = new FormData();
+      formData.append("user_id", this.userId);
+      formData.append("gender", this.gender);
+      formData.append("age", this.age);
+      formData.append("profile", this.profile);
+      formData.append("hobby", this.hobby);
+      formData.append("icon", this.icon);
+
+      axios
+        .post("/mypage/create/profile", formData)
+        .then((response) => {
+          window.location.href = "/mypage";
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+          this.success = false;
+        });
     },
   },
 };
@@ -290,6 +393,23 @@ $primary: #2196f3;
       background-color: #fafafa;
     }
 
+    .input-group {
+      width: 100%;
+      margin: 0 auto;
+    }
+    .custom-file {
+      overflow: hidden;
+    }
+    .custom-file-label {
+      white-space: nowrap;
+    }
+    .btn-group {
+      width: 100%;
+      .btn {
+        width: 25%;
+      }
+    }
+
     .button {
       .btn {
         width: 100%;
@@ -297,11 +417,6 @@ $primary: #2196f3;
       .ff4742 .btn-success {
         width: 100%;
       }
-    }
-
-    .forget {
-      display: block;
-      margin: 0 auto;
     }
 
     .else {
@@ -321,26 +436,36 @@ $primary: #2196f3;
         white-space: nowrap;
       }
     }
-  }
-  .alert {
-    padding: 0.5rem 1.25rem;
-  }
 
-  .input-group {
-    width: 100%;
-    margin: 0 auto;
-  }
-  .custom-file {
-    overflow: hidden;
-  }
-  .custom-file-label {
-    white-space: nowrap;
-  }
-  .btn-group {
-    width: 100%;
-    .btn {
-      width: 25%;
+    .confirm {
+      hr {
+        margin-bottom: 20px;
+      }
+      .forget {
+        display: block;
+        margin: 0 auto;
+      }
+
+      img {
+        display: block;
+        margin: 0 auto;
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .row th,
+      .row td {
+        width: 100%;
+
+        display: block;
+      }
     }
+  }
+  .forget {
+    display: block;
+    margin: 0 auto;
   }
 }
 
