@@ -12,7 +12,8 @@ import LikeComponent from './components/pages/LikeComponent'
 import LoginComponent from './components/pages/LoginComponent'
 import RegisterComponent from './components/pages/RegisterComponent'
 import ForgetPassComponent from './components/pages/ForgetPassComponent'
-import ReviewComponent from './components/pages/ReviewComponent'
+import ReviewCreateComponent from './components/pages/ReviewCreateComponent'
+import ReviewDetailComponent from './components/pages/ReviewDetailComponent'
 import AcountComponent from './components/pages/AcountComponent'
 
 Vue.prototype.$http = axios;
@@ -28,6 +29,7 @@ const app = new Vue({
         guestModal: false,
         reviewModal: false,
         profileModal: false,
+        countryNumber: 0
     },
     components: {
         LikeComponent,
@@ -35,7 +37,8 @@ const app = new Vue({
         LoginComponent,
         RegisterComponent,
         ForgetPassComponent,
-        ReviewComponent,
+        ReviewCreateComponent,
+        ReviewDetailComponent,
         AcountComponent
     },
     props: {
@@ -48,19 +51,23 @@ const app = new Vue({
         tabChange: function (num) {
             this.isActive = num;
         },
-        //レビューのモーダルレビューを表示
-        showReview: function () {
+        //レビューモーダルレビューを表示
+        showReview: function (id) {
             this.reviewModal = true;
+            this.countryNumber = id;
         },
-        //レビューのモーダルレビューを非表示
+        // showReview: function () {
+        //     this.reviewModal = true;
+        // },
+        //レビューモーダルレビューを非表示
         closeReview: function () {
             this.reviewModal = false;
         },
-        //レビューのモーダルレビューを表示
+        //プロフィールモーダルレビューを表示
         showProfile: function () {
             this.profileModal = true;
         },
-        //レビューのモーダルレビューを非表示
+        //プロフィールモーダルレビューを非表示
         closeProfile: function () {
             this.profileModal = false;
         },

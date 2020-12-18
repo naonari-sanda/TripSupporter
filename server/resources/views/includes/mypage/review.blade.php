@@ -5,7 +5,7 @@
         <tr>
             <th scope="col">国名</th>
             <th scope="col">オススメ</th>
-            <th scope="col">レビュー</th>
+            <!-- <th scope="col">レビュー</th> -->
             <th scope="col">詳細</th>
             <th scope="col">編集</th>
             <th scope="col">削除</th>
@@ -15,14 +15,14 @@
         @foreach($user->reviews as $review)
         <tr>
 
-            <td>{{ $review->country->name }}</td>
-            <td><i class="fas fa-star mr-1 text-danger"></i>{{ $review->recommend }}</td>
-            <td>{{ $review->review }}</td>
+            <th><a class="text-dark" href="{{ route('detail' , $review->country_id) }}">{{ $review->country->name }}</a></th>
+            <td><i class=" fas fa-star mr-1 text-danger"></i>{{ $review->recommend }}</td>
+            <!-- <td>{{ $review->review }}</td> -->
             <td>
                 <button class="btn btn-primary">詳細</button>
             </td>
             <td>
-                <button class="btn btn-success">編集</button>
+                <button class="btn btn-success" @click="showReview({{ $review->country_id }})">編集</button>
             </td>
             <td>
                 <form action="{{ route('review.delete') }}" method="post">
@@ -32,7 +32,9 @@
                 </form>
             </td>
         </tr>
+
         @endforeach
+        <review-create-component v-show="reviewModal" @review-child="closeReview" :country-id="countryNumber" :user-id="{{ Auth::id() ?? '[]' }}" />
 
     </tbody>
 </table>

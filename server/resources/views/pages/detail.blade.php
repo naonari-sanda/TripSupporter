@@ -22,7 +22,7 @@
         <button type="button" class="btn btn-primary">レビューは投稿済みです</button>
         @else
         @auth
-        <button type="button" class="btn btn-primary" @click="showReview">レビューを投稿</button>
+        <button type="button" class="btn btn-danger" @click="showReview">レビューを投稿</button>
         <!-- <button type="button" class="btn btn-primary" @click="reviewModal">レビューを投稿</button> -->
         @else
         <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#guestModal">レビューを投稿</button> -->
@@ -207,7 +207,7 @@
 </div>
 
 
-<review-component v-show="reviewModal" @review-child="closeReview" :country-id="{{ $country->id }}" :user-id="{{ Auth::id() ?? '[]' }}" />
+<review-create-component v-show="reviewModal" @review-child="closeReview" :country-id="{{ $country->id }}" :user-id="{{ Auth::id() ?? '[]' }}" />
 
 
 

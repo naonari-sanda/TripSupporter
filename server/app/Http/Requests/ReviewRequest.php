@@ -33,8 +33,9 @@ class ReviewRequest extends FormRequest
             'tourism' => 'required|integer|min:1',
             'food' => 'required|integer|min:1',
             'english' => 'required|integer|min:1',
+            'city' => 'required|max:15',
             'review' => 'required|max:200',
-            'imgpath' => 'image'
+            'imgpath' => 'nullable|image'
         ];
     }
 

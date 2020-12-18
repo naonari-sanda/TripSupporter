@@ -27,15 +27,25 @@ class MypageController extends Controller
             $fileName = '';
         }
 
-        Acount::create([
-            'user_id' => $request->user_id,
-            'gender' => $request->gender,
-            'age' => $request->age,
-            'profile' => $request->profile,
-            'hobby' => $request->hobby,
-            'icon' => $fileName
-        ]);
+        $check = Acount::UpdateOrCreate(
+            [
+                'user_id' => $request->user_id,
+            ],
+            [
+                'gender' => $request->gender,
+                'age' => $request->age,
+                'profile' => $request->profile,
+                'hobby' => $request->hobby,
+                'icon' => $fileName
+            ]
+        );
 
-        session()->flash('flash_message', 'プロフィールを追加しました');
+        if ($check->wasRecentlyCreated) {
+            $message = 'プロフィールを追加しました';
+        } else {
+            $message = 'プロフィールを変更しました';
+        }
+
+        session()->flash('flash_message', $message);
     }
 }

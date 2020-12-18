@@ -27,7 +27,7 @@
         >
           評価は１以上で記入してください
         </div>
-        <!-- <div v-if="Object.keys(errors).length > 0">
+        <div v-if="Object.keys(errors).length > 0">
           <ul class="alert alert-danger text-center">
             <template v-for="(message, key) in errors">
               <li
@@ -39,7 +39,7 @@
               </li>
             </template>
           </ul>
-        </div> -->
+        </div>
         <div v-show="min" class="alert alert-danger text-center">
           評価は１以上で記入してください
         </div>
@@ -175,6 +175,29 @@
             </div>
           </validation-provider>
 
+          <div class="mb-1">
+            <label class="review">お気に入りの都市</label>
+            <div class="mx-auto">
+              <validation-provider
+                name="お気に入りの都市"
+                rules="required|max:15"
+                v-slot="{ errors }"
+              >
+                <input class="form-control" type="text" v-model="city" />
+
+                <div class="alert alert-danger" v-show="errors[0]">
+                  {{ errors[0] }}
+                </div>
+              </validation-provider>
+              <div
+                v-if="errors.review"
+                class="error alert alert-danger text-center"
+              >
+                {{ errors.review[0] }}
+              </div>
+            </div>
+          </div>
+
           <div class="">
             <label class="review">レビュー</label>
             <div class="mx-auto">
@@ -183,7 +206,7 @@
                 rules="required|max:200"
                 v-slot="{ errors }"
               >
-                <textarea class="form-control" v-model="review" />
+                <textarea class="form-control" rows="3" v-model="review" />
 
                 <div class="alert alert-danger" v-show="errors[0]">
                   {{ errors[0] }}
@@ -242,14 +265,11 @@ export default {
       food: 0,
       english: 0,
       review: "",
+      city: "",
       imgpath: "",
       errors: {},
       success: false,
-
       min: false,
-      csrf: document
-        .querySelector('meta[name="csrf-token"]')
-        .getAttribute("content"),
     };
   },
   components: {
@@ -258,6 +278,9 @@ export default {
     ValidationObserver,
   },
   props: {
+    countryName: {
+      type: String,
+    },
     countryId: {
       type: Number,
     },
@@ -306,6 +329,7 @@ export default {
       formData.append("tourism", this.tourism);
       formData.append("food", this.food);
       formData.append("english", this.english);
+      formData.append("city", this.city);
       formData.append("review", this.review);
       formData.append("imgpath", this.imgpath);
 

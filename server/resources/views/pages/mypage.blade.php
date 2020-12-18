@@ -14,7 +14,7 @@
         </p>
 
         @if(!isset($user->acounts))
-        <button type="button" class="btn btn-denger" @click="showProfile">プロフィールを追加する</button>
+        <button type="button" class="btn btn-danger" @click="showProfile">プロフィールを追加する</button>
         @else
         <a href="{{ route('main') }}" type="button" class="btn btn-primary">お気に入りの国をさがそう！</a>
         @endif
