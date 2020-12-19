@@ -2,7 +2,10 @@
   <div id="overlay" @click="clickEvent">
     <div class="wrapper">
       <div class="header d-flex align-items-center">
-        <h5 class="title">レビューを投稿</h5>
+        <h5 class="title">
+          <span class="font-weight-bold mr-1">{{ countryName }}</span
+          >のレビューを投稿
+        </h5>
         <button
           type="button"
           class="close"
@@ -279,7 +282,7 @@ export default {
   },
   props: {
     countryName: {
-      type: String,
+      type: Object | String,
     },
     countryId: {
       type: Number,

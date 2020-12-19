@@ -207,7 +207,7 @@
 </div>
 
 
-<review-create-component v-show="reviewModal" @review-child="closeReview" :country-id="{{ $country->id }}" :user-id="{{ Auth::id() ?? '[]' }}" />
+<review-create-component v-show="reviewModal" @review-child="closeReview" :country-id="{{ $country->id }}" :country-name="{{ json_encode($country->name) }}" :user-id="{{ Auth::id() ?? '[]' }}" />
 
 
 

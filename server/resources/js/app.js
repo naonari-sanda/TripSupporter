@@ -29,7 +29,10 @@ const app = new Vue({
         guestModal: false,
         reviewModal: false,
         profileModal: false,
-        countryNumber: 0
+        countryId: 0,
+        countryName: "",
+        reviewDetailModal: true,
+        reviewDetail: ""
     },
     components: {
         LikeComponent,
@@ -52,9 +55,10 @@ const app = new Vue({
             this.isActive = num;
         },
         //レビューモーダルレビューを表示
-        showReview: function (id) {
+        showReview: function (num, data) {
             this.reviewModal = true;
-            this.countryNumber = id;
+            this.countryId = num;
+            this.countryName = data;
         },
         // showReview: function () {
         //     this.reviewModal = true;
@@ -70,6 +74,14 @@ const app = new Vue({
         //プロフィールモーダルレビューを非表示
         closeProfile: function () {
             this.profileModal = false;
+        },
+        //レビュー詳細モーダル表示
+        showReviewDetail: function (data) {
+            this.reviewDetailModal = true;
+            this.reviewDetail = data;
+        },
+        closeReviewDetail: function () {
+            this.reviewDetailModal = false;
         },
     }
 });

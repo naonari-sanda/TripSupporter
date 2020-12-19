@@ -19,10 +19,10 @@
             <td><i class=" fas fa-star mr-1 text-danger"></i>{{ $review->recommend }}</td>
             <!-- <td>{{ $review->review }}</td> -->
             <td>
-                <button class="btn btn-primary">詳細</button>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#review-{{ $review->id }}">詳細</button>
             </td>
             <td>
-                <button class="btn btn-success" @click="showReview({{ $review->country_id }})">編集</button>
+                <button class="btn btn-success" @click="showReview({{ $review->country_id }},'{{ $review->country->name }}')">編集</button>
             </td>
             <td>
                 <form action="{{ route('review.delete') }}" method="post">
@@ -33,8 +33,23 @@
             </td>
         </tr>
 
+        <div class="modal fade" id="review-{{ $review->id}}" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content mx-auto" style="max-width:360px;">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><span class="font-weight-bold ml-1">{{ $review->country->name }}</span>のレビューの詳細</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
         @endforeach
-        <review-create-component v-show="reviewModal" @review-child="closeReview" :country-id="countryNumber" :user-id="{{ Auth::id() ?? '[]' }}" />
-
+        <review-create-component v-show="reviewModal" @review-child="closeReview" :country-id="countryId" :country-name="countryName" :user-id="{{ Auth::id() ?? '[]' }}" />
+        <review-detail-component v-show="reviewDetailModal" @review-detail-child="closeReviewDetail" :raview-detail="reviewDetail" />
     </tbody>
 </table>

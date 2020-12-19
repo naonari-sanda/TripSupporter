@@ -3,12 +3,12 @@
 
 <head>
     <title>@yield('title')</title>
-    @include('includes.head')
+    @include('includes.common.head')
 </head>
 
 <body>
     <header>
-        @include('includes.header')
+        @include('includes.common.header')
     </header>
 
 
@@ -18,15 +18,15 @@
         </main>
     </div>
     <footer>
-        @include('includes.footer')
+        @include('includes.common.footer')
     </footer>
-    @include('includes.modal')
+    @include('includes.common.modal')
 
 
     <script src="{{ mix('/js/app.js') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
     <!-- フラッシュメッセージ -->
-    @include('includes.alert')
+    @include('includes.common.alert')
 </body>
 
 </html>
