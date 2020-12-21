@@ -60589,7 +60589,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_pages_LoginComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/pages/LoginComponent */ "./resources/js/components/pages/LoginComponent.vue");
 /* harmony import */ var _components_pages_RegisterComponent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/pages/RegisterComponent */ "./resources/js/components/pages/RegisterComponent.vue");
 /* harmony import */ var _components_pages_ForgetPassComponent__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/pages/ForgetPassComponent */ "./resources/js/components/pages/ForgetPassComponent.vue");
-/* harmony import */ var _components_pages_CountryComponent__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/pages/CountryComponent */ "./resources/js/components/pages/CountryComponent.vue");
+/* harmony import */ var _components_pages_CountryComponent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/pages/CountryComponent */ "./resources/js/components/pages/CountryComponent.vue");
 /* harmony import */ var _components_pages_ReviewCreateComponent__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/pages/ReviewCreateComponent */ "./resources/js/components/pages/ReviewCreateComponent.vue");
 /* harmony import */ var _components_pages_AcountComponent__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/pages/AcountComponent */ "./resources/js/components/pages/AcountComponent.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
@@ -60631,7 +60631,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     ForgetPassComponent: _components_pages_ForgetPassComponent__WEBPACK_IMPORTED_MODULE_7__["default"],
     ReviewCreateComponent: _components_pages_ReviewCreateComponent__WEBPACK_IMPORTED_MODULE_9__["default"],
     AcountComponent: _components_pages_AcountComponent__WEBPACK_IMPORTED_MODULE_10__["default"],
-    CountryComponent: _components_pages_CountryComponent__WEBPACK_IMPORTED_MODULE_11__["default"]
+    CountryComponent: _components_pages_CountryComponent__WEBPACK_IMPORTED_MODULE_8__["default"]
   },
   props: {
     authId: {
