@@ -142,7 +142,7 @@
             </tbody>
         </table>
 
-        @if($review->imgpath !== "")
+        @if(!empty($review->imgpath))
         <img src="{{ asset('/storage/' . $review->imgpath) }}" alt="{{ $country->name }}" style="width: 300px;">
         @endif
 

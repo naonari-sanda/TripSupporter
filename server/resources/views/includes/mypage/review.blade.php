@@ -43,11 +43,86 @@
                         </button>
                     </div>
                     <div class="modal-body">
+
+                        <div class="star d-flex align-items-center mb-2">
+                            <label class="font-weight-bold">総合</label>
+                            <div class="d-flex align-items-center">
+                                <star-rating v-bind:increment="0.5" v-bind:rating="{{ $review->recommend }}" text-class="custom-text" v-bind:show-rating="true" v-bind:read-only="true" v-bind:star-size="28" active-color="#ff4742"></star-rating>
+                            </div>
+                        </div>
+
+
+                        <div class="star d-flex align-items-center">
+                            <label class="font-weight-bold">治安</label>
+                            <div class="d-flex align-items-center">
+                                <star-rating v-bind:increment="1" v-bind:rating="{{ $review->safe }}" v-bind:show-rating="false" v-bind:read-only="true" v-bind:star-size="25" active-color="#ff4742"></star-rating>
+                            </div>
+                        </div>
+
+                        <div class="star d-flex align-items-center">
+                            <label class="font-weight-bold">費用</label>
+                            <div class="d-flex align-items-center">
+                                <star-rating v-bind:increment="1" v-bind:rating="{{ $review->cost }}" v-bind:show-rating="false" v-bind:read-only="true" v-bind:star-size="25" active-color="#ff4742"></star-rating>
+                            </div>
+                        </div>
+
+                        <div class="star d-flex align-items-center">
+                            <label class="font-weight-bold">観光</label>
+                            <div class="d-flex align-items-center">
+                                <star-rating v-bind:increment="1" v-bind:rating="{{ $review->tourism }}" v-bind:show-rating="false" v-bind:read-only="true" v-bind:star-size="25" active-color="#ff4742"></star-rating>
+                            </div>
+                        </div>
+
+                        <div class="star d-flex align-items-center">
+                            <label class="font-weight-bold">料理</label>
+                            <div class="d-flex align-items-center">
+                                <star-rating v-bind:increment="1" v-bind:rating="{{ $review->food }}" v-bind:show-rating="false" v-bind:read-only="true" v-bind:star-size="25" active-color="#ff4742"></star-rating>
+                            </div>
+                        </div>
+
+                        <div class="star d-flex align-items-center">
+                            <label class="font-weight-bold">英語</label>
+                            <div class="d-flex align-items-center">
+                                <star-rating v-bind:increment="1" v-bind:rating="{{ $review->english }}" v-bind:show-rating="false" v-bind:read-only="true" v-bind:star-size="25" active-color="#ff4742"></star-rating>
+                            </div>
+                        </div>
+
+                        <div class="star d-flex align-items-center mb-3">
+                            <label class="font-weight-bold">楽しさ</label>
+                            <div class="d-flex align-items-center">
+                                <star-rating v-bind:increment="1" v-bind:rating="{{ $review->fun }}" v-bind:show-rating="false" v-bind:read-only="true" v-bind:star-size="25" active-color="#ff4742"></star-rating>
+                            </div>
+                        </div>
+
+                        <div class="star mb=1">
+                            <p class=" font-weight-bold mb-0">お気に入り都市</p>
+                            <div>
+                                <p class="mb-0">{{ $review->city ?: '回答はありません'  }}</p>
+                            </div>
+                        </div>
+
+                        <div class="star mb=1">
+                            <p class="font-weight-bold mb-0">レビュー</p>
+                            <div>
+                                <p class="mb-0">{{ $review->review }}</p>
+                            </div>
+                        </div>
+
+                        @if (!empty( $review->imgpath ))
+                        <div class="star">
+                            <p class="font-weight-bold mb-1">画僧</p>
+                            <div>
+                                <img class="img-thumbnail" src="{{ asset('/storage/' . $review->imgpath) }}" alt=" {{ $review->country->name }}の画像" />
+                            </div>
+                        </div>
+                        @endif
+
+
                     </div>
                 </div>
             </div>
         </div>
-        </div>
+
         @endforeach
         <review-create-component v-show="reviewModal" @review-child="closeReview" :country-id="countryId" :country-name="countryName" :user-id="{{ Auth::id() ?? '[]' }}" />
         <review-detail-component v-show="reviewDetailModal" @review-detail-child="closeReviewDetail" :raview-detail="reviewDetail" />

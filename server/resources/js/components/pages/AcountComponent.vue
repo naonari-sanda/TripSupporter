@@ -389,7 +389,8 @@ $primary: #2196f3;
 
     input,
     select,
-    textarea {
+    textarea,
+    .custom-file-label {
       background-color: #fafafa;
     }
 

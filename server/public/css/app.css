@@ -10939,6 +10939,13 @@ a {
   border-radius: 0%;
 }
 
+.custom-text {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #999;
+  background: #fff;
+}
+
 body {
   background-color: #FAFAFA;
   color: #262626;
@@ -11120,8 +11127,8 @@ footer {
   background-color: #fff;
 }
 
-.main nav {
-  margin: 0 auto;
+.main .pagination {
+  justify-content: center;
 }
 
 .detail .nav li {
@@ -11199,7 +11206,7 @@ footer {
   margin-bottom: 40px;
 }
 
-.profile img {
+.mypage .profile img {
   display: block;
   width: 100px;
   height: 100px;
@@ -11208,12 +11215,31 @@ footer {
      object-fit: cover;
 }
 
-.profile .text {
+.mypage .profile .text {
   height: 150px;
 }
 
-.profile .br {
+.mypage .profile .br {
   white-space: pre-wrap;
+}
+
+.mypage .review label {
+  margin-bottom: 0;
+}
+
+.mypage .review .star {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 6px;
+}
+
+.mypage .review .star label {
+  margin-bottom: 0;
+  width: 20%;
+}
+
+.mypage .review img {
+  width: 100%;
 }
 
 #form {

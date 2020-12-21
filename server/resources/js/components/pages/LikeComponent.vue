@@ -1,8 +1,14 @@
 <template>
-  <div class="like d-flex align-items-center ml-auto" v-if="authId !== '[]'">
-    <i v-if="!liked" class="far fa-heart mt-2 h3" @click="like(countryId)"></i>
-    <i v-else class="fas fa-heart mt-2 h3" @click="unlike(countryId)"></i>
-    <p class="ml-1 mb-0 h5" v-if="this.count !== 0">{{ this.count }}</p>
+  <div v-if="authId !== '[]'" class="like d-flex align-items-center ml-auto">
+    <div v-if="!liked" class="d-flex align-items-center">
+      <i class="far fa-heart mt-2 h3" @click="like(countryId)"></i>
+      <p v-if="this.count !== 0" class="ml-1 mb-0 h5">{{ this.count }}</p>
+    </div>
+    <div v-else class="d-flex align-items-center">
+      <i class="red fas fa-heart mt-2 h3" @click="unlike(countryId)"></i>
+      <p v-if="this.count !== 0" class="red ml-1 mb-0 h5">{{ this.count }}</p>
+    </div>
+    <!-- <div>私のいいね数：{{ likeCheck }}</div> -->
   </div>
   <div v-else class="like d-flex align-items-center ml-auto">
     <i
@@ -34,7 +40,7 @@ export default {
       type: Object | Number,
     },
     likeCheck: {
-      type: Object,
+      type: Object | Boolean,
     },
     likeCount: {
       type: Number,
@@ -42,8 +48,8 @@ export default {
   },
   created: function () {
     //いいねのしている場合いいね解除ボタンを追加
-    if (this.countryId == this.likeCheck.country_id) {
-      this.liked = this.likeCheck.check;
+    if (this.likeCheck) {
+      this.liked = this.likeCheck;
     }
 
     //いいね数を追加
@@ -85,11 +91,15 @@ export default {
 </script>
 
 <style scoped>
-.far {
+i {
   cursor: pointer;
 }
 
 .like {
   width: 40px;
+}
+
+.red {
+  color: #ff4742;
 }
 </style>

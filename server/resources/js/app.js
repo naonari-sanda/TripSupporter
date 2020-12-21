@@ -12,8 +12,8 @@ import LikeComponent from './components/pages/LikeComponent'
 import LoginComponent from './components/pages/LoginComponent'
 import RegisterComponent from './components/pages/RegisterComponent'
 import ForgetPassComponent from './components/pages/ForgetPassComponent'
+import CountryComponent from './components/pages/CountryComponent'
 import ReviewCreateComponent from './components/pages/ReviewCreateComponent'
-import ReviewDetailComponent from './components/pages/ReviewDetailComponent'
 import AcountComponent from './components/pages/AcountComponent'
 
 Vue.prototype.$http = axios;
@@ -41,8 +41,8 @@ const app = new Vue({
         RegisterComponent,
         ForgetPassComponent,
         ReviewCreateComponent,
-        ReviewDetailComponent,
-        AcountComponent
+        AcountComponent,
+        CountryComponent
     },
     props: {
         authId: {

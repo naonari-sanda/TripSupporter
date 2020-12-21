@@ -26,8 +26,8 @@
     <ul class="nav d-flex justify-content-around nav nav-tabs">
         <li @click="tabChange(1)" :class="{'active': isActive === 1}">プロフィール</li>
         <li @click="tabChange(2)" :class="{'active': isActive === 2}">レビュー</li>
-        <li @click="tabChange(3)" :class="{'active': isActive === 3}">チャット</li>
-        <li @click="tabChange(4)" :class="{'active': isActive === 4}">いいね</li>
+        <li @click="tabChange(3)" :class="{'active': isActive === 3}">いいね</li>
+        <li @click="tabChange(4)" :class="{'active': isActive === 4}">チャット</li>
     </ul>
 
     <article v-if="isActive === 1" class="profile mb-5">
@@ -39,12 +39,14 @@
     </article>
 
     <article v-else-if="isActive === 3">
-        <h2 font-weight-bold>Chat</h2>
+        @include('includes.mypage.favorite')
     </article>
 
     <article v-else-if="isActive === 4">
-        <h2 font-weight-bold>Favorite</h2>
+        <h2 font-weight-bold>Chat</h2>
     </article>
+
+
 
     <acount-component v-show="profileModal" @profile-child="closeProfile" :user-id="{{ $user->id }}" />
 </div>
