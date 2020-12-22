@@ -11127,8 +11127,84 @@ footer {
   background-color: #fff;
 }
 
+.main .bg {
+  position: relative;
+  height: 170px;
+}
+
+.main .bg::before {
+  /* 透過した黒を上から重ねるイメージ */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* 自由に位置指定 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: " ";
+}
+
+.main .bg .country_img {
+  width: 100%;
+  height: 100%;
+}
+
+.main .bg .text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 23px;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+
 .main .pagination {
   justify-content: center;
+}
+
+#detailvisual {
+  padding: 0;
+}
+
+#detailvisual .bg {
+  position: relative;
+  width: 100%;
+  height: 280px;
+}
+
+#detailvisual .bg::before {
+  /* 透過した黒を上から重ねるイメージ */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* 自由に位置指定 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: " ";
+}
+
+#detailvisual .bg .country_img {
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#detailvisual .bg .text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 23px;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
 }
 
 .detail .nav li {
@@ -11154,33 +11230,54 @@ footer {
   margin-bottom: 40px;
 }
 
-.fevorite table {
-  border-collapse: collapse;
-  border-spacing: 0;
+.detail .profile th {
+  white-space: nowrap;
+}
+
+.detail .review .cycle {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.detail .review label {
+  margin-bottom: 0;
+}
+
+.detail .review .star {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 6px;
+}
+
+.detail .review .star label {
+  margin-bottom: 0;
+  width: 20%;
+}
+
+.detail .review img {
   width: 100%;
 }
 
-.fevorite table tr {
-  border-bottom: solid 1px #eee;
-  cursor: pointer;
-}
-
-.fevorite table tr:hover {
+.detail .favorite table tr:hover {
   background-color: #d4f0fd;
 }
 
-.fevorite table th,
-.fevorite table td {
-  text-align: center;
-  width: 25%;
-  padding: 15px 0;
+.detail .favorite table th,
+.detail .favorite table td {
+  vertical-align: middle;
 }
 
-.fevorite table td.icon {
-  background-size: 35px;
-  background-position: left 5px center;
-  background-repeat: no-repeat;
-  padding-left: 30px;
+.detail .favorite .cycle {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .mypage .nav li {
@@ -11221,6 +11318,23 @@ footer {
 
 .mypage .profile .br {
   white-space: pre-wrap;
+}
+
+.mypage .review .cycle {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.mypage .review td {
+  vertical-align: middle;
+}
+
+.mypage .review table tr:hover {
+  background-color: #d4f0fd;
 }
 
 .mypage .review label {

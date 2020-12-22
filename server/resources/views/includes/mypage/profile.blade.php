@@ -37,6 +37,8 @@
     </tr>
 </table>
 
+@if(!empty($user->acounts))
 <div class="button mt-4">
     <button @click="showProfile" class="btn btn-primary">プロフィールを変更する</button>
 </div>
+@endif

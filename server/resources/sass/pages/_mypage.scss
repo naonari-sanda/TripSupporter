@@ -43,6 +43,22 @@
     }
 
     .review {
+        .cycle {
+            display: block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        td {
+            vertical-align: middle;
+        }
+
+        table tr:hover {
+            background-color: #d4f0fd;
+        }
+
         label {
             margin-bottom: 0;
         }

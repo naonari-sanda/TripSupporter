@@ -1,5 +1,7 @@
 <h2 font-weight-bold>Review</h2>
 
+
+@if(count($user->reviews) > 0)
 <table class="table table-hover">
     <thead class="">
         <tr>
@@ -12,11 +14,14 @@
         </tr>
     </thead>
     <tbody>
+
         @foreach($user->reviews as $review)
         <tr>
 
-            <th><a class="text-dark" href="{{ route('detail' , $review->country_id) }}">{{ $review->country->name }}</a></th>
-            <td><i class=" fas fa-star mr-1 text-danger"></i>{{ $review->recommend }}</td>
+            <th><a class="text-dark d-flex align-items-center" href="{{ route('detail' , $review->country_id) }}"><img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/' . $review->country->imgpath) }}" alt="{{ $review->country->name }}のアイコン" />{{ $review->country->name }}</a></th>
+            <td class="">
+                <p class="mb-0"><i class=" fas fa-star mr-1 text-danger"></i>{{ $review->recommend }}</p>
+            </td>
             <!-- <td>{{ $review->review }}</td> -->
             <td>
                 <button class="btn btn-primary" data-toggle="modal" data-target="#review-{{ $review->id }}">詳細</button>
@@ -126,5 +131,14 @@
         @endforeach
         <review-create-component v-show="reviewModal" @review-child="closeReview" :country-id="countryId" :country-name="countryName" :user-id="{{ Auth::id() ?? '[]' }}" />
         <review-detail-component v-show="reviewDetailModal" @review-detail-child="closeReviewDetail" :raview-detail="reviewDetail" />
+
+
+
     </tbody>
 </table>
+@else
+<div>
+    <h5 class="mb-5">＊レビューの投稿がありません</h5>
+    <a href="{{ route('main') }}" type="button" class="btn btn-primary">お気に入りの国をさがそう！</a>
+</div>
+@endif
