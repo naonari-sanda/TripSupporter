@@ -1,5 +1,7 @@
 <h2 font-weight-bold>Favorite</h2>
 
+
+@if(count($user->likes) > 0 )
 <div class="row">
     @foreach ($user->likes as $like)
     <div class="col d-flex justify-content-center ">
@@ -23,3 +25,9 @@
     </div>
     @endforeach
 </div>
+@else
+<div>
+    <h5 class="mb-5">＊いいねがありません</h5>
+    <a href="{{ route('main') }}" type="button" class="btn btn-primary">お気に入りの国をさがそう！</a>
+</div>
+@endif

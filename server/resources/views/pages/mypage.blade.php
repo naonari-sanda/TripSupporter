@@ -31,7 +31,7 @@
     </ul>
 
     <article v-if="isActive === 1" class="profile mb-5">
-        @include('includes.mypage.user')
+        @include('includes.mypage.profile')
     </article>
 
     <article v-else-if="isActive === 2" class="review mb-5">
@@ -44,9 +44,8 @@
 
     <article v-else-if="isActive === 4">
         <h2 font-weight-bold>Chat</h2>
+        @include('includes.mypage.review')
     </article>
-
-
 
     <acount-component v-show="profileModal" @profile-child="closeProfile" :user-id="{{ $user->id }}" />
 </div>
