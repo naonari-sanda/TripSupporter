@@ -186,7 +186,14 @@
                 rules="required|max:15"
                 v-slot="{ errors }"
               >
-                <input class="form-control" type="text" v-model="city" />
+                <input
+                  class="form-control"
+                  type="text"
+                  v-model="reviewData.city"
+                  :placeholder="
+                    reviewData.city == '' ? '回答がありません' : reviewData.city
+                  "
+                />
 
                 <div class="alert alert-danger" v-show="errors[0]">
                   {{ errors[0] }}
@@ -208,7 +215,11 @@
                 rules="required|max:200"
                 v-slot="{ errors }"
               >
-                <textarea class="form-control" rows="3" v-model="review" />
+                <textarea
+                  class="form-control"
+                  rows="3"
+                  v-model="reviewData.review"
+                ></textarea>
 
                 <div class="alert alert-danger" v-show="errors[0]">
                   {{ errors[0] }}
@@ -225,7 +236,7 @@
           <div class="">
             <button class="button" type="submit">
               <i class="spinner"></i>
-              <span class="state">投稿</span>
+              <span class="state">投稿{{ reviewData.safe }}</span>
             </button>
           </div>
         </ValidationObserver>
@@ -288,6 +299,9 @@ export default {
     userId: {
       type: Object | Array,
     },
+    reviewData: {
+      type: Object | Array,
+    },
   },
   computed: {
     recommend: function () {
@@ -302,6 +316,9 @@ export default {
       let $total = $sum / 6;
       return Math.round($total * 10) / 10;
     },
+  },
+  mounted() {
+    this.safe = this.reviewData.safe;
   },
   methods: {
     uploadfile(event) {

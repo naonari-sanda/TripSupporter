@@ -10943,14 +10943,7 @@ a {
   font-weight: bold;
   font-size: 1.1em;
   color: #999;
-  background: #fff;
-}
-
-body {
-  background-color: #FAFAFA;
-  color: #262626;
-  font-size: 14px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: none;
 }
 
 #overlay {
@@ -10969,13 +10962,20 @@ body {
   justify-content: center;
 }
 
-#overlay h4 {
+body {
+  background-color: #FAFAFA;
+  color: #262626;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.gust_modal h4 {
   font-size: 18px;
   font-weight: 600;
 }
 
-#overlay .link-font,
-#overlay a.link-font {
+.gust_modal .link-font,
+.gust_modal a.link-font {
   display: block;
   width: 100%;
   color: #3897F0;
@@ -10985,13 +10985,13 @@ body {
   padding: 11px;
 }
 
-#overlay .link-font:hover,
-#overlay a.link-font:hover {
+.gust_modal .link-font:hover,
+.gust_modal a.link-font:hover {
   text-decoration: none;
 }
 
-#overlay .denger-link,
-#overlay a.denger-link:hover {
+.gust_modal .denger-link,
+.gust_modal a.denger-link:hover {
   display: block;
   width: 100%;
   font-weight: 600;
@@ -11001,15 +11001,15 @@ body {
   padding: 11px;
 }
 
-#overlay .modal .modal-dialog.modal-dialog-centered {
+.gust_modal .modal .modal-dialog.modal-dialog-centered {
   transform: translate(0, 0);
 }
 
-#overlay .modal-body {
+.gust_modal .modal-body {
   padding: 0 !important;
 }
 
-#overlay .modal-content {
+.gust_modal .modal-content {
   width: 80%;
   margin: 0 auto;
   text-align: center;
@@ -11017,17 +11017,17 @@ body {
   border-radius: 12px;
 }
 
-#overlay .modal-header {
+.gust_modal .modal-header {
   padding: 25px;
   border-bottom: 1px solid #efefef;
 }
 
-#overlay .modal-body {
+.gust_modal .modal-body {
   padding: 11px;
   border-bottom: 1px solid #efefef;
 }
 
-#overlay .modal-body-b {
+.gust_modal .modal-body-b {
   padding: 11px;
   cursor: pointer;
 }
@@ -11222,7 +11222,7 @@ footer {
 }
 
 .detail article {
-  padding: 20px;
+  padding: 20px 0;
 }
 
 .detail article h2 {
@@ -11234,7 +11234,14 @@ footer {
   white-space: nowrap;
 }
 
-.detail .review .cycle {
+.detail .review .wrapper {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 2rem;
+}
+
+.detail .review .wrapper .cycle {
   display: block;
   width: 50px;
   height: 50px;
@@ -11243,23 +11250,9 @@ footer {
      object-fit: cover;
 }
 
-.detail .review label {
-  margin-bottom: 0;
-}
-
-.detail .review .star {
-  width: 80%;
-  margin: 0 auto;
-  margin-bottom: 6px;
-}
-
-.detail .review .star label {
-  margin-bottom: 0;
-  width: 20%;
-}
-
-.detail .review img {
-  width: 100%;
+.detail .review .wrapper .text {
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .detail .favorite table tr:hover {
@@ -11278,6 +11271,45 @@ footer {
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.detail .phots .row {
+  width: 100%;
+}
+
+.detail .phots .bg {
+  position: relative;
+}
+
+.detail .phots .bg a {
+  position: relative;
+  width: 100%;
+  margin: auto;
+}
+
+.detail .phots .bg a:before {
+  content: "";
+  display: block;
+  padding-top: 75%;
+}
+
+.detail .phots .bg a img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.detail .phots .bg .text {
+  display: block;
+  font-size: 14px;
+  margin-left: 2.5%;
 }
 
 .mypage .nav li {
@@ -11354,6 +11386,79 @@ footer {
 
 .mypage .review img {
   width: 100%;
+}
+
+.mypage .favorite .bg {
+  position: relative;
+  height: 170px;
+}
+
+.mypage .favorite .bg::before {
+  /* 透過した黒を上から重ねるイメージ */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* 自由に位置指定 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: " ";
+}
+
+.mypage .favorite .bg .country_img {
+  width: 100%;
+  height: 100%;
+}
+
+.mypage .favorite .bg .text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 21px;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+
+.mypage .phots .row {
+  width: 100%;
+}
+
+.mypage .phots .bg {
+  position: relative;
+}
+
+.mypage .phots .bg a {
+  position: relative;
+  width: 100%;
+  margin: auto;
+}
+
+.mypage .phots .bg a:before {
+  content: "";
+  display: block;
+  padding-top: 75%;
+}
+
+.mypage .phots .bg a img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.mypage .phots .bg .text {
+  display: block;
+  font-size: 14px;
+  margin-left: 2.5%;
 }
 
 #form {

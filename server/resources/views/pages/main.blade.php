@@ -58,7 +58,7 @@
                     <div class="card-body">
                         <div class="d-flex mb-2">
                             <star-rating v-bind:increment="0.5" v-bind:rating="{{ $country->reviews->avg('recommend') ?? '0' }}" text-class="custom-text" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="23" active-color="#ff4742"></star-rating>
-                            <p class="custom-text d-flex align-items-center mb-0 ml-1">{{ $country->reviews->avg('recommend') ?? '' }}</p>
+                            <p class="custom-text d-flex align-items-center mb-0 ml-1">{{ number_format($country->reviews->avg('recommend'),1) ?? '' }}</p>
                         </div>
 
                         <p class="card-text mb-2">{{ Str::limit($country->detail, $limit = 55, $end = '...') }}</p>

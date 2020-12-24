@@ -23,10 +23,18 @@
     @include('includes.common.modal')
 
 
-    <script src="{{ mix('/js/app.js') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+    <script src="{{ mix('/js/app.js') }}"></script>
+    <script>
+        lightbox.option({
+            'resizeDuration': 400,
+            'wrapAround': true
+        })
+    </script>
+
     <!-- フラッシュメッセージ -->
-    @include('includes.common.alert')
+    @include('includes.common.flash')
+
 </body>
 
 </html>
