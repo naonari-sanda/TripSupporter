@@ -27,7 +27,7 @@
                 <button class="btn btn-primary" data-toggle="modal" data-target="#review-{{ $review->id }}">詳細</button>
             </td>
             <td>
-                <button class="btn btn-success" @click="showReview({{ $review->country_id }},'{{ $review->country->name }}')">編集</button>
+                <button class="btn btn-success" @click="showReview({{ $review->country_id }},{{ json_encode( $review->country->name ) }},{{ json_encode($review) }})">編集</button>
             </td>
             <td>
                 <form action="{{ route('review.delete') }}" method="post">
@@ -129,8 +129,7 @@
         </div>
 
         @endforeach
-        <review-create-component v-show="reviewModal" @review-child="closeReview" :country-id="countryId" :country-name="countryName" :user-id="{{ Auth::id() ?? '[]' }}" />
-        <review-detail-component v-show="reviewDetailModal" @review-detail-child="closeReviewDetail" :raview-detail="reviewDetail" />
+        <review-edit-component v-show="reviewModal" @review-child="closeReview" :country-id="countryId" :country-name="countryName" :user-id="{{ Auth::id() ?? '[]' }}" :review-data="reviewDetail" />
 
 
 

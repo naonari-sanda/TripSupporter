@@ -1,4 +1,4 @@
-<div class="d-flex mb-5">
+<div class="d-flex mb-3">
     <h2 class="mb-0">favorites </h2>
     <like-component :country-id="{{ json_encode($country->id) }}" :auth-id="{{ json_encode(Auth::user()->id ?? '[]') }}" :like-count="{{ count($country->likes) }}" :like-check="{{ count($country->likes->where('user_id', Auth::id())) > 0 ? 'true' : 'false' }}" />
 </div>

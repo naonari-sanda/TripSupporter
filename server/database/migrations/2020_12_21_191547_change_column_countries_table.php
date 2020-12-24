@@ -27,7 +27,7 @@ class ChangeColumnCountriesTable extends Migration
     public function down()
     {
         Schema::table('countries', function (Blueprint $table) {
-            //
+            $table->dropColumn('area', 'population');
         });
     }
 }

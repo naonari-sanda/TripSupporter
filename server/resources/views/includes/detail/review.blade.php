@@ -1,71 +1,86 @@
 <h2>Reviews</h2>
 
+<p class="mb-3 font-weight-bold">{{ count($country->reviews) }}件のレビューがありました</p>
 @if(!count($country->reviews) == 0)
 
 @foreach($country->reviews as $review)
 
-<h3>{{ $review->user->name }}</h3>
+<div class="wrapper">
+    <p class="text-dark d-flex align-items-center font-weight-bold mb-0" href="#">
 
-<table class="">
-    <tbody>
+        @if(!empty($review->user->acounts->icon))
+        <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/' . $review->user->acounts->icon ) }}" alt="ユーザーアイコン" />
+        @elseif(optional($review->user->acounts)->gender == "男性")
+        <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/men.png') }}" alt="男性アイコン" />
+        @elseif(optional($review->user->acounts)->gender === "女性")
+        <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/women.png') }}" alt="女性アイコン" />
+        @else
+        <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/none.png') }}" alt="女性アイコン" />
+        @endif
+        {{ $review->user->name }}</p>
+    <p class="mt-1 ml-1 mb-0">{{ $review->updated_at->format('Y年m月d日') }}に投稿しました。</p>
 
-        <tr>
-            <th>総合</th>
-            <td>
-                <star-rating v-bind:increment="0.5" v-bind:rating="{{ $review->avg('recommend') ?? '0' }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="25"></star-rating>
-            </td>
-        </tr>
+    <div class="star d-flex align-items-center ml-1 mb-2">
+        <p class="d-flex align-items-center mb-0  mr-1 font-weight-bold">総合</p>
+        <star-rating v-bind:increment=" 0.5" v-bind:rating="{{ $review->recommend ?? '0' }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="20" active-color="#ff4742">
+        </star-rating>
+        <p class="custom-text d-flex align-items-center mb-0 ml-1 mr-1">{{ number_format($review->recommend,1) ?? '' }}</p>
+        <a href="" data-toggle="collapse" data-target="#review-{{$review->id }}" aria-expand="false" aria-controls="review-{{$review->id }}">評価を詳しく見る</a>
+    </div>
+    <div class="collapse" id="review-{{$review->id }}">
+        <div class="star d-flex align-items-center ml-1 mb-2">
+            <p class="d-flex align-items-center mb-0  mr-1">治安</p>
+            <star-rating v-bind:increment=" 0.5" v-bind:rating="{{ $review->safe }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="20" active-color="#ff4742">
+            </star-rating>
+            <p class="custom-text d-flex align-items-center mb-0 ml-1 mr-1">{{ $review->safe }}</p>
+        </div>
+        <div class="star d-flex align-items-center ml-1 mb-2">
+            <p class="d-flex align-items-center mb-0  mr-1">費用</p>
+            <star-rating v-bind:increment=" 0.5" v-bind:rating="{{ $review->cost }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="20" active-color="#ff4742">
+            </star-rating>
+            <p class="custom-text d-flex align-items-center mb-0 ml-1 mr-1">{{ $review->cost }}</p>
+        </div>
+        <div class="star d-flex align-items-center ml-1 mb-2">
+            <p class="d-flex align-items-center mb-0  mr-1">観光</p>
+            <star-rating v-bind:increment=" 0.5" v-bind:rating="{{ $review->tourism }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="20" active-color="#ff4742">
+            </star-rating>
+            <p class="custom-text d-flex align-items-center mb-0 ml-1 mr-1">{{ $review->tourism }}</p>
+        </div>
+        <div class="star d-flex align-items-center ml-1 mb-2">
+            <p class="d-flex align-items-center mb-0  mr-1">料理</p>
+            <star-rating v-bind:increment=" 0.5" v-bind:rating="{{ $review->food }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="20" active-color="#ff4742">
+            </star-rating>
+            <p class="custom-text d-flex align-items-center mb-0 ml-1 mr-1">{{ $review->food }}</p>
+        </div>
+        <div class="star d-flex align-items-center ml-1 mb-2">
+            <p class="d-flex align-items-center mb-0  mr-1">楽しさ</p>
+            <star-rating v-bind:increment=" 0.5" v-bind:rating="{{ $review->fun }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="20" active-color="#ff4742">
+            </star-rating>
+            <p class="custom-text d-flex align-items-center mb-0 ml-1 mr-1">{{ $review->fun }}</p>
+        </div>
+    </div>
 
-        <tr>
-            <th>治安</th>
-            <td>
-                <star-rating v-bind:increment="0.5" v-bind:rating="{{ $review->avg('safe') ?? '0' }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="25"></star-rating>
+    @if(!empty($review->city))
+    <div class="fill ml-1 mb-1">
+        <p class="mb-1 font-weight-bold">お気に入り都市</p>
+        <p class="text mb-0">{{ $review->city}}</p>
+    </div>
+    @endif
 
-            </td>
-        </tr>
+    <div class="fill ml-1">
+        <p class="mb-1 font-weight-bold">レビュー</p>
+        <p class="text mb-0">{{ $review->review}}</p>
+    </div>
 
-        <tr>
-            <th>物価</th>
-            <td>
-                <star-rating v-bind:increment="0.5" v-bind:rating="{{ $review->avg('cost') ?? '0' }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="25"></star-rating>
+    @if(!empty($review->imgpath))
+    <img class="ml-1" src="{{ asset('/storage/' . $review->imgpath) }}" alt="{{ $country->name }}" style="width: 200px;">
+    @endif
 
-            </td>
-        </tr>
 
-        <tr>
-            <th>料理</th>
-            <td>
-                <star-rating v-bind:increment="0.5" v-bind:rating="{{ $review->avg('food') ?? '0' }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="25"></star-rating>
-
-            </td>
-        </tr>
-
-        <tr>
-            <th>英語力</th>
-            <td>
-                <star-rating v-bind:increment="0.5" v-bind:rating="{{ $review->avg('english') ?? '0' }}" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="25"></star-rating>
-
-            </td>
-        </tr>
-
-    </tbody>
-</table>
-
-@if(!empty($review->imgpath))
-<img src="{{ asset('/storage/' . $review->imgpath) }}" alt="{{ $country->name }}" style="width: 300px;">
-@endif
-
-@if (isset($review->review))
-<p>{{ $review->review }}</p>
-@else
-<p>レビューはありません</p>
-@endif
-
-<small>{{ $review->updated_at->format('Y年m月d日') }}</small>
+</div>
 
 @endforeach
 
-<strong>{{ count($country->reviews) }}つのレビューがありました</strong>
 @else
 
 <div>

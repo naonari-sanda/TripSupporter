@@ -14,6 +14,7 @@ import RegisterComponent from './components/pages/RegisterComponent'
 import ForgetPassComponent from './components/pages/ForgetPassComponent'
 import CountryComponent from './components/pages/CountryComponent'
 import ReviewCreateComponent from './components/pages/ReviewCreateComponent'
+import ReviewEditComponent from './components/pages/ReviewEditComponent'
 import AcountComponent from './components/pages/AcountComponent'
 
 Vue.prototype.$http = axios;
@@ -41,6 +42,7 @@ const app = new Vue({
         RegisterComponent,
         ForgetPassComponent,
         ReviewCreateComponent,
+        ReviewEditComponent,
         AcountComponent,
         CountryComponent
     },
@@ -55,10 +57,11 @@ const app = new Vue({
             this.isActive = num;
         },
         //レビューモーダルレビューを表示
-        showReview: function (num, data) {
+        showReview: function (num, name, data) {
             this.reviewModal = true;
             this.countryId = num;
-            this.countryName = data;
+            this.countryName = name;
+            this.reviewDetail = data;
         },
         // showReview: function () {
         //     this.reviewModal = true;
