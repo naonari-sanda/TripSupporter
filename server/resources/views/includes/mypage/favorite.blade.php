@@ -1,37 +1,49 @@
 <h2 font-weight-bold>Favorite</h2>
 
 
+<p class="mb-3 font-weight-bold">{{ count($user->likes) }}件のいいねがありました</p>
 @if(count($user->likes) > 0 )
-<div class="row">
-    @foreach ($user->likes as $like)
-    <div class="col d-flex justify-content-center ">
-        <div class="card shadow" style="width: 18rem; margin-bottom: 5rem;">
+<table class="table table-hover">
+    <thead class="">
+        <tr>
+            <th scope="col">国名</th>
+            <th scope="col">評価</th>
+            <th scope="col">レビュー数</th>
+            <th scope="col">いいね数</th>
+            <th scope="col">詳細</th>
+        </tr>
+    </thead>
+    <tbody>
 
-            <div class="bg">
-                <img class="card-img-top country_img" src="{{ asset('/storage/' . $like->country->imgpath ) }}" alt="Card image cap" />
-                <h5 class="text">{{ $like->country->name }} </h5>
-            </div>
+        @foreach ($user->likes as $like)
 
-            <div class="card-body">
-                <div class="d-flex mb-2">
-                    <star-rating v-bind:increment="0.5" v-bind:rating="{{ $like->country->reviews->avg('recommend') ?? '0' }}" text-class="custom-text" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="25" active-color="#ff4742"></star-rating>
-                    <p class="custom-text d-flex align-items-center mb-0 ml-1">{{ number_format($like->country->reviews->avg('recommend'), 1) ?? '' }}</p>
-                </div>
-                <p class="card-text mt-2">{{ Str::limit($like->country->detail, $limit = 55, $end = '...') }}</p>
-                <div class="d-flex">
-                    <a href="{{ route('detail', $like->country->id ) }}" class="btn btn-primary">詳細はこちら</a>
+        <tr>
 
-                    <like-component :country-id="{{ json_encode($like->country->id) }}" :auth-id="{{ json_encode(Auth::user()->id ?? '[]') }}" :like-check="{{ $like ? 'true' : 'false' }}" :like-count="{{ json_encode(count($like->country->likes)) }}" />
-                </div>
-            </div>
-        </div>
-    </div>
+            <th><a class="text-dark d-flex align-items-center" href="{{ route('detail' , $like->country_id) }}"><img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/' . $like->country->imgpath) }}" alt="{{ $like->country->name }}のアイコン" />{{ $like->country->name }}</a></th>
+            <td>
+                <i class=" fas fa-star mr-1 text-danger"></i>{{ number_format($like->country->reviews->avg('recommend'),1) }}
+            </td>
+            <td class="text-center">
+                {{ count($like->country->reviews)}}件
+            </td>
+            <td class="float-left">
+                <like-component :country-id="{{ json_encode($like->country->id) }}" :auth-id="{{ json_encode(Auth::user()->id ?? '[]') }}" :like-check="{{ $like ? 'true' : 'false' }}" :like-count="{{ json_encode(count($like->country->likes)) }}" />
+            </td>
+            <td>
+                <a href="{{ route('detail' , $like->country_id) }}" class="btn btn-primary">編集</button>
 
-    @endforeach
+            </td>
+        </tr>
 
-    @else
-    <div>
-        <h5 class="mb-5">＊いいねがありません</h5>
-        <a href="{{ route('main') }}" type="button" class="btn btn-primary">お気に入りの国をさがそう！</a>
-    </div>
-    @endif
+        @endforeach
+
+    </tbody>
+</table>
+
+
+@else
+<div>
+    <h5 class=" mb-5">＊いいねがありません</h5>
+    <a href="{{ route('main') }}" type="button" class="btn btn-primary">お気に入りの国をさがそう！</a>
+</div>
+@endif

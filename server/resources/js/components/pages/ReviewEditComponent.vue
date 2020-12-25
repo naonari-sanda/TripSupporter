@@ -1,6 +1,6 @@
 <template>
   <div id="overlay" @click="clickEvent">
-    <div class="wrapper">
+    <div class="wrapper-review">
       <div class="header d-flex align-items-center">
         <h5 class="title">
           <span class="font-weight-bold mr-1">{{ countryName }}</span
@@ -317,9 +317,6 @@ export default {
       return Math.round($total * 10) / 10;
     },
   },
-  mounted() {
-    this.safe = this.reviewData.safe;
-  },
   methods: {
     uploadfile(event) {
       this.imgpath = event.target.files[0];
@@ -390,10 +387,10 @@ $primary: #2196f3;
   justify-content: center;
 }
 
-.wrapper {
+.wrapper-review {
   top: 0%;
-  max-width: 340px;
-  background: #fff;
+  max-width: 360px;
+  background: #fff !important;
   position: relative;
 }
 

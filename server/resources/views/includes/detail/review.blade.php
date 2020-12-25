@@ -61,19 +61,21 @@
     </div>
 
     @if(!empty($review->city))
-    <div class="fill ml-1 mb-1">
+    <div class="fill mb-1">
         <p class="mb-1 font-weight-bold">お気に入り都市</p>
         <p class="text mb-0">{{ $review->city}}</p>
     </div>
     @endif
 
-    <div class="fill ml-1">
+    <div class="fill mb-3">
         <p class="mb-1 font-weight-bold">レビュー</p>
         <p class="text mb-0">{{ $review->review}}</p>
     </div>
 
     @if(!empty($review->imgpath))
-    <img class="ml-1" src="{{ asset('/storage/' . $review->imgpath) }}" alt="{{ $country->name }}" style="width: 200px;">
+    <a class="d-block" href="{{ asset('/storage/' . $review->imgpath ) }}" data-lightbox="review-{{ $review->id }}" title="<p class='title'>{{ $review->user->name }}さんの{{ $review->country->name  }}の思い出。</p><p class='text'>{{ $review->updated_at->format('Y年m月d日') }}に投稿">
+        <img class="img img-thumbnail" src="{{ asset('/storage/' . $review->imgpath ) }}" style="width: 200px;" />
+    </a>
     @endif
 
 
