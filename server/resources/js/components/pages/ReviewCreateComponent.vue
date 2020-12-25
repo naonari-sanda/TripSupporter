@@ -375,7 +375,7 @@ $primary: #2196f3;
 
 .wrapper {
   top: 0%;
-  max-width: 340px;
+  max-width: 360px;
   background: #fff;
   position: relative;
 }
