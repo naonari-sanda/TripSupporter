@@ -73,3 +73,64 @@ a {
     border-radius: 50%;
     object-fit: cover;
 }
+
+//lightbox
+
+.lb-nav a.lb-prev {
+    position: absolute; // 追加
+    left: -80px; // 0から-80pxへ変更
+    opacity: .3;
+}
+
+.lb-nav a.lb-next {
+    position: absolute; // 追加 
+    right: -80px; // 0から-80pxへ変更
+    opacity: .3;
+}
+
+.lb-number {
+    display: none !important;
+}
+
+//背景写真
+.visual {
+    padding: 0;
+
+    .bg {
+        position: relative;
+        width: 100%;
+        height: 280px;
+
+        &::before {
+            /* 透過した黒を上から重ねるイメージ */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* 自由に位置指定 */
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            content: ' ';
+        }
+
+        .country_img {
+            width: 100%;
+            margin: 0 auto;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 23px;
+            font-weight: bold;
+            width: 100%;
+            text-align: center;
+        }
+
+    }
+}

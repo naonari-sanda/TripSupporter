@@ -19,7 +19,7 @@
         <tr>
 
             <td>
-                <p class="text-dark d-flex align-items-center font-weight-bold" href="#">
+                <a class="text-dark d-flex align-items-center font-weight-bold" href="{{ route('user', $like->user->id) }}">
 
                     @if(!empty($like->user->acounts->icon))
                     <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/' . $like->user->acounts->icon ) }}" alt="ユーザーアイコン" />
@@ -30,12 +30,12 @@
                     @else
                     <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/none.png') }}" alt="女性アイコン" />
                     @endif
-                    {{ $like->user->name }}</p>
+                    {{ $like->user->name }}</a>
             </td>
-            <td>{{ $like->user->acounts->age }}</td>
-            <td>{{ $like->user->acounts->gender }}</td>
+            <td>{{ optional($like->user->acounts)->age }}</td>
+            <td>{{ optional($like->user->acounts)->gender }}</td>
             <td>
-                <button class="btn btn-primary">詳細</button>
+                <a href="{{ route('user', $like->user->id) }}" class="btn btn-primary">詳細</a>
             </td>
         </tr>
 

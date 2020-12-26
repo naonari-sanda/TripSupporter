@@ -1,7 +1,7 @@
 <h2 font-weight-bold>Favorite</h2>
 
 
-<p class="mb-3 font-weight-bold">{{ count($user->likes) }}件のいいねがありました</p>
+<p class="mb-3 font-weight-bold">{{ count($user->likes) }}件のいいねをしました</p>
 @if(count($user->likes) > 0 )
 <table class="table table-hover">
     <thead class="">
@@ -10,7 +10,7 @@
             <th scope="col">評価</th>
             <th scope="col">レビュー数</th>
             <th scope="col">いいね数</th>
-            <th scope="col">詳細</th>
+            <th scope="col">国詳細</th>
         </tr>
     </thead>
     <tbody>
@@ -27,11 +27,10 @@
                 {{ count($like->country->reviews)}}件
             </td>
             <td class="float-left">
-                <like-component :country-id="{{ json_encode($like->country->id) }}" :auth-id="{{ json_encode(Auth::user()->id ?? '[]') }}" :like-check="{{ $like ? 'true' : 'false' }}" :like-count="{{ json_encode(count($like->country->likes)) }}" />
+                <like-component :country-id="{{ json_encode($like->country->id) }}" :auth-id="{{ json_encode(Auth::user()->id ?? '[]') }}" :like-check="{{ count($like->country->likes->where('user_id', Auth::id())) > 0 ? 'true' : 'false' }}" :like-count="{{ json_encode(count($like->country->likes)) }}" />
             </td>
             <td>
-                <a href="{{ route('detail' , $like->country_id) }}" class="btn btn-primary">編集</button>
-
+                <a href="{{ route('detail' , $like->country_id) }}" class="btn btn-primary">国細</button>
             </td>
         </tr>
 

@@ -69,7 +69,7 @@
 
     <div class="fill mb-3">
         <p class="mb-1 font-weight-bold">レビュー</p>
-        <p class="text mb-0">{{ $review->review}}</p>
+        <p class="text mb-0">{!! nl2br($review->review) !!}</p>
     </div>
 
     @if(!empty($review->imgpath))

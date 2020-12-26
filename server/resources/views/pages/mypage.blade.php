@@ -48,11 +48,4 @@
 
     <acount-component v-show="profileModal" @profile-child="closeProfile" :user-id="{{ $user->id }}" />
 </div>
-
-
-
-
-
-
-</div>
 @endsection

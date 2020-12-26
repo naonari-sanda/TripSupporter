@@ -1,6 +1,6 @@
 <h2 font-weight-bold>Review</h2>
 
-<p class="mb-3 font-weight-bold">{{ count($user->reviews) }}件のレビューがありました</p>
+<p class="mb-3 font-weight-bold">{{ count($user->reviews) }}件のレビューを投稿しました</p>
 @if(!count($user->reviews) == 0)
 
 @foreach($user->reviews as $review)
@@ -9,6 +9,7 @@
     <div class="header d-flex">
         <a class="text-dark d-flex align-items-center font-weight-bold mb-0 mr-auto" href="{{ route('detail' , $review->country_id) }}">
             <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/' . $review->country->imgpath ) }}" alt="ユーザーアイコン" />{{ $review->country->name }}</a>
+        @if(Auth::id() == $review->user->id)
         <div class="btn-box d-flex">
             <button class="btn btn-success mr-1 mb-3" @click="showReview({{ $review->country_id }},{{ json_encode( $review->country->name ) }},{{ json_encode($review) }})">編集</button>
             <form action="{{ route('review.delete') }}" method="post">
@@ -17,6 +18,7 @@
                 <input onclick="return confirm('{{ $review->country->name }} のレビューを削除してもよろしいですか？')" class="btn btn-danger  mb-3" type="submit" value="削除">
             </form>
         </div>
+        @endif
     </div>
     <p class="mt-1 ml-1 mb-0">{{ $review->updated_at->format('Y年m月d日') }}に投稿しました。</p>
 
@@ -69,7 +71,7 @@
 
     <div class="fill mb-3">
         <p class="mb-1 font-weight-bold">レビュー</p>
-        <p class="text mb-0">{{ $review->review}}</p>
+        <p class="text mb-0">{!! nl2br($review->review) !!}</p>
     </div>
 
     @if(!empty($review->imgpath))
