@@ -30,7 +30,7 @@
                 <like-component :country-id="{{ json_encode($like->country->id) }}" :auth-id="{{ json_encode(Auth::user()->id ?? '[]') }}" :like-check="{{ count($like->country->likes->where('user_id', Auth::id())) > 0 ? 'true' : 'false' }}" :like-count="{{ json_encode(count($like->country->likes)) }}" />
             </td>
             <td>
-                <a href="{{ route('detail' , $like->country_id) }}" class="btn btn-primary">国細</button>
+                <a href="{{ route('detail' , $like->country_id) }}" class="btn btn-primary">詳細</a>
             </td>
         </tr>
 

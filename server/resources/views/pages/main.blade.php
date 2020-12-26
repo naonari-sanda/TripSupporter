@@ -3,80 +3,114 @@
 
 @section('content')
 
-<section class="jumbotron text-center" style="margin-bottom: 3rem">
-    <div class="container">
-        <h1 class="jumbotron-heading text-light">さあ 旅に出かけよう！</h1>
-        <p class="lead text-muted">
-            Something short and leading about the collection below—its contents,
-            the creator, etc. Make it short and sweet, but not too short so folks
-            don't simply skip over it entirely.
-        </p>
-        <p>
-            <a href="https://www.skyscanner.jp/" class="btn btn-primary my-2">チケットを探す</a>
-        </p>
+<section class="jumbotron text-center visual mainvisual" style="margin-bottom: 6rem">
+    <div class="bg">
+        <img class="card-img-top country_img" src="{{ asset('/storage/main.jpg') }}" alt="Card image cap" />
+
+        <div class="container text">
+            <h1 class="jumbotron-heading font-weight-bold text-light mb-4">さあ 旅に出かけよう！</h1>
+
+            <div id="search">
+                <div class="inner">
+
+                    <form action="{{ route('serch') }}" method="get">
+                        @csrf
+                        <div class="row justify-content-center">
+                            <div class="">
+                                <select name="category" id="category" class="form-control">
+                                    <option disabled selected value>地域別...</option>
+                                    <option value="ajia">アジア</option>
+                                    <option value="ocea">オセアニア</option>
+                                    <option value="eu">ヨーロッパ</option>
+                                    <option value="afica">アフリカ</option>
+                                    <option value="northa">北米</option>
+                                    <option value="latin">南米</option>
+                                </select>
+                            </div>
+                            <div class="">
+                                <select name="special" id="special" class="form-control">
+                                    <option disabled selected value>絞り込み...</option>
+                                    <option value="wh">ワーキングホリデー</option>
+                                    <option value="corona">入国可能国(コロナ禍)</option>
+                                </select>
+                            </div>
+                            <div class="keyword"> <input type="text" name="keyword" class=" form-control" placeholder="国名...">
+                            </div>
+                            <input type="submit" class="btn btn-primary" value="検索">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
-<div class="container marketing">
 
-    <div class="container row">
-        <div class="col-lg-4 mb-2">
-            <img class="rounded-circle mx-auto d-flex justify-content-center mb-3" src="{{ asset('/storage/find.png') }}" alt="" alt="Generic placeholder image" width="140" height="140">
-            <h2 class="text-center">見つけよう</h2>
-            <p class="text-center">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-            <p class="d-flex justify-content-center"><a class="btn  btn-primary center-block" href="#" role="button">見つける &raquo;</a></p>
-        </div>
-        <div class="col-lg-4 mb-2">
-            <img class="rounded-circle mx-auto d-flex justify-content-center mb-3" src="{{ asset('/storage/corona.png')  }}" alt="Generic placeholder image" width="140" height="140">
-            <h2 class="text-center">入国可能国</h2>
-            <p class="text-center">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-            <p class="d-flex justify-content-center"><a class=" btn  btn-primary" href="#" role="button">見つける &raquo;</a></p>
-        </div>
-        <div class="col-lg-4 mb-2">
-            <img class="rounded-circle mx-auto d-flex justify-content-center mb-3" src="{{ asset('/storage/waking.png') }}" alt="Generic placeholder image" width="140" height="140">
-            <h2 class="text-center">ワーキングホリデー</h2>
-            <p class="text-center">Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p class="d-flex justify-content-center"><a class=" btn  btn-primary" href="#" role="button">見つける &raquo;</a></p>
+<div class="container row mx-auto">
+    <div class="col-lg-4 mb-2">
+        <img class="rounded-circle mx-auto d-flex justify-content-center mb-3" src="{{ asset('/storage/find.png') }}" alt="" alt="Generic placeholder image" width="140" height="140">
+        <h2 class="text-center">見つけよう</h2>
+        <p class="text-center">「海外に行きたい！」しかし「どこに行くか？」。国々のそれぞれの良いところを紹介します。ぜひ、次の旅行先の決定の参考にしてみてくださいね。</p>
+        <p class="d-flex justify-content-center">
+            <a class="btn  btn-primary center-block" href="#" role="button">見つける &raquo;</a>
+        </p>
+    </div>
+    <div class="col-lg-4 mb-2">
+        <img class="rounded-circle mx-auto d-flex justify-content-center mb-3" src="{{ asset('/storage/corona.png')  }}" alt="Generic placeholder image" width="140" height="140">
+        <h2 class="text-center">入国可能国</h2>
+        <p class="text-center">新型コロナウィルス感染拡大中のヨーロッパではロックダウン中の国も多め。日本からの入国規制解除や緩和を発表した国にも変化が出ています。</p>
+        <div class="d-flex justify-content-center">
+            <form action="{{ route('serch') }}" method="get">
+                @csrf
+                <input type="hidden" name="special" value="corona">
+                <input type="submit" class="btn  btn-primary" value="見つける &raquo;" />
+            </form>
         </div>
     </div>
+    <div class="col-lg-4 mb-2">
+        <img class="rounded-circle mx-auto d-flex justify-content-center mb-3" src="{{ asset('/storage/waking.png') }}" alt="Generic placeholder image" width="140" height="140">
+        <h2 class="text-center">ワーキングホリデー</h2>
+        <p class="text-center">働きながら旅行をしたりということが出来るのはワーキングホリデーという制度だけです。ただお金の為に働くのではなく海外の文化を楽しもう！</p>
+        <div class="d-flex justify-content-center">
+            <form action="{{ route('serch') }}" method="get">
+                @csrf
+                <input type="hidden" name="special" value="wh">
+                <input type="submit" class="btn  btn-primary" value="見つける &raquo;" />
+            </form>
+        </div>
+    </div>
+</div>
 
+<hr class="featurette-divider" style="margin: 3rem 0;">
 
+<div class="container main">
+    <div class="row">
 
-    <hr class="featurette-divider" style="margin: 3rem 0;">
-
-    <div class="container main">
-        <div class="row">
-
-            @foreach ($countries ?? '' as $country)
-            <div class="col d-flex justify-content-center">
-                <div class="card shadow" style="width: 18rem; margin-bottom: 5rem;">
-                    <div class="bg">
-                        <img class="card-img-top country_img" src="{{ asset('/storage/' . $country->imgpath ) }}" alt="Card image cap" />
-                        <h5 class="text">{{ $country->name }}:{{ count($country->reviews) }}</h5>
+        @foreach ($countries ?? '' as $country)
+        <div class="col d-flex justify-content-center">
+            <div class="card shadow" style="width: 18rem; margin-bottom: 5rem;">
+                <div class="bg">
+                    <img class="card-img-top country_img" src="{{ asset('/storage/' . $country->imgpath ) }}" alt="Card image cap" />
+                    <h5 class="text">{{ $country->name }}:{{ count($country->reviews) }}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex mb-2">
+                        <star-rating v-bind:increment="0.5" v-bind:rating="{{ $country->reviews->avg('recommend') ?? '0' }}" text-class="custom-text" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="23" active-color="#ff4742"></star-rating>
+                        <p class="custom-text d-flex align-items-center mb-0 ml-1">{{ number_format($country->reviews->avg('recommend'),1) ?? '' }}</p>
                     </div>
-                    <div class="card-body">
-                        <div class="d-flex mb-2">
-                            <star-rating v-bind:increment="0.5" v-bind:rating="{{ $country->reviews->avg('recommend') ?? '0' }}" text-class="custom-text" v-bind:read-only="true" v-bind:show-rating="false" v-bind:star-size="23" active-color="#ff4742"></star-rating>
-                            <p class="custom-text d-flex align-items-center mb-0 ml-1">{{ number_format($country->reviews->avg('recommend'),1) ?? '' }}</p>
-                        </div>
 
-                        <p class="card-text mb-2">{{ Str::limit($country->detail, $limit = 55, $end = '...') }}</p>
-                        <div class="d-flex">
-                            <a href="{{ route('detail', $country->id ) }}" class="btn btn-primary">詳細はこちら</a>
+                    <p class="card-text mb-2">{{ Str::limit($country->detail, $limit = 55, $end = '...') }}</p>
+                    <div class="d-flex">
+                        <a href="{{ route('detail', $country->id ) }}" class="btn btn-primary">詳細はこちら</a>
 
-                            <like-component :country-id="{{ json_encode($country->id) }}" :auth-id="{{ json_encode(Auth::user()->id ?? '[]') }}" :like-count="{{ count($country->likes) }}" :like-check="{{ count($country->likes->where('user_id', Auth::id())) > 0 ? 'true' : 'false' }}" />
-                        </div>
-
+                        <like-component :country-id="{{ json_encode($country->id) }}" :auth-id="{{ json_encode(Auth::user()->id ?? '[]') }}" :like-count="{{ count($country->likes) }}" :like-check="{{ count($country->likes->where('user_id', Auth::id())) > 0 ? 'true' : 'false' }}" />
                     </div>
                 </div>
             </div>
-
-            @endforeach
-
         </div>
-        {{$countries->links()}}
+        @endforeach
+
     </div>
-
+    {{$countries->links()}}
 </div>
-
 
 @endsection

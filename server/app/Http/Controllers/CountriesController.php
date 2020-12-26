@@ -46,4 +46,63 @@ class CountriesController extends Controller
 
         return view('pages.detail', ['id' => $country->id], compact('country'));
     }
+
+    //国検索
+    public function serch(Request $request)
+    {
+        $cotegory = $request->category;
+        $special = $request->special;
+        $keyword = $request->keyword;
+
+        $query = Country::query();
+
+        if (!empty($cotegory)) {
+            $query->where('comment', 'like', '%' . $cotegory . '%');
+        }
+
+        if (!empty($special)) {
+            $query->where('comment', 'like', '%' . $special . '%');
+        }
+
+        if (!empty($keyword)) {
+            $query->where('name', 'like', '%' . $keyword . '%');
+        }
+
+        $countries = $query->orderBy('created_at', 'desc')->paginate(12);
+
+        if (count($countries) == 0) {
+            session()->flash('flash_message', '検索結果がありません');
+        } else {
+            session()->flash('flash_message', '検索に成功しました');
+        }
+
+
+
+        return view('pages.main', compact('countries'));
+    }
+
+    public function ranking()
+    {
+        return view('pages.ranking');
+    }
+
+    public function area()
+    {
+        return Country::orderBy('area', 'desc')->get();
+    }
+
+    public function population()
+    {
+        return Country::orderBy('population', 'desc')->get();
+    }
+
+    public function gdp()
+    {
+        return Country::orderBy('gdp', 'desc')->get();
+    }
+
+    public function happiness()
+    {
+        return Country::orderBy('happiness', 'desc')->get();
+    }
 }

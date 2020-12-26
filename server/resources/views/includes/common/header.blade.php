@@ -21,26 +21,7 @@
                         ユーザー一覧
                     </a> </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" data-toggle="modal">ランキング</a>
-                </li>
-                <li class=" nav-item dropdown select">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle delete text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        地域別国
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-right bg-white" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-dark" href="#">
-                            アジア
-                        </a>
-                        <a class="dropdown-item text-dark" href="#">
-                            アフリカ
-                        </a><a class="dropdown-item text-dark" href="#">
-                            ヨーロッパ
-                        </a>
-                        </a><a class="dropdown-item text-dark" href="#">
-                            アメリカ大陸
-                        </a>
-                    </div>
+                    <a href="{{ route('ranking') }}" class="nav-link text-dark">ランキング</a>
                 </li>
                 @guest
                 <li class="nav-item">
