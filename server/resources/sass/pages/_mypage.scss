@@ -1,28 +1,4 @@
 .mypage {
-    .nav {
-        li {
-            width: 25%;
-            text-align: center;
-            line-height: 3;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    }
-
-    .active {
-        color: $blue;
-        border-bottom: 2px solid $blue;
-    }
-
-    article {
-        padding: 20px 0;
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 40px;
-        }
-    }
 
     .profile {
         img {

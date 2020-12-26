@@ -16,6 +16,7 @@ import CountryComponent from './components/pages/CountryComponent'
 import ReviewCreateComponent from './components/pages/ReviewCreateComponent'
 import ReviewEditComponent from './components/pages/ReviewEditComponent'
 import AcountComponent from './components/pages/AcountComponent'
+import RankingComponent from './components/pages/RankingComponent'
 
 Vue.prototype.$http = axios;
 
@@ -44,7 +45,8 @@ const app = new Vue({
         ReviewCreateComponent,
         ReviewEditComponent,
         AcountComponent,
-        CountryComponent
+        CountryComponent,
+        RankingComponent
     },
     props: {
         authId: {

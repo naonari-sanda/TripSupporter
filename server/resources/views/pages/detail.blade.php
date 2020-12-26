@@ -2,7 +2,7 @@
 @section('title', '各国詳細画面')
 
 @section('content')
-<section id="detailvisual" class="jumbotron text-center d-flex align-items-center">
+<section class="jumbotron text-center d-flex align-items-center visual">
     <div class="bg">
         <img class="card-img-top country_img" src="{{ asset('/storage/' . $country->imgpath ) }}" alt="Card image cap" />
 

@@ -11029,6 +11029,29 @@ a {
   text-align: center;
 }
 
+.nav li {
+  width: 25%;
+  text-align: center;
+  line-height: 3;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.active {
+  color: #1da1f2;
+  border-bottom: 2px solid #1da1f2;
+}
+
+article {
+  padding: 20px 0;
+}
+
+article h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
 .gust_modal h4 {
   font-size: 18px;
   font-weight: 600;
@@ -11225,69 +11248,23 @@ footer {
   justify-content: center;
 }
 
-#detailvisual {
-  padding: 0;
+.mainvisual .bg {
+  height: 300px;
 }
 
-#detailvisual .bg {
-  position: relative;
-  width: 100%;
-  height: 280px;
+.mainvisual #search {
+  background: rgba(2, 18, 44, 0.7);
+  border-radius: 20px;
+  padding: 2.5rem 0;
 }
 
-#detailvisual .bg::before {
-  /* 透過した黒を上から重ねるイメージ */
-  background-color: rgba(0, 0, 0, 0.4);
-  /* 自由に位置指定 */
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  content: " ";
+.mainvisual #search .keyword {
+  width: 40%;
 }
 
-#detailvisual .bg .country_img {
-  width: 100%;
-  margin: 0 auto;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-#detailvisual .bg .text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font-size: 23px;
-  font-weight: bold;
-  width: 100%;
-  text-align: center;
-}
-
-.detail .nav li {
-  width: 25%;
-  text-align: center;
-  line-height: 3;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.detail .active {
-  color: #1da1f2;
-  border-bottom: 2px solid #1da1f2;
-}
-
-.detail article {
-  padding: 20px 0;
-}
-
-.detail article h2 {
-  font-size: 2rem;
-  margin-bottom: 40px;
+.mainvisual #search input,
+.mainvisual #search select {
+  height: 2.5rem;
 }
 
 .detail .profile th {
@@ -11374,29 +11351,6 @@ footer {
   display: block;
   font-size: 14px;
   margin-left: 2.5%;
-}
-
-.mypage .nav li {
-  width: 25%;
-  text-align: center;
-  line-height: 3;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.mypage .active {
-  color: #1da1f2;
-  border-bottom: 2px solid #1da1f2;
-}
-
-.mypage article {
-  padding: 20px 0;
-}
-
-.mypage article h2 {
-  font-size: 2rem;
-  margin-bottom: 40px;
 }
 
 .mypage .profile img {

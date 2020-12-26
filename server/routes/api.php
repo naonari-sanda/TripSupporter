@@ -20,5 +20,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //お気に入り追加
 Route::post('/{id}/like', 'LikesController@like');
 Route::post('/{id}/unlike', 'LikesController@unlike');
+
 //アカウント情報追加
 Route::post('/mypage/create/profile', 'MypageController@create');
+
+//ランキング
+Route::get('/area', 'CountriesController@area');
+Route::get('/population', 'CountriesController@population');
+Route::get('/gdp', 'CountriesController@gdp');
+Route::get('/happiness', 'CountriesController@happiness');

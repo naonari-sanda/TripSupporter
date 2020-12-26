@@ -19,6 +19,18 @@ Route::get('/', 'CountriesController@index')->name('main');
 //国詳細ページ移動
 Route::get('/detail/{id}', 'CountriesController@detail')->name('detail');
 
+//検索結果表示
+Route::get('/serch', 'CountriesController@serch')->name('serch');
+
+//ランキング
+Route::get('/ranking', 'CountriesController@ranking')->name('ranking');
+
+//ユーザー一覧
+Route::get('/user', 'UserController@list')->name('user.list');
+
+//ユーザーページ一覧
+Route::get('/user/{id}', 'UserController@user')->name('user');
+
 
 Route::group(['middleware' => ['auth']], function () {
     //レビュー送信
@@ -30,10 +42,6 @@ Route::group(['middleware' => ['auth']], function () {
     //プロフィール追加
     Route::post('/mypage/create/profile', 'UserController@create');
 });
-//ユーザー一覧
-Route::get('/user', 'UserController@list')->name('user.list');
 
-//ユーザーページ一覧
-Route::get('/user/{id}', 'UserController@user')->name('user');
 
 Auth::routes();

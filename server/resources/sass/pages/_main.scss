@@ -40,3 +40,27 @@
         justify-content: center;
     }
 }
+
+.mainvisual {
+
+    .bg {
+        height: 300px;
+    }
+
+
+    #search {
+
+        background: rgba(2, 18, 44, 0.7);
+        border-radius: 20px;
+        padding: 2.5rem 0;
+
+        .keyword {
+            width: 40%;
+        }
+
+        input,
+        select {
+            height: 2.5rem;
+        }
+    }
+}
