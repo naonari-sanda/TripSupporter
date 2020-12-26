@@ -34,10 +34,11 @@
     </tr>
     <tr class="text" style="border-bottom: 1px solid #dee2e6;">
         <td class="br">{{ optional($user->acounts)->profile }}</td>
+
     </tr>
 </table>
 
-@if(!empty($user->acounts))
+@if(Auth::id() == $user->id and !empty($user->acounts))
 <div class="button mt-4">
     <button @click="showProfile" class="btn btn-primary">プロフィールを変更する</button>
 </div>

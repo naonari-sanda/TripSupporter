@@ -10971,11 +10971,62 @@ a {
      object-fit: cover;
 }
 
-body {
-  background-color: #FAFAFA;
-  color: #262626;
-  font-size: 14px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+.lb-nav a.lb-prev {
+  position: absolute;
+  left: -80px;
+  opacity: 0.3;
+}
+
+.lb-nav a.lb-next {
+  position: absolute;
+  right: -80px;
+  opacity: 0.3;
+}
+
+.lb-number {
+  display: none !important;
+}
+
+.visual {
+  padding: 0;
+}
+
+.visual .bg {
+  position: relative;
+  width: 100%;
+  height: 280px;
+}
+
+.visual .bg::before {
+  /* 透過した黒を上から重ねるイメージ */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* 自由に位置指定 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: " ";
+}
+
+.visual .bg .country_img {
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.visual .bg .text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 23px;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
 }
 
 .gust_modal h4 {
@@ -11386,15 +11437,18 @@ footer {
   line-height: 1.6;
 }
 
-.mypage .favorite td {
+.mypage .favorite td,
+.mypage .user td {
   vertical-align: middle;
 }
 
-.mypage .favorite table tr:hover {
+.mypage .favorite table tr:hover,
+.mypage .user table tr:hover {
   background-color: #d4f0fd;
 }
 
-.mypage .favorite label {
+.mypage .favorite label,
+.mypage .user label {
   margin-bottom: 0;
 }
 
@@ -11435,76 +11489,6 @@ footer {
   display: block;
   font-size: 14px;
   margin-left: 2.5%;
-}
-
-#form {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fafafa;
-}
-
-#form .wrapper {
-  margin: 60px 0 100px;
-  position: relative;
-  top: -20%;
-  max-width: 340px;
-  width: 100%;
-  border: 1px solid #dbdbdb;
-  background-color: #fff;
-  padding: 20px 30px;
-}
-
-#form .wrapper h2 {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-#form .wrapper hr {
-  margin-bottom: 30px;
-}
-
-#form .wrapper .fill {
-  margin-bottom: 12px;
-}
-
-#form .wrapper input {
-  background-color: #fafafa;
-}
-
-#form .wrapper .button .btn {
-  width: 100%;
-}
-
-#form .wrapper .button .btn-success {
-  width: 100%;
-}
-
-#form .wrapper .forget {
-  display: block;
-  margin: 0 auto;
-}
-
-#form .alert {
-  padding: 0.5rem 1.25rem;
-}
-
-@media screen and (max-width: 767px) {
-  /*　画面サイズが767px以下の場合読み込む　*/
-
-  .back {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fafafa;
-  }
-
-  .back .wrapper {
-    width: 100%;
-    margin: 50px 0 60px;
-  }
 }
 
 /*!

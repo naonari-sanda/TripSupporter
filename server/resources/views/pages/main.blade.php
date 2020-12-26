@@ -16,11 +16,9 @@
         </p>
     </div>
 </section>
-
-
 <div class="container marketing">
 
-    <div class="row">
+    <div class="container row">
         <div class="col-lg-4 mb-2">
             <img class="rounded-circle mx-auto d-flex justify-content-center mb-3" src="{{ asset('/storage/find.png') }}" alt="" alt="Generic placeholder image" width="140" height="140">
             <h2 class="text-center">見つけよう</h2>

@@ -8,6 +8,7 @@ use App\Models\Like;
 
 class LikesController extends Controller
 {
+    //いいね追加
     public function like(int $id, Request $request)
     {
         $like = Like::create([
@@ -20,6 +21,7 @@ class LikesController extends Controller
         return response()->json(['likeCount' => $likeCount]);
     }
 
+    //いいねを取り消し
     public function unlike(int $id, Request $request)
     {
         $like = Like::where('user_id', $request->user_id)->where('country_id', $id)->delete();

@@ -16,7 +16,10 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
-
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="{{ route('user.list') }}">
+                        ユーザー一覧
+                    </a> </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" data-toggle="modal">ランキング</a>
                 </li>
@@ -55,11 +58,11 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right bg-white" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-dark" href="{{ route('mypage') }}">
+                        <a class="dropdown-item text-dark" href="{{ route('user', Auth::id()) }}">
                             マイページ
                         </a>
                         <a class="dropdown-item text-dark" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                            document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
 

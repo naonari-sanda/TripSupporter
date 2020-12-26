@@ -9,8 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 
-class MypageController extends Controller
+class UserController extends Controller
 {
+    //ログインユーザーぺージ表示
     public function index()
     {
         $user = Auth::user();
@@ -18,6 +19,7 @@ class MypageController extends Controller
         return view('pages.mypage', compact('user'));
     }
 
+    //ユーザーの詳細情報追加
     public function create(ProfileRequest $request)
     {
         if ($file = $request->icon) {
@@ -47,5 +49,22 @@ class MypageController extends Controller
         }
 
         session()->flash('flash_message', $message);
+    }
+
+    //ユーザー一覧表示
+    public function list()
+    {
+        $users = User::all();
+
+        return view('pages.user_list', compact('users'));
+    }
+
+
+    //ユーザーページ表示
+    public function user(int $id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('pages.user', compact('user'));
     }
 }

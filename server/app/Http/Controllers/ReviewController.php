@@ -9,6 +9,7 @@ use App\Http\Requests\ReviewRequest;
 
 class ReviewController extends Controller
 {
+    //ログインユーザーレビュー追加&アップデート
     public function createReview(ReviewRequest $request)
     {
         if ($file = $request->imgpath) {
@@ -48,6 +49,7 @@ class ReviewController extends Controller
         session()->flash('flash_message', $message);
     }
 
+    //レビュー削除
     public function delete(Request $request)
     {
         $review = Review::findOrFail($request->id);
