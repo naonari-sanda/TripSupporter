@@ -22,9 +22,11 @@ class CreateCountriesTable extends Migration
             $table->string('capital')->comment('首都');
             $table->string('language')->comment('言語');
             $table->string('religion')->comment('宗教');
+            $table->integer('gdp')->comment('GDP');
+            $table->integer('happiness')->comment('幸福度');
             $table->string('map')->nullable()->comment('地図');
             $table->string('covid')->nullable()->comment('コロナ情報');
-            $table->string('detail')->comment('詳細');
+            $table->string('detail', 600)->comment('詳細');
             $table->string('comment')->nullable()->comment('コメント');
             $table->timestamps();
         });
