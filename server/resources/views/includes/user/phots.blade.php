@@ -1,6 +1,6 @@
 <h2 font-weight-bold>Photo gallery</h2>
 
-@if(empty($user->reviews->imgpath))
+@if(!empty($user->reviews->imgpath))
 <div id="lightgallery ">
     <div class="row">
         @foreach($user->reviews as $review)
@@ -18,6 +18,6 @@
 @else
 <div>
     <h5 class="mb-5">＊投稿がありません</h5>
-    <a href="{{ route('main') }}" type="button" class="btn btn-primary">お気に入りの国をさがそう！</a>
+    <a href="{{ route('main') }}" type="button" class="btn btn-primary">レビューを投稿しよう！</a>
 </div>
 @endif

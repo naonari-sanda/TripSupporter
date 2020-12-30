@@ -16,7 +16,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        return view('pages.mypage', compact('user'));
+        return view('pages.user', compact('user'));
     }
 
     //ユーザーの詳細情報追加

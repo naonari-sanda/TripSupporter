@@ -2240,7 +2240,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])("max", _objectSpread
       formData.append("hobby", this.hobby);
       formData.append("icon", this.icon);
       axios.post("/mypage/create/profile", formData).then(function (response) {
-        window.location.href = "/mypage";
+        window.location.reload();
       })["catch"](function (error) {
         _this2.errors = error.response.data.errors;
         _this2.success = false;
@@ -2775,6 +2775,13 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])("email", _objectSpre
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -45492,7 +45499,20 @@ var render = function() {
           : _vm.isActive == 3
           ? _c("h2", [_vm._v("GDP")])
           : _vm.isActive == 4
-          ? _c("h2", [_vm._v("幸福度")])
+          ? _c("h2", [
+              _vm._v("\n        幸福度\n        "),
+              _c(
+                "a",
+                {
+                  staticClass: "h4",
+                  attrs: {
+                    href:
+                      "https://ja.wikipedia.org/wiki/%E4%B8%96%E7%95%8C%E5%B9%B8%E7%A6%8F%E5%BA%A6%E5%A0%B1%E5%91%8A"
+                  }
+                },
+                [_vm._v("(世界幸福度報告)")]
+              )
+            ])
           : _vm._e(),
         _vm._v(" "),
         _c("table", { staticClass: "table table-hover" }, [
@@ -45555,7 +45575,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("\n              幸福度数\n            ")]
+                [_vm._v("\n              幸福度\n            ")]
               ),
               _vm._v(" "),
               _c("th", { attrs: { scope: "col" } }, [_vm._v("詳細")])

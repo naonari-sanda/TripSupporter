@@ -1,8 +1,9 @@
 <h2 font-weight-bold>Favorite</h2>
 
 
-<p class="mb-3 font-weight-bold">{{ count($user->likes) }}件のいいねをしました</p>
+
 @if(count($user->likes) > 0 )
+<p class="mb-3 font-weight-bold">{{ count($user->likes) }}件のいいねをしました</p>
 <table class="table table-hover">
     <thead class="">
         <tr>

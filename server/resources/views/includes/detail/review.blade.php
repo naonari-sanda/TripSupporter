@@ -1,7 +1,7 @@
 <h2>Reviews</h2>
 
-<p class="mb-3 font-weight-bold">{{ count($country->reviews) }}件のレビューがありました</p>
 @if(!count($country->reviews) == 0)
+<p class="mb-3 font-weight-bold">{{ count($country->reviews) }}件のレビューがありました</p>
 
 @foreach($country->reviews as $review)
 

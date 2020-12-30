@@ -338,7 +338,7 @@ export default {
       axios
         .post("/mypage/create/profile", formData)
         .then((response) => {
-          window.location.href = "/mypage";
+          window.location.reload();
         })
         .catch((error) => {
           this.errors = error.response.data.errors;

@@ -1,7 +1,7 @@
 <h2 font-weight-bold>Review</h2>
 
-<p class="mb-3 font-weight-bold">{{ count($user->reviews) }}件のレビューを投稿しました</p>
 @if(!count($user->reviews) == 0)
+<p class="mb-3 font-weight-bold">{{ count($user->reviews) }}件のレビューを投稿しました</p>
 
 @foreach($user->reviews as $review)
 
@@ -20,7 +20,7 @@
         </div>
         @endif
     </div>
-    <p class="mt-1 ml-1 mb-0">{{ $review->updated_at->format('Y年m月d日') }}に投稿しました。</p>
+    <p class="mt-1 ml-1 mb-0">{{ $review->created_at->format('Y年m月d日') }}に投稿しました。</p>
 
     <div class="star d-flex align-items-center ml-1 mb-1">
         <p class="d-flex align-items-center mb-0  mr-1 font-weight-bold">総合</p>
@@ -93,6 +93,6 @@
 @else
 <div>
     <h5 class="mb-5">＊レビューの投稿がありません</h5>
-    <a href="{{ route('main') }}" type="button" class="btn btn-primary">お気に入りの国をさがそう！</a>
+    <a href="{{ route('main') }}" type="button" class="btn btn-primary">レビューを投稿しよう!</a>
 </div>
 @endif

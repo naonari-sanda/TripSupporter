@@ -33,7 +33,14 @@
         <h2 v-if="isActive == 1">面積</h2>
         <h2 v-else-if="isActive == 2">人口</h2>
         <h2 v-else-if="isActive == 3">GDP</h2>
-        <h2 v-else-if="isActive == 4">幸福度</h2>
+        <h2 v-else-if="isActive == 4">
+          幸福度
+          <a
+            href="https://ja.wikipedia.org/wiki/%E4%B8%96%E7%95%8C%E5%B9%B8%E7%A6%8F%E5%BA%A6%E5%A0%B1%E5%91%8A"
+            class="h4"
+            >(世界幸福度報告)</a
+          >
+        </h2>
 
         <table class="table table-hover">
           <thead class="">
@@ -66,7 +73,7 @@
                 @click="tabChange(4)"
                 :class="{ active: isActive === 4 }"
               >
-                幸福度数
+                幸福度
               </th>
               <th scope="col">詳細</th>
             </tr>
