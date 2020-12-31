@@ -216,6 +216,10 @@
                 <th scope="row">性別</th>
                 <td>{{ gender }}</td>
               </tr>
+              <tr>
+                <th scope="row">性別</th>
+                <td>{{ icon }}</td>
+              </tr>
             </tbody>
           </table>
           <table class="table mb-0">
@@ -258,7 +262,7 @@
 
 <script>
 import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
-import { required, max } from "vee-validate/dist/rules";
+import { required, max, image } from "vee-validate/dist/rules";
 
 extend("required", {
   ...required,
@@ -268,6 +272,11 @@ extend("required", {
 extend("max", {
   ...max,
   message: "{_field_}は最大でも{length}文字までです",
+});
+
+extend("image", {
+  ...image,
+  message: "{_field_}は有効な画像形式ではありません",
 });
 
 export default {
@@ -336,7 +345,7 @@ export default {
       formData.append("icon", this.icon);
 
       axios
-        .post("/mypage/create/profile", formData)
+        .post("/user/create/profile", formData)
         .then((response) => {
           window.location.reload();
         })
@@ -472,10 +481,10 @@ $primary: #2196f3;
 @media screen and (max-width: 767px) {
   /*　画面サイズが767px以下の場合読み込む　*/
   #overlay {
-    position: absolute;
+    // position: absolute;
     .wrapper {
       margin: 0;
-      max-width: 100%;
+      // max-width: 100%;
     }
   }
 }

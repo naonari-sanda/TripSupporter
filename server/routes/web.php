@@ -14,16 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 // メイン画面
-Route::get('/', 'CountriesController@index')->name('main');
+Route::get('/', 'CountryController@index')->name('main');
 
 //国詳細ページ移動
-Route::get('/detail/{id}', 'CountriesController@detail')->name('detail');
+Route::get('/detail/{id}', 'CountryController@detail')->name('detail');
 
 //検索結果表示
-Route::get('/serch', 'CountriesController@serch')->name('serch');
+Route::get('/serch', 'CountryController@serch')->name('serch');
 
 //ランキング
-Route::get('/ranking', 'CountriesController@ranking')->name('ranking');
+Route::get('/ranking', 'CountryController@ranking')->name('ranking');
 
 //ユーザー一覧
 Route::get('/user', 'UserController@list')->name('user.list');
@@ -39,8 +39,10 @@ Route::group(['middleware' => ['auth']], function () {
     //レビュー削除
     Route::post('/review/delete', 'ReviewController@delete')->name('review.delete');
 
-    //プロフィール追加
-    Route::post('/mypage/create/profile', 'UserController@create');
+    // //プロフィール追加
+    // Route::post('/user/create/profile', 'UserController@create');
+
+    Route::post('/upload/img', 'ReviewController@upload');
 });
 
 

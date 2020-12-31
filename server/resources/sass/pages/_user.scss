@@ -1,71 +1,95 @@
-// #form {
-    //     width: 100%;
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: center;
-    //     background-color: #fafafa;
+.mypage {
 
-    //     .wrapper {
-    //         margin: 60px 0 100px;
-    //         position: relative;
-    //         top: -20%;
-    //         max-width: 340px;
-    //         width: 100%;
-    //         border: 1px solid #dbdbdb;
-    //         background-color: #fff;
-    //         padding: 20px 30px;
+    .profile {
+        img {
+            display: block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
 
-    //         h2 {
-    //             font-size: 18px;
-    //             font-weight: bold;
-    //         }
+        .text {
+            height: 150px;
+        }
 
-    //         hr {
-    //             margin-bottom: 30px;
-    //         }
+        .br {
+            white-space: pre-wrap;
+        }
+    }
 
-    //         .fill {
-    //             margin-bottom: 12px;
-    //         }
+    .review {
 
-    //         input {
-    //             background-color: #fafafa;
-    //         }
+        .wrapper {
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 2rem;
 
-    //         .button {
-    //             .btn {
-    //                 width: 100%;
-    //             }
+            .text {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        }
+    }
 
-    //             .btn-success {
-    //                 width: 100%;
-    //             }
-    //         }
+    .favorite,
+    .user {
+        td {
+            vertical-align: middle;
+        }
 
-    //         .forget {
-    //             display: block;
-    //             margin: 0 auto;
-    //         }
-    //     }
+        table tr:hover {
+            background-color: #d4f0fd;
+        }
 
-    //     .alert {
-    //         padding: 0.5rem 1.25rem;
-    //     }
-    // }
+        label {
+            margin-bottom: 0;
+        }
+    }
 
-    // @media screen and (max-width: 767px) {
+    .phots {
 
-    //     /*　画面サイズが767px以下の場合読み込む　*/
-    //     .back {
-    //         width: 100%;
-    //         display: flex;
-    //         justify-content: center;
-    //         align-items: center;
-    //         background-color: #fafafa;
+        .row {
+            width: 100%;
+        }
 
-    //         .wrapper {
-    //             width: 100%;
-    //             margin: 50px 0 60px;
-    //         }
-    //     }
-    // }
+        .bg {
+            position: relative;
+
+            a {
+                position: relative;
+                width: 100%;
+                margin: auto;
+
+                &:before {
+                    content: "";
+                    display: block;
+                    padding-top: 75%;
+                }
+
+                img {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    margin: auto;
+                    object-fit: cover;
+                }
+            }
+
+
+            .text {
+                display: block;
+                font-size: 14px;
+                margin-left: 2.5%;
+            }
+
+        }
+    }
+
+
+}

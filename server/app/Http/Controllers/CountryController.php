@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 
-class CountriesController extends Controller
+class CountryController extends Controller
 {
 
     //メインページ表示
@@ -71,7 +71,7 @@ class CountriesController extends Controller
         $countries = $query->orderBy('created_at', 'desc')->paginate(12);
 
         if (count($countries) == 0) {
-            session()->flash('flash_message', '検索結果がありません');
+            session()->flash('danger_message', '検索結果がありません');
         } else {
             session()->flash('flash_message', '検索に成功しました');
         }

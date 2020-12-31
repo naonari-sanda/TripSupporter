@@ -38,12 +38,12 @@
         <li @click="tabChange(4)" :class="{'active': isActive === 4}">写真</li>
     </ul>
 
-    <article v-if="isActive === 1" class="profile mb-5">
+    <article v-if="isActive === 1" class="profile">
         @include('includes.detail.profile')
     </article>
 
 
-    <article v-else-if="isActive === 2" class="review mb-5">
+    <article v-else-if="isActive === 2" class="review">
         @include('includes.detail.review')
     </article>
 

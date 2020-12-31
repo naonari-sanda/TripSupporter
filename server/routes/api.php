@@ -22,10 +22,13 @@ Route::post('/{id}/like', 'LikesController@like');
 Route::post('/{id}/unlike', 'LikesController@unlike');
 
 //アカウント情報追加
-Route::post('/mypage/create/profile', 'MypageController@create');
+Route::post('/user/create/profile', 'UserController@create');
+
+//画像アップロード
+// Route::post('/upload/img', 'ReviewController@upload');
 
 //ランキング
-Route::get('/area', 'CountriesController@area');
-Route::get('/population', 'CountriesController@population');
-Route::get('/gdp', 'CountriesController@gdp');
-Route::get('/happiness', 'CountriesController@happiness');
+Route::get('/area', 'CountryController@area');
+Route::get('/population', 'CountryController@population');
+Route::get('/gdp', 'CountryController@gdp');
+Route::get('/happiness', 'CountryController@happiness');

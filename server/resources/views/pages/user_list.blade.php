@@ -46,8 +46,8 @@
                             @endif
                             {{ $user->name }}</a>
                     </td>
-                    <td>{{ optional($user->acounts)->age ?? '回答なし' }}</td>
                     <td>{{ optional($user->acounts)->gender ?? '回答なし' }}</td>
+                    <td>{{ optional($user->acounts)->age ?? '回答なし' }}</td>
                     <td>
                         <a href="{{ route('user', $user->id ) }}" class="btn btn-primary">詳細</a>
                     </td>

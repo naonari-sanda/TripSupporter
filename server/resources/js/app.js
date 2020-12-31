@@ -8,15 +8,17 @@ import Vue from 'vue'
 import axios from 'axios'
 import StarRating from "vue-star-rating";
 import Notifications from 'vue-notification'
-import LikeComponent from './components/pages/LikeComponent'
+import RankingComponent from './components/pages/RankingComponent'
 import LoginComponent from './components/pages/LoginComponent'
 import RegisterComponent from './components/pages/RegisterComponent'
 import ForgetPassComponent from './components/pages/ForgetPassComponent'
-import CountryComponent from './components/pages/CountryComponent'
-import ReviewCreateComponent from './components/pages/ReviewCreateComponent'
-import ReviewEditComponent from './components/pages/ReviewEditComponent'
-import AcountComponent from './components/pages/AcountComponent'
-import RankingComponent from './components/pages/RankingComponent'
+
+import ImgUploadComponent from './components/parts/ImgUploadComponent'
+import ReviewCreateComponent from './components/parts/ReviewCreateComponent'
+import ReviewEditComponent from './components/parts/ReviewEditComponent'
+import AcountComponent from './components/parts/AcountComponent'
+import LikeComponent from './components/parts/LikeComponent'
+
 
 Vue.prototype.$http = axios;
 
@@ -31,6 +33,7 @@ const app = new Vue({
         guestModal: false,
         reviewModal: false,
         profileModal: false,
+        imageModal: false,
         countryId: 0,
         countryName: "",
         reviewDetailModal: true,
@@ -45,8 +48,8 @@ const app = new Vue({
         ReviewCreateComponent,
         ReviewEditComponent,
         AcountComponent,
-        CountryComponent,
-        RankingComponent
+        RankingComponent,
+        ImgUploadComponent
     },
     props: {
         authId: {
@@ -65,12 +68,17 @@ const app = new Vue({
             this.countryName = name;
             this.reviewDetail = data;
         },
-        // showReview: function () {
-        //     this.reviewModal = true;
-        // },
         //レビューモーダルレビューを非表示
         closeReview: function () {
             this.reviewModal = false;
+        },
+        //レビュー詳細モーダル表示
+        showReviewDetail: function (data) {
+            this.reviewDetailModal = true;
+            this.reviewDetail = data;
+        },
+        closeReviewDetail: function () {
+            this.reviewDetailModal = false;
         },
         //プロフィールモーダルレビューを表示
         showProfile: function () {
@@ -80,13 +88,13 @@ const app = new Vue({
         closeProfile: function () {
             this.profileModal = false;
         },
-        //レビュー詳細モーダル表示
-        showReviewDetail: function (data) {
-            this.reviewDetailModal = true;
-            this.reviewDetail = data;
+        //画像モーダルレビューを表示
+        showImage: function () {
+            this.imageModal = true;
         },
-        closeReviewDetail: function () {
-            this.reviewDetailModal = false;
+        //画像モーダルレビューを非表示
+        closeImage: function () {
+            this.imageModal = false;
         },
     }
 });

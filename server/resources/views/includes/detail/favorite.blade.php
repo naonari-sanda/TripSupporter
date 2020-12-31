@@ -32,8 +32,8 @@
                     @endif
                     {{ $like->user->name }}</a>
             </td>
-            <td>{{ optional($like->user->acounts)->age }}</td>
-            <td>{{ optional($like->user->acounts)->gender }}</td>
+            <td>{{ optional($like->user->acounts)->age ?? 'なし' }}</td>
+            <td>{{ optional($like->user->acounts)->gender ?? 'なし'  }}</td>
             <td>
                 <a href="{{ route('user', $like->user->id) }}" class="btn btn-primary">詳細</a>
             </td>

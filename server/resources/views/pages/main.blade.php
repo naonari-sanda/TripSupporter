@@ -17,24 +17,30 @@
                         @csrf
                         <div class="row justify-content-center">
                             <div class="">
+                                <label for="category">地域</label>
                                 <select name="category" id="category" class="form-control">
-                                    <option disabled selected value>地域別...</option>
+                                    <option disabled selected value>選択...</option>
                                     <option value="ajia">アジア</option>
                                     <option value="ocea">オセアニア</option>
                                     <option value="eu">ヨーロッパ</option>
-                                    <option value="afica">アフリカ</option>
+                                    <option value="easta">中東</option>
+                                    <option value="africa">アフリカ</option>
                                     <option value="northa">北米</option>
                                     <option value="latin">南米</option>
                                 </select>
                             </div>
                             <div class="">
+                                <label for="special">詳細</label>
                                 <select name="special" id="special" class="form-control">
-                                    <option disabled selected value>絞り込み...</option>
+                                    <option disabled selected value>選択...</option>
                                     <option value="wh">ワーキングホリデー</option>
                                     <option value="corona">入国可能国(コロナ禍)</option>
                                 </select>
                             </div>
-                            <div class="keyword"> <input type="text" name="keyword" class=" form-control" placeholder="国名...">
+
+                            <div class="keyword">
+                                <label for="keyword">国名</label>
+                                <input id="keyword" type="text" name="keyword" class=" form-control" placeholder="入力てください...">
                             </div>
                             <input type="submit" class="btn btn-primary" value="検索">
                         </div>
@@ -87,10 +93,10 @@
 
         @foreach ($countries ?? '' as $country)
         <div class="col d-flex justify-content-center">
-            <div class="card shadow" style="width: 18rem; margin-bottom: 5rem;">
+            <div class="card shadow">
                 <div class="bg">
                     <img class="card-img-top country_img" src="{{ asset('/storage/' . $country->imgpath ) }}" alt="Card image cap" />
-                    <h5 class="text">{{ $country->name }}:{{ count($country->reviews) }}</h5>
+                    <h5 class="text">{{ $country->name }}</h5>
                 </div>
                 <div class="card-body">
                     <div class="d-flex mb-2">

@@ -50,6 +50,7 @@
               <th
                 scope="col"
                 @click="tabChange(1)"
+                class="tag"
                 :class="{ active: isActive === 1 }"
               >
                 面積
@@ -57,6 +58,7 @@
               <th
                 scope="col"
                 @click="tabChange(2)"
+                class="tag"
                 :class="{ active: isActive === 2 }"
               >
                 人口
@@ -64,6 +66,7 @@
               <th
                 scope="col"
                 @click="tabChange(3)"
+                class="tag"
                 :class="{ active: isActive === 3 }"
               >
                 GDP
@@ -71,6 +74,7 @@
               <th
                 scope="col"
                 @click="tabChange(4)"
+                class="tag"
                 :class="{ active: isActive === 4 }"
               >
                 幸福度
@@ -94,17 +98,17 @@
                   {{ country.name }}</a
                 >
               </th>
-              <td :class="{ active: isActive === 1 }">
+              <td class="tag" :class="{ active: isActive === 1 }">
                 約{{ country.area.toLocaleString() }}万km2
               </td>
 
-              <td :class="{ active: isActive === 2 }">
+              <td class="tag" :class="{ active: isActive === 2 }">
                 約{{ country.population.toLocaleString() }}万人
               </td>
-              <td :class="{ active: isActive === 3 }">
+              <td class="tag" :class="{ active: isActive === 3 }">
                 約{{ country.gdp.toLocaleString() }}万ドル
               </td>
-              <td :class="{ active: isActive === 4 }">
+              <td class="tag" :class="{ active: isActive === 4 }">
                 {{ country.happiness.toLocaleString() }}
               </td>
               <td>
@@ -212,6 +216,16 @@ table {
       color: #1da1f2;
       border-bottom: #dee2e6;
     }
+  }
+}
+@media screen and (max-width: 567px) {
+  /*　画面サイズが567px以下の場合読み込む　*/
+  .tag {
+    display: none;
+  }
+
+  .active {
+    display: table-cell;
   }
 }
 </style>
