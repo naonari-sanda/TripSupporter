@@ -11053,6 +11053,10 @@ article h2 {
   margin-bottom: 40px;
 }
 
+.img:hover {
+  opacity: 0.6;
+}
+
 @media screen and (max-width: 567px) {
   /*　画面サイズが567px以下の場合読み込む　*/
 
@@ -11331,6 +11335,7 @@ footer .container ul .insta {
   display: block;
   font-size: 14px;
   margin-left: 2.5%;
+  margin-bottom: 0;
 }
 
 .mypage .profile img {

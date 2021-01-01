@@ -2,7 +2,7 @@
   <div id="overlay" @click="clickEvent">
     <div class="wrapper" @click="stopEvent" v-show="addModal">
       <div class="header">
-        <h2>画像を投稿する:{{ country }}</h2>
+        <h2>画像を投稿する</h2>
       </div>
       <hr />
       <div v-if="Object.keys(errors).length > 0">
@@ -89,7 +89,7 @@
     <div class="wrapper" @click="stopEvent" v-show="confirmModal">
       <div class="confirm">
         <div class="header">
-          <h2>プロフィールを確認する</h2>
+          <h2>投稿画像を確認する</h2>
         </div>
         <hr />
         <div v-if="Object.keys(errors).length > 0">
@@ -143,7 +143,7 @@
 
       <div class="button mb-3">
         <button @click="confirm" type="submit" class="btn btn-primary">
-          プロフィール追加
+          投稿！
         </button>
       </div>
 
@@ -219,6 +219,10 @@ export default {
       if (isValid) {
         this.addModal = false;
         this.confirmModal = true;
+
+        if (this.countryId > 0) {
+          this.country = this.countryId;
+        }
       }
     },
     confirm: function () {

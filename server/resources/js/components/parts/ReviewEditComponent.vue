@@ -151,26 +151,20 @@
 
           <validation-provider name="画像" rules="image" v-slot="{ errors }">
             <div class="input-group mb-1">
-              <div class="custom-file">
-                <input
-                  type="file"
-                  class="custom-file-input"
-                  id="customFile"
-                  accept=".png, .jpg, .svg"
-                  ref="file"
-                  @change="uploadfile"
-                />
-                <label
-                  class="custom-file-label"
-                  for="customFile"
-                  data-browse="参照"
-                  >ファイル選択...</label
-                >
-              </div>
-              <div class="input-group-append">
-                <button type="button" class="btn btn-outline-secondary reset">
-                  取消
-                </button>
+              <div class="input-group">
+                <label class="input-group-btn">
+                  <span class="btn btn-primary">
+                    画像選択<input
+                      type="file"
+                      name="file"
+                      ref="file"
+                      accept=".png, .jpg, .svg"
+                      @change="uploadfile"
+                      style="display: none"
+                    />
+                  </span>
+                </label>
+                <input type="text" class="form-control" readonly="" />
               </div>
             </div>
             <div class="alert alert-danger" v-show="errors[0]">
@@ -189,7 +183,7 @@
                 <input
                   class="form-control"
                   type="text"
-                  v-model="reviewData.city"
+                  v-model="city"
                   :placeholder="
                     reviewData.city == '' ? '回答がありません' : reviewData.city
                   "
@@ -218,7 +212,12 @@
                 <textarea
                   class="form-control"
                   rows="3"
-                  v-model="reviewData.review"
+                  :placeholder="
+                    reviewData.review == ''
+                      ? '回答がありません'
+                      : reviewData.review
+                  "
+                  v-model="review"
                 ></textarea>
 
                 <div class="alert alert-danger" v-show="errors[0]">

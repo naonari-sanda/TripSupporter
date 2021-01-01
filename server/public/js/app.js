@@ -3277,6 +3277,10 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])("image", _objectSpre
                 if (isValid) {
                   _this.addModal = false;
                   _this.confirmModal = true;
+
+                  if (_this.countryId > 0) {
+                    _this.country = _this.countryId;
+                  }
                 }
 
               case 4:
@@ -3813,7 +3817,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
 //
 //
 //
@@ -46367,9 +46370,7 @@ var render = function() {
           on: { click: _vm.stopEvent }
         },
         [
-          _c("div", { staticClass: "header" }, [
-            _c("h2", [_vm._v("画像を投稿する:" + _vm._s(_vm.country))])
-          ]),
+          _vm._m(0),
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
@@ -46691,7 +46692,7 @@ var render = function() {
         },
         [
           _c("div", { staticClass: "confirm" }, [
-            _vm._m(0),
+            _vm._m(1),
             _vm._v(" "),
             _c("hr"),
             _vm._v(" "),
@@ -46803,7 +46804,7 @@ var render = function() {
                 attrs: { type: "submit" },
                 on: { click: _vm.confirm }
               },
-              [_vm._v("\n        プロフィール追加\n      ")]
+              [_vm._v("\n        投稿！\n      ")]
             )
           ]),
           _vm._v(" "),
@@ -46826,7 +46827,15 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "header" }, [
-      _c("h2", [_vm._v("プロフィールを確認する")])
+      _c("h2", [_vm._v("画像を投稿する")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "header" }, [
+      _c("h2", [_vm._v("投稿画像を確認する")])
     ])
   }
 ]
@@ -47931,45 +47940,27 @@ var render = function() {
                         var errors = ref.errors
                         return [
                           _c("div", { staticClass: "input-group mb-1" }, [
-                            _c("div", { staticClass: "custom-file" }, [
-                              _c("input", {
-                                ref: "file",
-                                staticClass: "custom-file-input",
-                                attrs: {
-                                  type: "file",
-                                  id: "customFile",
-                                  accept: ".png, .jpg, .svg"
-                                },
-                                on: { change: _vm.uploadfile }
-                              }),
+                            _c("div", { staticClass: "input-group" }, [
+                              _c("label", { staticClass: "input-group-btn" }, [
+                                _c("span", { staticClass: "btn btn-primary" }, [
+                                  _vm._v("\n                  画像選択"),
+                                  _c("input", {
+                                    ref: "file",
+                                    staticStyle: { display: "none" },
+                                    attrs: {
+                                      type: "file",
+                                      name: "file",
+                                      accept: ".png, .jpg, .svg"
+                                    },
+                                    on: { change: _vm.uploadfile }
+                                  })
+                                ])
+                              ]),
                               _vm._v(" "),
-                              _c(
-                                "label",
-                                {
-                                  staticClass: "custom-file-label",
-                                  attrs: {
-                                    for: "customFile",
-                                    "data-browse": "参照"
-                                  }
-                                },
-                                [_vm._v("ファイル選択...")]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "input-group-append" }, [
-                              _c(
-                                "button",
-                                {
-                                  staticClass:
-                                    "btn btn-outline-secondary reset",
-                                  attrs: { type: "button" }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                取消\n              "
-                                  )
-                                ]
-                              )
+                              _c("input", {
+                                staticClass: "form-control",
+                                attrs: { type: "text", readonly: "" }
+                              })
                             ])
                           ]),
                           _vm._v(" "),
@@ -48025,8 +48016,8 @@ var render = function() {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.reviewData.city,
-                                      expression: "reviewData.city"
+                                      value: _vm.city,
+                                      expression: "city"
                                     }
                                   ],
                                   staticClass: "form-control",
@@ -48037,17 +48028,13 @@ var render = function() {
                                         ? "回答がありません"
                                         : _vm.reviewData.city
                                   },
-                                  domProps: { value: _vm.reviewData.city },
+                                  domProps: { value: _vm.city },
                                   on: {
                                     input: function($event) {
                                       if ($event.target.composing) {
                                         return
                                       }
-                                      _vm.$set(
-                                        _vm.reviewData,
-                                        "city",
-                                        $event.target.value
-                                      )
+                                      _vm.city = $event.target.value
                                     }
                                   }
                                 }),
@@ -48120,23 +48107,25 @@ var render = function() {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.reviewData.review,
-                                      expression: "reviewData.review"
+                                      value: _vm.review,
+                                      expression: "review"
                                     }
                                   ],
                                   staticClass: "form-control",
-                                  attrs: { rows: "3" },
-                                  domProps: { value: _vm.reviewData.review },
+                                  attrs: {
+                                    rows: "3",
+                                    placeholder:
+                                      _vm.reviewData.review == ""
+                                        ? "回答がありません"
+                                        : _vm.reviewData.review
+                                  },
+                                  domProps: { value: _vm.review },
                                   on: {
                                     input: function($event) {
                                       if ($event.target.composing) {
                                         return
                                       }
-                                      _vm.$set(
-                                        _vm.reviewData,
-                                        "review",
-                                        $event.target.value
-                                      )
+                                      _vm.review = $event.target.value
                                     }
                                   }
                                 }),

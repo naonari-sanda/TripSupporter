@@ -7,7 +7,7 @@ use App\Models\Review;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use App\Http\Requests\ReviewRequest;
-use App\Http\Requests\imageRequest;
+use App\Http\Requests\ImageRequest;
 
 class ReviewController extends Controller
 {
@@ -61,7 +61,7 @@ class ReviewController extends Controller
     }
 
     //画像アップロード
-    public function upload(imageRequest $request)
+    public function upload(ImageRequest $request)
     {
         if ($file = $request->imgpath) {
             $fileName = time() . '.' . $file->getClientOriginalName();
@@ -70,7 +70,7 @@ class ReviewController extends Controller
             $fileName = '';
         }
 
-        $check = Image::create(
+        Image::create(
             [
                 'user_id' => $request->user_id,
                 'country_id' => $request->country_id,
@@ -78,13 +78,15 @@ class ReviewController extends Controller
             ]
         );
 
-        if ($check->wasRecentlyCreated) {
-            $message = '画像を追加しました';
-        } else {
-            $message = '画像アップロードを失敗しました';
-        }
+        session()->flash('flash_message', '画像を追加しました');
+    }
 
-        session()->flash('flash_message', $message);
+    public function deleteImg(Request $request)
+    {
+        $img = Image::findOrFail($request->id);
+        $img->delete();
+
+        session()->flash('flash_message', '画像を削除しました');
 
         return back();
     }

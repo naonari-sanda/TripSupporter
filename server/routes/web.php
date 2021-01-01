@@ -42,7 +42,10 @@ Route::group(['middleware' => ['auth']], function () {
     // //プロフィール追加
     // Route::post('/user/create/profile', 'UserController@create');
 
+    //画像アップロード
     Route::post('/upload/img', 'ReviewController@upload');
+    //レビュー削除
+    Route::post('/delete/img', 'ReviewController@deleteImg')->name('img.delete');
 });
 
 

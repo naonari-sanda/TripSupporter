@@ -163,6 +163,12 @@ article {
     }
 }
 
+.img {
+    &:hover {
+        opacity: 0.6;
+    }
+}
+
 @media screen and (max-width:567px) {
 
     /*　画面サイズが567px以下の場合読み込む　*/

@@ -21,4 +21,9 @@ class Country extends Model
     {
         return $this->hasMany('App\Models\Like');
     }
+
+    public function images()
+    {
+        return $this->hasMany('App\Models\Image');
+    }
 }

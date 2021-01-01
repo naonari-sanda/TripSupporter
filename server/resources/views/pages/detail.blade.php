@@ -35,7 +35,7 @@
         <li @click="tabChange(1)" :class="{'active': isActive === 1}">プロフィール</li>
         <li @click="tabChange(2)" :class="{'active': isActive === 2}">レビュー</li>
         <li @click="tabChange(3)" :class="{'active': isActive === 3}">いいね</li>
-        <li @click="tabChange(4)" :class="{'active': isActive === 4}">写真</li>
+        <li @click="tabChange(4)" :class="{'active': isActive === 4}">フォト</li>
     </ul>
 
     <article v-if="isActive === 1" class="profile">
@@ -51,7 +51,7 @@
         @include('includes.detail.favorite')
     </article>
 
-    <article v-else-if="isActive === 4" class="favorite">
+    <article v-else-if="isActive === 4" class="phots">
         @include('includes.detail.phots')
     </article>
 
