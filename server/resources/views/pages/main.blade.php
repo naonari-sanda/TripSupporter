@@ -87,8 +87,14 @@
 </div>
 
 <hr class="featurette-divider" style="margin: 3rem 0;">
-
+@isset($information)
+<h3 class="text-center">{{ $information->information }}</h3>
+<hr class="featurette-divider" style="margin: 3rem 0;">
+@endisset
 <div class="container main">
+    @isset($message)
+    <h2 class="text-center text-primary font-weight-bold mb-5">{{$message}}</h2>
+    @endisset
     <div class="row">
 
         @foreach ($countries ?? '' as $country)

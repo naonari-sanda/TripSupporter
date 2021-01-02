@@ -11186,6 +11186,10 @@ footer .container ul .insta {
   background-color: #fff;
 }
 
+.mainvisual .bg {
+  height: 350px;
+}
+
 .mainvisual .text {
   padding: 40px 0;
 }
