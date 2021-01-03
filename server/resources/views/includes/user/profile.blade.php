@@ -33,13 +33,15 @@
         <th>プロフィール</th>
     </tr>
     <tr class="text" style="border-bottom: 1px solid #dee2e6;">
-        <td class="br">{{ optional($user->acount)->profile }}</td>
+        <td class="br">{!! nl2br(optional($user->acount)->profile) !!}</td>
 
     </tr>
 </table>
 
 @if(Auth::id() == $user->id and !empty($user->acount))
 <div class="button mt-4">
-    <button class="btn btn-primary">プロフィールを変更する</button>
+    <button class="btn btn-primary" @click="showProfileEdit">プロフィールを変更する</button>
 </div>
 @endif
+
+<acount-edit-component v-show="profileEditModal" @profile-child="closeProfileEdit" :user-id="{{ $user->id }}" :user-data="{{ $user->acount }}" />

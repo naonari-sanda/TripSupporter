@@ -19,7 +19,7 @@
         @endforeach
     </div>
 </div>
-
+@if(count($user->images) > 0)
 <hr>
 <div id="lightgallery ">
     <div class="row">
@@ -42,7 +42,7 @@
         @endforeach
     </div>
 </div>
-
+@endif
 
 
 @endif

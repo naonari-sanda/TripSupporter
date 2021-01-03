@@ -14,7 +14,7 @@
             </ul>
 
             <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto align-items-center">
                 <!-- Authentication Links -->
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="{{ route('user.list') }}">
@@ -34,15 +34,24 @@
                 @endif
                 @else
                 <li class=" nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark d-flex align-items-center font-weight-bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        @if(!empty(Auth::user()->acount->icon))
+                        <img class="cycle header-img" src="{{ asset('/storage/' . Auth::user()->acount->icon ) }}" alt="ユーザーアイコン" />
+                        @elseif(optional(Auth::user()->acount)->gender == "男性")
+                        <img class="cycle header-img img-thumbnail" src="{{ asset('/storage/men.png') }}" alt="男性アイコン" />
+                        @elseif(optional(Auth::user()->acount)->gender === "女性")
+                        <img class="cycle header-img img-thumbnail" src="{{ asset('/storage/women.png') }}" alt="女性アイコン" />
+                        @else
+                        <img class="cycle header-img img-thumbnail" src="{{ asset('/storage/none.png') }}" alt="女性アイコン" />
+                        @endif
                         {{ Auth::user()->name }}
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right bg-white" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-dark" href="{{ route('user', Auth::id()) }}">
+                        <a class="dropdown-item text-dark text-center" href="{{ route('user', Auth::id()) }}">
                             マイページ
                         </a>
-                        <a class="dropdown-item text-dark" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        <a class="dropdown-item text-dark text-center" href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>

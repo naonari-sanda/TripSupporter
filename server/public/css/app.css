@@ -11172,18 +11172,28 @@ footer .container ul .insta {
   color: #f66d9b;
 }
 
-.select:hover > .dropdown-menu {
+nav .select:hover > .dropdown-menu {
   display: block;
   transition: all 0.3s;
 }
 
-.delete::after {
+nav .delete::after {
   display: none;
 }
 
-.dropdown-item.active,
-.dropdown-item:active {
+nav .dropdown-item.active,
+nav .dropdown-item:active {
   background-color: #fff;
+}
+
+nav .header-img {
+  width: 33px;
+  height: 33px;
+  margin-right: 5px;
+}
+
+nav .dropdown-menu {
+  border: none;
 }
 
 .mainvisual .bg {
@@ -11195,7 +11205,7 @@ footer .container ul .insta {
 }
 
 .mainvisual #search {
-  background: rgba(2, 18, 44, 0.7);
+  background: rgba(2, 18, 44, 0.5);
   border-radius: 20px;
   padding: 1rem 0 2.5rem;
 }

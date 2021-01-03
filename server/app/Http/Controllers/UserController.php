@@ -28,6 +28,11 @@ class UserController extends Controller
         } else {
             $fileName = '';
         }
+        if (!isset($request->hobby)) {
+            $hobby = '回答なし';
+        } else {
+            $hobby = $request->hobby;
+        }
 
         $check = Acount::UpdateOrCreate(
             [
@@ -37,7 +42,7 @@ class UserController extends Controller
                 'gender' => $request->gender,
                 'age' => $request->age,
                 'profile' => $request->profile,
-                'hobby' => $request->hobby,
+                'hobby' => $hobby,
                 'icon' => $fileName
             ]
         );

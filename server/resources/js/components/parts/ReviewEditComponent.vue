@@ -183,10 +183,8 @@
                 <input
                   class="form-control"
                   type="text"
-                  v-model="city"
-                  :placeholder="
-                    reviewData.city == '' ? '回答がありません' : reviewData.city
-                  "
+                  v-model="reviewData.city"
+                  placeholder="お気に入りの都市"
                 />
 
                 <div class="alert alert-danger" v-show="errors[0]">
@@ -194,7 +192,7 @@
                 </div>
               </validation-provider>
               <div
-                v-if="errors.review"
+                v-if="errors.city"
                 class="error alert alert-danger text-center"
               >
                 {{ errors.review[0] }}
@@ -211,13 +209,9 @@
               >
                 <textarea
                   class="form-control"
-                  rows="3"
-                  :placeholder="
-                    reviewData.review == ''
-                      ? '回答がありません'
-                      : reviewData.review
-                  "
-                  v-model="review"
+                  rows="4"
+                  placeholder="レビュー"
+                  v-model="reviewData.review"
                 ></textarea>
 
                 <div class="alert alert-danger" v-show="errors[0]">
@@ -235,7 +229,7 @@
           <div class="">
             <button class="button" type="submit">
               <i class="spinner"></i>
-              <span class="state">投稿{{ reviewData.safe }}</span>
+              <span class="state">投稿</span>
             </button>
           </div>
         </ValidationObserver>
@@ -343,8 +337,8 @@ export default {
       formData.append("tourism", this.tourism);
       formData.append("food", this.food);
       formData.append("english", this.english);
-      formData.append("city", this.city);
-      formData.append("review", this.review);
+      formData.append("city", this.reviewData.city);
+      formData.append("review", this.reviewData.review);
       formData.append("imgpath", this.imgpath);
 
       const isValid = await this.$refs.observer.validate();
@@ -389,6 +383,7 @@ $primary: #2196f3;
 .wrapper-review {
   top: 0%;
   max-width: 360px;
+  width: 100%;
   background: #fff !important;
   position: relative;
 }

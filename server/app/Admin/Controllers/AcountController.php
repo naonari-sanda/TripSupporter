@@ -3,6 +3,8 @@
 namespace App\Admin\Controllers;
 
 use App\Models\Acount;
+use App\Models\User;
+
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -27,14 +29,15 @@ class AcountController extends AdminController
         $grid = new Grid(new Acount());
 
         $grid->column('id', __('Id'));
-        $grid->column('user_id', __('User id'));
+        $grid->column('user.name', __('Name'));
+        // $grid->column('user_id', __('User id'));
         $grid->column('gender', __('Gender'));
         $grid->column('age', __('Age'));
         $grid->column('profile', __('Profile'));
         $grid->column('hobby', __('Hobby'));
         $grid->column('icon', __('Icon'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        // $grid->column('created_at', __('Created at'));
+        // $grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }
@@ -56,8 +59,8 @@ class AcountController extends AdminController
         $show->field('profile', __('Profile'));
         $show->field('hobby', __('Hobby'));
         $show->field('icon', __('Icon'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
+        // $show->field('created_at', __('Created at'));
+        // $show->field('updated_at', __('Updated at'));
 
         return $show;
     }
@@ -71,6 +74,7 @@ class AcountController extends AdminController
     {
         $form = new Form(new Acount());
 
+        $form->number('user.name', __('User Name'));
         $form->number('user_id', __('User id'));
         $form->text('gender', __('Gender'));
         $form->text('age', __('Age'));

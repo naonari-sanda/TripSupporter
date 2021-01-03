@@ -31,7 +31,7 @@
     </tr>
     <tr>
         <th>入国制限<br>（コロナ）</th>
-        <td>{{ $country->covid }}</td>
+        <td>{!! nl2br(e($country->covid)) !!}</td>
     </tr>
     <tr>
         <th>詳細</th>

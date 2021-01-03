@@ -40,8 +40,7 @@ class UserController extends AdminController
         // $grid->column('remember_token', __('Remember token'));
         // $grid->column('created_at', __('Created at'));
         // $grid->column('updated_at', __('Updated at'));
-
-        $grid->column('acount.user_id',  __('user_id'));
+        // $grid->column('acount.user_id',  __('user_id'));
         $grid->column('acount.gender',  __('Gender'));
         $grid->column('acount.age',  __('Age'));
         $grid->column('acount.hobby',  __('Hobby'));

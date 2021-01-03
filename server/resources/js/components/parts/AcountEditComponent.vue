@@ -2,7 +2,7 @@
   <div id="overlay" @click="clickEvent">
     <div class="wrapper" @click="stopEvent" v-show="addModal">
       <div class="header">
-        <h2>プロフィールを追加する</h2>
+        <h2 class="mb-0">プロフィールを変更する</h2>
       </div>
       <hr />
       <div v-if="Object.keys(errors).length > 0">
@@ -24,7 +24,7 @@
             <select
               class="form-control"
               id="exampleFormControlSelect1"
-              v-model="age"
+              v-model="userData.age"
             >
               <option disabled value="">年齢</option>
               <option value="10代〜">10代〜</option>
@@ -134,7 +134,7 @@
             <input
               class="form-control"
               type="text"
-              v-model="hobby"
+              v-model="userData.hobby"
               placeholder="趣味"
             />
 
@@ -153,7 +153,7 @@
             <textarea
               class="form-control"
               rows="5"
-              v-model="profile"
+              v-model="userData.profile"
               placeholder="プロフィール欄"
             />
 
@@ -210,15 +210,11 @@
             <tbody>
               <tr>
                 <th scope="row">年齢</th>
-                <td>{{ age }}</td>
+                <td>{{ userData.age }}</td>
               </tr>
               <tr>
                 <th scope="row">性別</th>
                 <td>{{ gender }}</td>
-              </tr>
-              <tr>
-                <th scope="row">性別</th>
-                <td>{{ icon }}</td>
               </tr>
             </tbody>
           </table>
@@ -228,8 +224,8 @@
                 <th scope="row" style="white-space: nowrap">趣味</th>
               </tr>
               <tr>
-                <td v-if="hobby" class="pt-0" style="border-top: none">
-                  {{ hobby }}
+                <td v-if="userData.hobby" class="pt-0" style="border-top: none">
+                  {{ userData.hobby }}
                 </td>
               </tr>
             </tbody>
@@ -240,8 +236,12 @@
                 <th scope="row" style="white-space: nowrap">プロフィール</th>
               </tr>
               <tr>
-                <td v-if="profile" class="pt-0" style="border-top: none">
-                  {{ profile }}
+                <td
+                  v-if="userData.profile"
+                  class="pt-0"
+                  style="border-top: none"
+                >
+                  {{ userData.profile }}
                 </td>
               </tr>
             </tbody>
@@ -302,6 +302,9 @@ export default {
     userId: {
       type: Number,
     },
+    userData: {
+      type: String | Object,
+    },
   },
   methods: {
     clickEvent: function () {
@@ -339,9 +342,9 @@ export default {
       const formData = new FormData();
       formData.append("user_id", this.userId);
       formData.append("gender", this.gender);
-      formData.append("age", this.age);
-      formData.append("profile", this.profile);
-      formData.append("hobby", this.hobby);
+      formData.append("age", this.userData.age);
+      formData.append("profile", this.userData.profile);
+      formData.append("hobby", this.userData.hobby);
       formData.append("icon", this.icon);
 
       axios

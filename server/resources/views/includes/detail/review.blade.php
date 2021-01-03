@@ -8,11 +8,11 @@
 <div class="wrapper">
     <p class="text-dark d-flex align-items-center font-weight-bold mb-0" href="#">
 
-        @if(!empty($review->user->acounts->icon))
-        <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/' . $review->user->acounts->icon ) }}" alt="ユーザーアイコン" />
-        @elseif(optional($review->user->acounts)->gender == "男性")
+        @if(!empty($review->user->acount->icon))
+        <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/' . $review->user->acount->icon ) }}" alt="ユーザーアイコン" />
+        @elseif(optional($review->user->acount)->gender == "男性")
         <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/men.png') }}" alt="男性アイコン" />
-        @elseif(optional($review->user->acounts)->gender === "女性")
+        @elseif(optional($review->user->acount)->gender === "女性")
         <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/women.png') }}" alt="女性アイコン" />
         @else
         <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/none.png') }}" alt="女性アイコン" />

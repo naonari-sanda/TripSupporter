@@ -22,10 +22,10 @@ Route::post('/{id}/like', 'LikesController@like');
 Route::post('/{id}/unlike', 'LikesController@unlike');
 
 //アカウント情報追加
-Route::post('/user/create/profile', 'UserController@create');
+// Route::post('/user/create/profile', 'UserController@create');
 
 //画像アップロード
-// Route::post('/upload/img', 'ReviewController@upload');
+Route::post('/upload/img', 'ReviewController@upload');
 
 //ランキング
 Route::get('/area', 'CountryController@area');

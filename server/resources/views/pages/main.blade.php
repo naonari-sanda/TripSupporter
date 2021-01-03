@@ -42,7 +42,7 @@
                                 <label for="keyword">国名</label>
                                 <input id="keyword" type="text" name="keyword" class=" form-control" placeholder="入力てください...">
                             </div>
-                            <input type="submit" class="btn btn-primary" value="検索">
+                            <input type="submit" class="btn btn-primary px-4" value="検索">
                         </div>
                     </form>
                 </div>
@@ -87,11 +87,12 @@
 </div>
 
 <hr class="featurette-divider" style="margin: 3rem 0;">
-@isset($information)
-<h3 class="text-center">{{ $information->information }}</h3>
-<hr class="featurette-divider" style="margin: 3rem 0;">
-@endisset
+
 <div class="container main">
+    @isset($information)
+    <h3 class="text-center">{{ $information->information }}</h3>
+    <hr class="featurette-divider" style="margin: 3rem 0;">
+    @endisset
     @isset($message)
     <h3 class="text-center text-primary font-weight-bold mb-5">{{$message}}</h3>
     @endisset

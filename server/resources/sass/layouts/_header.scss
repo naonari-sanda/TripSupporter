@@ -1,14 +1,26 @@
-.select:hover>.dropdown-menu {
-    display: block;
-    transition: all .3s;
+nav {
+    .select:hover>.dropdown-menu {
+        display: block;
+        transition: all .3s;
 
-}
+    }
 
-.delete::after {
-    display: none;
-}
+    .delete::after {
+        display: none;
+    }
 
-.dropdown-item.active,
-.dropdown-item:active {
-    background-color: #fff;
+    .dropdown-item.active,
+    .dropdown-item:active {
+        background-color: #fff;
+    }
+
+    .header-img {
+        width: 33px;
+        height: 33px;
+        margin-right: 5px;
+    }
+
+    .dropdown-menu {
+        border: none;
+    }
 }

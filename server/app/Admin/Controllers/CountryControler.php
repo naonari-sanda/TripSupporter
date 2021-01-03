@@ -92,8 +92,8 @@ class CountryControler extends AdminController
         $show->field('covid', __('Covid'));
         $show->field('detail', __('Detail'));
         $show->field('comment', __('Comment'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
+        // $show->field('created_at', __('Created at'));
+        // $show->field('updated_at', __('Updated at'));
 
         return $show;
     }

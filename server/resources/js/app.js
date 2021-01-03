@@ -17,6 +17,7 @@ import ImgUploadComponent from './components/parts/ImgUploadComponent'
 import ReviewCreateComponent from './components/parts/ReviewCreateComponent'
 import ReviewEditComponent from './components/parts/ReviewEditComponent'
 import AcountComponent from './components/parts/AcountComponent'
+import AcountEditComponent from './components/parts/AcountEditComponent'
 import LikeComponent from './components/parts/LikeComponent'
 
 
@@ -33,6 +34,7 @@ const app = new Vue({
         guestModal: false,
         reviewModal: false,
         profileModal: false,
+        profileEditModal: false,
         imageModal: false,
         countryId: 0,
         countryName: "",
@@ -48,6 +50,7 @@ const app = new Vue({
         ReviewCreateComponent,
         ReviewEditComponent,
         AcountComponent,
+        AcountEditComponent,
         RankingComponent,
         ImgUploadComponent
     },
@@ -87,6 +90,14 @@ const app = new Vue({
         //プロフィールモーダルレビューを非表示
         closeProfile: function () {
             this.profileModal = false;
+        },
+        //プロフィールモーダルレビューを表示
+        showProfileEdit: function () {
+            this.profileEditModal = true;
+        },
+        //プロフィールモーダルレビューを非表示
+        closeProfileEdit: function () {
+            this.profileEditModal = false;
         },
         //画像モーダルレビューを表示
         showImage: function () {
