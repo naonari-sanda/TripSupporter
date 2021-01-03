@@ -21,19 +21,19 @@
             <td>
                 <a class="text-dark d-flex align-items-center font-weight-bold" href="{{ route('user', $like->user->id) }}">
 
-                    @if(!empty($like->user->acounts->icon))
-                    <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/' . $like->user->acounts->icon ) }}" alt="ユーザーアイコン" />
-                    @elseif(optional($like->user->acounts)->gender == "男性")
+                    @if(!empty($like->user->acount->icon))
+                    <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/' . $like->user->acount->icon ) }}" alt="ユーザーアイコン" />
+                    @elseif(optional($like->user->acount)->gender == "男性")
                     <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/men.png') }}" alt="男性アイコン" />
-                    @elseif(optional($like->user->acounts)->gender === "女性")
+                    @elseif(optional($like->user->acount)->gender === "女性")
                     <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/women.png') }}" alt="女性アイコン" />
                     @else
                     <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/none.png') }}" alt="女性アイコン" />
                     @endif
                     {{ $like->user->name }}</a>
             </td>
-            <td>{{ optional($like->user->acounts)->age ?? 'なし' }}</td>
-            <td>{{ optional($like->user->acounts)->gender ?? 'なし'  }}</td>
+            <td>{{ optional($like->user->acount)->age ?? 'なし' }}</td>
+            <td>{{ optional($like->user->acount)->gender ?? 'なし'  }}</td>
             <td>
                 <a href="{{ route('user', $like->user->id) }}" class="btn btn-primary">詳細</a>
             </td>

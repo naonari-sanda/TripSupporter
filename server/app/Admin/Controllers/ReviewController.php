@@ -3,6 +3,9 @@
 namespace App\Admin\Controllers;
 
 use App\Models\Review;
+use App\Models\Country;
+use App\Models\User;
+
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -27,8 +30,8 @@ class ReviewController extends AdminController
         $grid = new Grid(new Review());
 
         $grid->column('id', __('Id'));
-        $grid->column('user_id', __('User id'));
-        $grid->column('country_id', __('Country id'));
+        $grid->column('user.name', __('ユーザー'));
+        $grid->column('country.name', __('国名'));
         $grid->column('recommend', __('Recommend'));
         $grid->column('safe', __('Safe'));
         $grid->column('cost', __('Cost'));
@@ -39,8 +42,9 @@ class ReviewController extends AdminController
         $grid->column('city', __('City'));
         $grid->column('review', __('Review'));
         $grid->column('imgpath', __('Imgpath'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        // $grid->column('created_at', __('Created at'));
+        // $grid->column('updated_at', __('Updated at'));
+
 
         return $grid;
     }
@@ -56,8 +60,8 @@ class ReviewController extends AdminController
         $show = new Show(Review::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('user_id', __('User id'));
-        $show->field('country_id', __('Country id'));
+        $show->field('user.name', __('ユーザー'));
+        $show->field('country.name', __('国名'));
         $show->field('recommend', __('Recommend'));
         $show->field('safe', __('Safe'));
         $show->field('cost', __('Cost'));
@@ -68,8 +72,8 @@ class ReviewController extends AdminController
         $show->field('city', __('City'));
         $show->field('review', __('Review'));
         $show->field('imgpath', __('Imgpath'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
+        // $show->field('created_at', __('Created at'));
+        // $show->field('updated_at', __('Updated at'));
 
         return $show;
     }
@@ -83,8 +87,8 @@ class ReviewController extends AdminController
     {
         $form = new Form(new Review());
 
-        $form->number('user_id', __('User id'));
-        $form->number('country_id', __('Country id'));
+        $form->text('user.name', __('ユーザー'));
+        $form->text('country.name', __('国名'));
         $form->decimal('recommend', __('Recommend'));
         $form->number('safe', __('Safe'));
         $form->number('cost', __('Cost'));

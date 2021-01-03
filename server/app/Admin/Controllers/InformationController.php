@@ -26,7 +26,10 @@ class InformationController extends AdminController
     {
         $grid = new Grid(new Information());
 
-
+        $grid->column('id', __('Id'));
+        $grid->column('information', __('Information'));
+        $grid->column('created_at', __('Created at'));
+        $grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }
@@ -41,7 +44,10 @@ class InformationController extends AdminController
     {
         $show = new Show(Information::findOrFail($id));
 
-
+        $show->field('id', __('Id'));
+        $show->field('information', __('Information'));
+        $show->field('created_at', __('Created at'));
+        $show->field('updated_at', __('Updated at'));
 
         return $show;
     }
@@ -55,7 +61,7 @@ class InformationController extends AdminController
     {
         $form = new Form(new Information());
 
-
+        $form->textarea('information', __('Information'));
 
         return $form;
     }

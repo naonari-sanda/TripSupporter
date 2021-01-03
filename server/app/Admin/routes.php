@@ -19,4 +19,5 @@ Route::group([
     $router->resource('/images', ImageController::class);
     $router->resource('/likes', LikeController::class);
     $router->resource('/reviews', ReviewController::class);
+    $router->resource('/information', InformationController::class);
 });

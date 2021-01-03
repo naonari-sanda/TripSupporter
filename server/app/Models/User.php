@@ -62,7 +62,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Image');
     }
 
-    public function acounts()
+    public function acount()
     {
         return $this->hasOne('App\Models\Acount');
     }

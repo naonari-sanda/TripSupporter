@@ -1,9 +1,9 @@
 <h2 font-weight-bold>Profile</h2>
-@if(!empty($user->acounts->icon))
-<img class="img-thumbnail mb-4" src="{{ asset('/storage/' . $user->acounts->icon ) }}" alt="ユーザーアイコン" />
-@elseif(optional($user->acounts)->gender == "男性")
+@if(!empty($user->acount->icon))
+<img class="img-thumbnail mb-4" src="{{ asset('/storage/' . $user->acount->icon ) }}" alt="ユーザーアイコン" />
+@elseif(optional($user->acount)->gender == "男性")
 <img class="img-thumbnail mb-4" src="{{ asset('/storage/men.png') }}" alt="男性アイコン" />
-@elseif(optional($user->acounts)->gender === "女性")
+@elseif(optional($user->acount)->gender === "女性")
 <img class="img-thumbnail mb-4" src="{{ asset('/storage/women.png') }}" alt="女性アイコン" />
 @else
 <img class="img-thumbnail mb-4" src="{{ asset('/storage/none.png') }}" alt="女性アイコン" />
@@ -17,15 +17,15 @@
     </tr>
     <tr>
         <th>年齢</th>
-        <td>{{ optional($user->acounts)->age }}</td>
+        <td>{{ optional($user->acount)->age }}</td>
     </tr>
     <tr>
         <th>性別</th>
-        <td>{{ optional($user->acounts)->gender }}</td>
+        <td>{{ optional($user->acount)->gender }}</td>
     </tr>
     <tr>
         <th>趣味</th>
-        <td>{{ optional($user->acounts)->hobby }}</td>
+        <td>{{ optional($user->acount)->hobby }}</td>
     </tr>
 </table>
 <table class="table table-striped">
@@ -33,13 +33,13 @@
         <th>プロフィール</th>
     </tr>
     <tr class="text" style="border-bottom: 1px solid #dee2e6;">
-        <td class="br">{{ optional($user->acounts)->profile }}</td>
+        <td class="br">{{ optional($user->acount)->profile }}</td>
 
     </tr>
 </table>
 
-@if(Auth::id() == $user->id and !empty($user->acounts))
+@if(Auth::id() == $user->id and !empty($user->acount))
 <div class="button mt-4">
-    <button @click="showProfile" class="btn btn-primary">プロフィールを変更する</button>
+    <button class="btn btn-primary">プロフィールを変更する</button>
 </div>
 @endif

@@ -35,19 +35,19 @@
                     <td>
                         <a class="text-dark d-flex align-items-center font-weight-bold" href="{{ route('user', $user->id) }}">
 
-                            @if(!empty($user->acounts->icon))
-                            <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/' . $user->acounts->icon ) }}" alt="ユーザーアイコン" />
-                            @elseif(optional($user->acounts)->gender == "男性")
+                            @if(!empty($user->acount->icon))
+                            <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/' . $user->acount->icon ) }}" alt="ユーザーアイコン" />
+                            @elseif(optional($user->acount)->gender == "男性")
                             <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/men.png') }}" alt="男性アイコン" />
-                            @elseif(optional($user->acounts)->gender === "女性")
+                            @elseif(optional($user->acount)->gender === "女性")
                             <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/women.png') }}" alt="女性アイコン" />
                             @else
                             <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/none.png') }}" alt="女性アイコン" />
                             @endif
                             {{ $user->name }}</a>
                     </td>
-                    <td>{{ optional($user->acounts)->gender ?? '回答なし' }}</td>
-                    <td>{{ optional($user->acounts)->age ?? '回答なし' }}</td>
+                    <td>{{ optional($user->acount)->gender ?? '回答なし' }}</td>
+                    <td>{{ optional($user->acount)->age ?? '回答なし' }}</td>
                     <td>
                         <a href="{{ route('user', $user->id ) }}" class="btn btn-primary">詳細</a>
                     </td>
