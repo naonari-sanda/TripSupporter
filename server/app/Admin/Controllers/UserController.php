@@ -121,6 +121,7 @@ class UserController extends AdminController
             })->useTab();
         })->tab('いいね', function ($form) {
             $form->hasMany('likes', 'Likes', function (Form\NestedForm $nestedForm) {
+                $nestedForm->number('user_id', __('User_ID'));
                 $nestedForm->number('country_id', __('Country_ID'));
             });
         })->tab('画像', function ($form) {

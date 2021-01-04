@@ -44,7 +44,7 @@
                         @else
                         <img class="cycle header-img img-thumbnail" src="{{ asset('/storage/none.png') }}" alt="女性アイコン" />
                         @endif
-                        {{ Auth::user()->name }}
+                        {{ Auth::user()->name }}:{{ Auth::id() }}
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right bg-white" aria-labelledby="navbarDropdown">

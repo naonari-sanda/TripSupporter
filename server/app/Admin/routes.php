@@ -14,10 +14,10 @@ Route::group([
     $router->get('/', 'HomeController@index')->name('home');
 
     $router->resource('/users', UserController::class);
-    $router->resource('/countries', CountryControler::class);
     $router->resource('/acounts', AcountController::class);
-    $router->resource('/images', ImageController::class);
-    $router->resource('/likes', LikeController::class);
+    $router->resource('/countries', CountryControler::class);
     $router->resource('/reviews', ReviewController::class);
+    $router->resource('/likes', LikeController::class);
+    $router->resource('/images', ImageController::class);
     $router->resource('/information', InformationController::class);
 });

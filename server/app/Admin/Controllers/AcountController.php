@@ -80,7 +80,7 @@ class AcountController extends AdminController
         $form->text('age', __('Age'));
         $form->text('profile', __('Profile'));
         $form->text('hobby', __('Hobby'));
-        $form->image('icon', __('Icon'));
+        $form->text('icon', __('Icon'));
 
         return $form;
     }

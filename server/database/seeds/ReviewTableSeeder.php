@@ -13,7 +13,7 @@ class ReviewTableSeeder extends Seeder
     {
         DB::table('reviews')->insert([
             [
-                'user_id' => '30',
+                'user_id' => '2',
                 'country_id' => '1',
                 'recommend' => '3.6',
                 'safe' => '3',
@@ -31,7 +31,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '32',
+                'user_id' => '8',
                 'country_id' => '1',
                 'recommend' => '4.1',
                 'safe' => '4',
@@ -48,7 +48,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '33',
+                'user_id' => '3',
                 'country_id' => '2',
                 'recommend' => '4.3',
                 'safe' => '5',
@@ -65,7 +65,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '36',
+                'user_id' => '7',
                 'country_id' => '2',
                 'recommend' => '3.6',
                 'safe' => '3',
@@ -83,7 +83,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '31',
+                'user_id' => '4',
                 'country_id' => '3',
                 'recommend' => '4.0',
                 'safe' => '3',
@@ -99,7 +99,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '30',
+                'user_id' => '6',
                 'country_id' => '3',
                 'recommend' => '3.5',
                 'safe' => '4',
@@ -115,7 +115,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '35',
+                'user_id' => '5',
                 'country_id' => '4',
                 'recommend' => '3.5',
                 'safe' => '4',
@@ -132,7 +132,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '30',
+                'user_id' => '2',
                 'country_id' => '4',
                 'recommend' => '3.0',
                 'safe' => '3',
@@ -151,7 +151,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '33',
+                'user_id' => '8',
                 'country_id' => '5',
                 'recommend' => '5.2',
                 'safe' => '4',
@@ -168,7 +168,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '31',
+                'user_id' => '3',
                 'country_id' => '5',
                 'recommend' => '3.1',
                 'safe' => '3',
@@ -184,7 +184,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '35',
+                'user_id' => '7',
                 'country_id' => '6',
                 'recommend' => '3.5',
                 'safe' => '5',
@@ -200,7 +200,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '33',
+                'user_id' => '4',
                 'country_id' => '6',
                 'recommend' => '3.3',
                 'safe' => '5',
@@ -216,8 +216,43 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '36',
+                'user_id' => '6',
                 'country_id' => '7',
+                'recommend' => '3.1',
+                'safe' => '3',
+                'cost' => '3',
+                'fun' => '4',
+                'tourism' => '4',
+                'food' => '4',
+                'english' => '1',
+                'city' => '北京',
+                'review' => '中国ってはまる人とはまらない人に分かれる気がする。
+                でもある意味環境が日本とだいぶ違うから面白いとは思う。
+                個人的に一番面白いと思うのは格差。',
+                'imgpath' => '650x_10066255.jpg',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'user_id' => '5',
+                'country_id' => '7',
+                'recommend' => '3.1',
+                'safe' => '3',
+                'cost' => '3',
+                'fun' => '4',
+                'tourism' => '3',
+                'food' => '4',
+                'english' => '2',
+                'city' => '上海',
+                'review' => '初めて中国を旅行し上海を訪れたら高層ビル群にびっくりすると思う。
+                上海自体は観光名称はあってない様なものだけど、周辺に結構良い所がある。',
+                'imgpath' => '650x_10916389.jpg',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'user_id' => '2',
+                'country_id' => '8',
                 'recommend' => '3.5',
                 'safe' => '4.0',
                 'cost' => '3',
@@ -232,8 +267,8 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '34',
-                'country_id' => '7',
+                'user_id' => '8',
+                'country_id' => '8',
                 'recommend' => '2.6',
                 'safe' => '3',
                 'cost' => '3',
@@ -252,42 +287,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '35',
-                'country_id' => '8',
-                'recommend' => '3.1',
-                'safe' => '3',
-                'cost' => '3',
-                'fun' => '4',
-                'tourism' => '4',
-                'food' => '4',
-                'english' => '1',
-                'city' => '北京',
-                'review' => '中国ってはまる人とはまらない人に分かれる気がする。
-                でもある意味環境が日本とだいぶ違うから面白いとは思う。
-                個人的に一番面白いと思うのは格差。',
-                'imgpath' => '650x_10066255.jpg',
-                'created_at' => new DateTime(),
-                'updated_at' => new DateTime(),
-            ],
-            [
-                'user_id' => '31',
-                'country_id' => '8',
-                'recommend' => '3.1',
-                'safe' => '3',
-                'cost' => '3',
-                'fun' => '4',
-                'tourism' => '3',
-                'food' => '4',
-                'english' => '2',
-                'city' => '上海',
-                'review' => '初めて中国を旅行し上海を訪れたら高層ビル群にびっくりすると思う。
-                上海自体は観光名称はあってない様なものだけど、周辺に結構良い所がある。',
-                'imgpath' => '650x_10916389.jpg',
-                'created_at' => new DateTime(),
-                'updated_at' => new DateTime(),
-            ],
-            [
-                'user_id' => '34',
+                'user_id' => '3',
                 'country_id' => '9',
                 'recommend' => '3.6',
                 'safe' => '4',
@@ -304,7 +304,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '36',
+                'user_id' => '7',
                 'country_id' => '9',
                 'recommend' => '3.8',
                 'safe' => '3',
@@ -321,7 +321,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '33',
+                'user_id' => '4',
                 'country_id' => '10',
                 'recommend' => '3.1',
                 'safe' => '3',
@@ -337,7 +337,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '30',
+                'user_id' => '6',
                 'country_id' => '10',
                 'recommend' => '4.0',
                 'safe' => '3',
@@ -354,7 +354,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '32',
+                'user_id' => '5',
                 'country_id' => '11',
                 'recommend' => '3.0',
                 'safe' => '3',
@@ -370,7 +370,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '36',
+                'user_id' => '2',
                 'country_id' => '11',
                 'recommend' => '4.0',
                 'safe' => '5',
@@ -386,7 +386,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '32',
+                'user_id' => '8',
                 'country_id' => '12',
                 'recommend' => '3.3',
                 'safe' => '3',
@@ -403,7 +403,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '35',
+                'user_id' => '3',
                 'country_id' => '12',
                 'recommend' => '3.5',
                 'safe' => '3',
@@ -419,7 +419,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '34',
+                'user_id' => '7',
                 'country_id' => '13',
                 'recommend' => '3.5',
                 'safe' => '3',
@@ -437,7 +437,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '33',
+                'user_id' => '4',
                 'country_id' => '13',
                 'recommend' => '3.8',
                 'safe' => '4',
@@ -454,7 +454,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '35',
+                'user_id' => '6',
                 'country_id' => '14',
                 'recommend' => '3.6',
                 'safe' => '4',
@@ -471,7 +471,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '32',
+                'user_id' => '5',
                 'country_id' => '14',
                 'recommend' => '3.1',
                 'safe' => '4',
@@ -488,7 +488,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '31',
+                'user_id' => '2',
                 'country_id' => '15',
                 'recommend' => '3.8',
                 'safe' => '3',
@@ -505,7 +505,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '35',
+                'user_id' => '8',
                 'country_id' => '15',
                 'recommend' => '3.5',
                 'safe' => '3',
@@ -521,7 +521,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '30',
+                'user_id' => '3',
                 'country_id' => '16',
                 'recommend' => '4.1',
                 'safe' => '4',
@@ -537,7 +537,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '36',
+                'user_id' => '7',
                 'country_id' => '16',
                 'recommend' => '4.3',
                 'safe' => '3',
@@ -554,7 +554,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '35',
+                'user_id' => '4',
                 'country_id' => '17',
                 'recommend' => '3.5',
                 'safe' => '4',
@@ -570,7 +570,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '31',
+                'user_id' => '6',
                 'country_id' => '17',
                 'recommend' => '3.6',
                 'safe' => '4',
@@ -586,7 +586,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '32',
+                'user_id' => '5',
                 'country_id' => '18',
                 'recommend' => '3.5',
                 'safe' => '3',
@@ -602,7 +602,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '35',
+                'user_id' => '2',
                 'country_id' => '18',
                 'recommend' => '3.5',
                 'safe' => '2',
@@ -619,7 +619,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '33',
+                'user_id' => '8',
                 'country_id' => '19',
                 'recommend' => '3.8',
                 'safe' => '4',
@@ -635,7 +635,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '34',
+                'user_id' => '3',
                 'country_id' => '19',
                 'recommend' => '3.6',
                 'safe' => '3',
@@ -652,7 +652,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '31',
+                'user_id' => '7',
                 'country_id' => '20',
                 'recommend' => '4.0',
                 'safe' => '4',
@@ -668,7 +668,7 @@ class ReviewTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'user_id' => '34',
+                'user_id' => '4',
                 'country_id' => '20',
                 'recommend' => '4.0',
                 'safe' => '5',
