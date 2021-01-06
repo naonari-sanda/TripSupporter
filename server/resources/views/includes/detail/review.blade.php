@@ -7,7 +7,7 @@
 
 <div class="wrapper">
     @auth
-    <a class="text-dark d-flex align-items-center font-weight-bold mb-0" href="{{ route('user', $user->id) }}">
+    <a class="text-dark d-flex align-items-center font-weight-bold mb-0" href="{{ route('user', $review->user_id) }}">
 
         @if(!empty($review->user->acount->icon))
         <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/' . $review->user->acount->icon ) }}" alt="ユーザーアイコン" />

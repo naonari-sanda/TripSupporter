@@ -15,8 +15,8 @@ class LoginControllerTest extends TestCase
      *
      * @return void
      */
-    use DatabaseTransactions;
 
+    //ユーザー一覧ページログインチェック
     public function testUserList()
     {
         $user = factory(User::class)->create();
@@ -24,14 +24,12 @@ class LoginControllerTest extends TestCase
             ->actingAs($user)
             ->get(route('user.list'));
 
-        // $response = $this->get('/');
-
-        //ユーザー一覧ページログインチェック
         $response->assertStatus(200)
             ->assertViewIs('pages.user_list')
             ->assertSee('ユーザー');
     }
 
+    //ユーザー詳細ページチェック
     public function testUserDetail()
     {
         $user = factory(User::class)->create();
@@ -40,6 +38,45 @@ class LoginControllerTest extends TestCase
             ->get(route('user', ['id' => $user->id]));
 
         $response->assertStatus(200)
-            ->assertViewIs('pages.user');
+            ->assertViewIs('pages.user')
+            ->assertSee('マイページ');
+    }
+
+    //アカウントを作成し指定したページに遷移するかチェック
+    public function testCreateAcountTest()
+    {
+        $user = factory(User::class)->create();
+
+        $response = $this
+            ->actingAs($user)
+            ->from(route('user', ['id' => $user->id]))
+            ->post(route('create.acount'), [
+                'user_id' => $user->id,
+                'gender' => '男性',
+                'age' => '20代〜',
+                'profile' => 'test',
+                'hobby' => 'test',
+                'icon' => 'images.jpg'
+            ]);
+
+        $response
+            ->assertRedirect(route('user', ['id' => $user->id]));
+    }
+
+    //画像を作成し指定したページに遷移するかチェック
+    public function testCreateImgTest()
+    {
+        $user = factory(User::class)->create();
+
+        $response = $this
+            ->actingAs($user)
+            ->from(route('user', ['id' => $user->id]))
+            ->post(route('create.img'), [
+                'user_id' => $user->id,
+                'country_id' => 1,
+                'imgpath' => 'images.jpg'
+            ]);
+
+        $response->assertRedirect(route('user', ['id' => $user->id]));
     }
 }

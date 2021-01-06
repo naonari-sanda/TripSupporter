@@ -14,6 +14,7 @@ class DatabaseTest extends TestCase
      *
      * @return void
      */
+
     public function testDatabase()
     {
         $this->assertTrue(

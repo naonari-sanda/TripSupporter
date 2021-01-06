@@ -3,6 +3,7 @@ version: "3"
 volumes:
   db-store:
 services:
+  
   web:
     container_name: web
     build: ./docker
@@ -14,6 +15,7 @@ services:
     # dbコンテナが起動後にwebを起動する
     depends_on:
       - db
+      
   db:
     image: mysql:5.7
     container_name: mysql
@@ -31,7 +33,20 @@ services:
       - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
       - ./docker/db/sql:/docker-entrypoint-initdb.d
     ports:
-      - 3306:3306
+      - 3306:3306 
+
+  db-test:
+        image: mysql:5.7
+        container_name: db-mysql
+        environment:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: docker
+          MYSQL_USER: docker
+          MYSQL_PASSWORD: secret
+          TZ: 'Asia/Tokyo'
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+        ports:
+          - 3000:3306 
   phpmyadmin:
     container_name: phpmyadmin
     image: phpmyadmin/phpmyadmin
@@ -41,7 +56,8 @@ services:
       - PMA_USER=root
       - PMA_PASSWORD=root
     ports:
-      - 8080:80
+      - 8081:80
     # webコンテナが起動後にphpmyadminを起動する
     depends_on:
       - web
+

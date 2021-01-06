@@ -11,12 +11,20 @@ use App\Http\Requests\ProfileRequest;
 
 class UserController extends Controller
 {
-    //ログインユーザーぺージ表示
-    public function index()
+    //ユーザーページ表示
+    public function index(int $id)
     {
-        $user = Auth::user();
+        $user = User::findOrFail($id);
 
         return view('pages.user', compact('user'));
+    }
+
+    //ユーザー一覧表示
+    public function list()
+    {
+        $users = User::all();
+
+        return view('pages.user_list', compact('users'));
     }
 
     //ユーザーの詳細情報追加
@@ -54,22 +62,5 @@ class UserController extends Controller
         }
 
         session()->flash('flash_message', $message);
-    }
-
-    //ユーザー一覧表示
-    public function list()
-    {
-        $users = User::all();
-
-        return view('pages.user_list', compact('users'));
-    }
-
-
-    //ユーザーページ表示
-    public function user(int $id)
-    {
-        $user = User::findOrFail($id);
-
-        return view('pages.user', compact('user'));
     }
 }

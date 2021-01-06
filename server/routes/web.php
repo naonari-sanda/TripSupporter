@@ -32,10 +32,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/user', 'UserController@list')->name('user.list');
 
     //ユーザーページ一覧
-    Route::get('/user/{id}', 'UserController@user')->name('user');
+    Route::get('/user/{id}', 'UserController@index')->name('user');
 
     //レビュー送信
-    Route::post('/detail/create/review', 'ReviewController@createReview');
+    Route::post('/detail/create/review', 'ReviewController@createReview')->name('create.review');
 
     //レビュー削除
     Route::post('/review/delete', 'ReviewController@delete')->name('delete.review');
