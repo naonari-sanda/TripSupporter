@@ -12,7 +12,7 @@
         @if(Auth::id() == $review->user->id)
         <div class="btn-box d-flex">
             <button class="btn btn-success mr-1 mb-3" @click="showReview({{ $review->country_id }},{{ json_encode( $review->country->name ) }},{{ json_encode($review) }})">編集</button>
-            <form action="{{ route('review.delete') }}" method="post">
+            <form action="{{ route('delete.review') }}" method="post">
                 @csrf
                 <input type="hidden" name="id" value="{{ $review->id }}">
                 <input onclick="return confirm('{{ $review->country->name }} のレビューを削除してもよろしいですか？')" class="btn btn-danger  mb-3" type="submit" value="削除">

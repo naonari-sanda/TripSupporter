@@ -6,7 +6,8 @@
 @foreach($country->reviews as $review)
 
 <div class="wrapper">
-    <p class="text-dark d-flex align-items-center font-weight-bold mb-0" href="#">
+    @auth
+    <a class="text-dark d-flex align-items-center font-weight-bold mb-0" href="{{ route('user', $user->id) }}">
 
         @if(!empty($review->user->acount->icon))
         <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/' . $review->user->acount->icon ) }}" alt="ユーザーアイコン" />
@@ -17,7 +18,21 @@
         @else
         <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/none.png') }}" alt="女性アイコン" />
         @endif
-        {{ $review->user->name }}</p>
+        {{ $review->user->name }}</a>
+    @else
+    <a class="text-dark d-flex align-items-center font-weight-bold mb-0" data-toggle="modal" data-target="#guestModal">
+
+        @if(!empty($review->user->acount->icon))
+        <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/' . $review->user->acount->icon ) }}" alt="ユーザーアイコン" />
+        @elseif(optional($review->user->acount)->gender == "男性")
+        <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/men.png') }}" alt="男性アイコン" />
+        @elseif(optional($review->user->acount)->gender === "女性")
+        <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/women.png') }}" alt="女性アイコン" />
+        @else
+        <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/none.png') }}" alt="女性アイコン" />
+        @endif
+        {{ $review->user->name }}</a>
+    @endauth
     <p class="mt-1 ml-1 mb-0">{{ $review->updated_at->format('Y年m月d日') }}に投稿しました。</p>
 
     <div class="star d-flex align-items-center ml-1 mb-2">

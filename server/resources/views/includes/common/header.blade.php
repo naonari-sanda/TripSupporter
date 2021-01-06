@@ -17,9 +17,16 @@
             <ul class="navbar-nav ml-auto align-items-center">
                 <!-- Authentication Links -->
                 <li class="nav-item">
+                    @auth
                     <a class="nav-link text-dark" href="{{ route('user.list') }}">
                         ユーザー一覧
-                    </a> </li>
+                    </a>
+                    @else
+                    <a class="nav-link text-dark" data-toggle="modal" data-target="#guestModal">
+                        ユーザー一覧
+                    </a>
+                    @endauth
+                </li>
                 <li class="nav-item">
                     <a href="{{ route('ranking') }}" class="nav-link text-dark">ランキング</a>
                 </li>
@@ -44,7 +51,7 @@
                         @else
                         <img class="cycle header-img img-thumbnail" src="{{ asset('/storage/none.png') }}" alt="女性アイコン" />
                         @endif
-                        {{ Auth::user()->name }}:{{ Auth::id() }}
+                        {{ Auth::user()->name }}
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right bg-white" aria-labelledby="navbarDropdown">

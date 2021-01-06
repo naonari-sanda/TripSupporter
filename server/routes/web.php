@@ -25,27 +25,28 @@ Route::get('/serch', 'CountryController@serch')->name('serch');
 //ランキング
 Route::get('/ranking', 'CountryController@ranking')->name('ranking');
 
-//ユーザー一覧
-Route::get('/user', 'UserController@list')->name('user.list');
-
-//ユーザーページ一覧
-Route::get('/user/{id}', 'UserController@user')->name('user');
-
 
 Route::group(['middleware' => ['auth']], function () {
+
+    //ユーザー一覧
+    Route::get('/user', 'UserController@list')->name('user.list');
+
+    //ユーザーページ一覧
+    Route::get('/user/{id}', 'UserController@user')->name('user');
+
     //レビュー送信
     Route::post('/detail/create/review', 'ReviewController@createReview');
 
     //レビュー削除
-    Route::post('/review/delete', 'ReviewController@delete')->name('review.delete');
+    Route::post('/review/delete', 'ReviewController@delete')->name('delete.review');
 
     // //プロフィール追加
-    Route::post('/user/create/profile', 'UserController@create');
+    Route::post('/user/create/profile', 'UserController@create')->name('create.acount');
 
     //画像アップロード
-    Route::post('/upload/img', 'ReviewController@upload');
+    Route::post('/upload/img', 'ReviewController@upload')->name('create.img');
     //画像削除
-    Route::post('/delete/img', 'ReviewController@deleteImg')->name('img.delete');
+    Route::post('/delete/img', 'ReviewController@deleteImg')->name('delete.img');
 });
 
 
