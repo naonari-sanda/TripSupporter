@@ -216,24 +216,18 @@
                 <th scope="row">性別</th>
                 <td>{{ gender }}</td>
               </tr>
-            </tbody>
-          </table>
-          <table class="table mb-0">
-            <tbody>
               <tr>
-                <th scope="row" style="white-space: nowrap">趣味</th>
-              </tr>
-              <tr>
-                <td v-if="userData.hobby" class="pt-0" style="border-top: none">
-                  {{ userData.hobby }}
-                </td>
+                <th scope="row">趣味</th>
+                <td>{{ userData.hobby }}</td>
               </tr>
             </tbody>
           </table>
           <table class="table">
             <tbody>
               <tr>
-                <th scope="row" style="white-space: nowrap">プロフィール</th>
+                <th class="pb-0" scope="row" style="white-space: nowrap">
+                  プロフィール
+                </th>
               </tr>
               <tr>
                 <td

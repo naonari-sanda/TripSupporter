@@ -46,7 +46,7 @@ services:
           TZ: 'Asia/Tokyo'
         command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
         ports:
-          - 3000:3306 
+          - 3001:3306 
   phpmyadmin:
     container_name: phpmyadmin
     image: phpmyadmin/phpmyadmin

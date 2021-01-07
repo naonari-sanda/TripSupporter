@@ -217,27 +217,17 @@
                 <td>{{ gender }}</td>
               </tr>
               <tr>
-                <th scope="row">性別</th>
-                <td>{{ icon }}</td>
-              </tr>
-            </tbody>
-          </table>
-          <table class="table mb-0">
-            <tbody>
-              <tr>
-                <th scope="row" style="white-space: nowrap">趣味</th>
-              </tr>
-              <tr>
-                <td v-if="hobby" class="pt-0" style="border-top: none">
-                  {{ hobby }}
-                </td>
+                <th scope="row">趣味</th>
+                <td>{{ hobby }}</td>
               </tr>
             </tbody>
           </table>
           <table class="table">
             <tbody>
               <tr>
-                <th scope="row" style="white-space: nowrap">プロフィール</th>
+                <th class="pb-0" scope="row" style="white-space: nowrap">
+                  プロフィール
+                </th>
               </tr>
               <tr>
                 <td v-if="profile" class="pt-0" style="border-top: none">

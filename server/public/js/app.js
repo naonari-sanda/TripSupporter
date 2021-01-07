@@ -2908,16 +2908,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])("required", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_2__["required"]), {}, {
@@ -3051,12 +3041,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -46645,41 +46629,16 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("tr", [
-                    _c("th", { attrs: { scope: "row" } }, [_vm._v("性別")]),
+                    _c("th", { attrs: { scope: "row" } }, [_vm._v("趣味")]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(_vm.icon))])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("table", { staticClass: "table mb-0" }, [
-                _c("tbody", [
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _vm.hobby
-                      ? _c(
-                          "td",
-                          {
-                            staticClass: "pt-0",
-                            staticStyle: { "border-top": "none" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                " +
-                                _vm._s(_vm.hobby) +
-                                "\n              "
-                            )
-                          ]
-                        )
-                      : _vm._e()
+                    _c("td", [_vm._v(_vm._s(_vm.hobby))])
                   ])
                 ])
               ]),
               _vm._v(" "),
               _c("table", { staticClass: "table" }, [
                 _c("tbody", [
-                  _vm._m(3),
+                  _vm._m(2),
                   _vm._v(" "),
                   _c("tr", [
                     _vm.profile
@@ -46753,20 +46712,12 @@ var staticRenderFns = [
     return _c("tr", [
       _c(
         "th",
-        { staticStyle: { "white-space": "nowrap" }, attrs: { scope: "row" } },
-        [_vm._v("趣味")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c(
-        "th",
-        { staticStyle: { "white-space": "nowrap" }, attrs: { scope: "row" } },
-        [_vm._v("プロフィール")]
+        {
+          staticClass: "pb-0",
+          staticStyle: { "white-space": "nowrap" },
+          attrs: { scope: "row" }
+        },
+        [_vm._v("\n                プロフィール\n              ")]
       )
     ])
   }
@@ -47476,38 +47427,19 @@ var render = function() {
                     _c("th", { attrs: { scope: "row" } }, [_vm._v("性別")]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(_vm.gender))])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("table", { staticClass: "table mb-0" }, [
-                _c("tbody", [
-                  _vm._m(2),
+                  ]),
                   _vm._v(" "),
                   _c("tr", [
-                    _vm.userData.hobby
-                      ? _c(
-                          "td",
-                          {
-                            staticClass: "pt-0",
-                            staticStyle: { "border-top": "none" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                " +
-                                _vm._s(_vm.userData.hobby) +
-                                "\n              "
-                            )
-                          ]
-                        )
-                      : _vm._e()
+                    _c("th", { attrs: { scope: "row" } }, [_vm._v("趣味")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(_vm.userData.hobby))])
                   ])
                 ])
               ]),
               _vm._v(" "),
               _c("table", { staticClass: "table" }, [
                 _c("tbody", [
-                  _vm._m(3),
+                  _vm._m(2),
                   _vm._v(" "),
                   _c("tr", [
                     _vm.userData.profile
@@ -47581,20 +47513,12 @@ var staticRenderFns = [
     return _c("tr", [
       _c(
         "th",
-        { staticStyle: { "white-space": "nowrap" }, attrs: { scope: "row" } },
-        [_vm._v("趣味")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c(
-        "th",
-        { staticStyle: { "white-space": "nowrap" }, attrs: { scope: "row" } },
-        [_vm._v("プロフィール")]
+        {
+          staticClass: "pb-0",
+          staticStyle: { "white-space": "nowrap" },
+          attrs: { scope: "row" }
+        },
+        [_vm._v("\n                プロフィール\n              ")]
       )
     ])
   }
