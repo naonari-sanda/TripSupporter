@@ -17,6 +17,8 @@ class LoginControllerTest extends TestCase
      */
 
     //ユーザー一覧ページログインチェック
+
+
     public function testUserList()
     {
         $user = factory(User::class)->create();
