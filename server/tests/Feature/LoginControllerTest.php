@@ -3,7 +3,9 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use App\Models\Country;
+use App\Models\Image;
+use App\Models\Review;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -15,32 +17,34 @@ class LoginControllerTest extends TestCase
      *
      * @return void
      */
+    use RefreshDatabase;
+
 
     //ユーザー一覧ページログインチェック
-
-
-    public function testUserList()
+    public function testUserListPageShow()
     {
         $user = factory(User::class)->create();
         $response = $this
             ->actingAs($user)
             ->get(route('user.list'));
 
-        $response->assertStatus(200)
+        $response->assertOk()
             ->assertViewIs('pages.user_list')
+            ->assertViewHas('users')
             ->assertSee('ユーザー');
     }
 
     //ユーザー詳細ページチェック
-    public function testUserDetail()
+    public function testUserDetailpageShow()
     {
         $user = factory(User::class)->create();
         $response = $this
             ->actingAs($user)
             ->get(route('user', ['id' => $user->id]));
 
-        $response->assertStatus(200)
+        $response->assertOk()
             ->assertViewIs('pages.user')
+            ->assertViewHas('user')
             ->assertSee('マイページ');
     }
 
@@ -52,16 +56,10 @@ class LoginControllerTest extends TestCase
         $response = $this
             ->actingAs($user)
             ->from(route('user', ['id' => $user->id]))
-            ->post(route('create.acount'), [
-                'user_id' => $user->id,
-                'gender' => '男性',
-                'age' => '20代〜',
-                'profile' => 'test',
-                'hobby' => 'test',
-                'icon' => 'images.jpg'
-            ]);
+            ->post(route('create.acount'));
 
         $response
+            ->assertStatus(302)
             ->assertRedirect(route('user', ['id' => $user->id]));
     }
 
@@ -73,12 +71,52 @@ class LoginControllerTest extends TestCase
         $response = $this
             ->actingAs($user)
             ->from(route('user', ['id' => $user->id]))
-            ->post(route('create.img'), [
-                'user_id' => $user->id,
-                'country_id' => 1,
-                'imgpath' => 'images.jpg'
-            ]);
+            ->post(route('create.img'));
 
-        $response->assertRedirect(route('user', ['id' => $user->id]));
+        $response
+            ->assertStatus(302)
+            ->assertRedirect(route('user', ['id' => $user->id]));
+    }
+
+    //画像の削除チェック
+    public function testDeleteImgTest()
+    {
+        $user = factory(User::class)->create();
+
+
+        $response = $this
+            ->from(route('user', ['id' => $user->id]))
+            ->post(route('delete.img'));
+
+        $response
+            ->assertStatus(302);
+    }
+
+    //レビュー削除し指定したページに遷移するかチェック
+    public function testCreateReviewTest()
+    {
+        $country = factory(Country::class)->create();
+        $user = factory(User::class)->create();
+
+        $response = $this
+            ->actingAs($user)
+            ->from(route('detail', ['id' => $country->id]))
+            ->post(route('create.review'));
+
+        $response
+            ->assertStatus(302)
+            ->assertRedirect(route('detail', ['id' => $country->id]));
+    }
+
+    public function testDeleteReviewTest()
+    {
+        $user = factory(User::class)->create();
+
+        $response = $this
+            ->from(route('user', ['id' => $user->id]))
+            ->post(route('delete.review'));
+
+        $response
+            ->assertStatus(302);
     }
 }

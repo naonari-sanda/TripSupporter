@@ -38,13 +38,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/detail/create/review', 'ReviewController@createReview')->name('create.review');
 
     //レビュー削除
-    Route::post('/review/delete', 'ReviewController@delete')->name('delete.review');
+    Route::post('/delete/review', 'ReviewController@delete')->name('delete.review');
 
     // //プロフィール追加
     Route::post('/user/create/profile', 'UserController@create')->name('create.acount');
 
     //画像アップロード
     Route::post('/upload/img', 'ReviewController@upload')->name('create.img');
+
     //画像削除
     Route::post('/delete/img', 'ReviewController@deleteImg')->name('delete.img');
 });

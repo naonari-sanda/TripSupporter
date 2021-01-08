@@ -91,6 +91,8 @@ class CountryController extends Controller
         if (!empty($keyword)) {
             $query->where('name', 'like', '%' . $keyword . '%');
             $message = $keyword;
+        } else {
+            $message = '';
         }
 
         $countries = $query->orderBy('created_at', 'desc')->paginate(12);

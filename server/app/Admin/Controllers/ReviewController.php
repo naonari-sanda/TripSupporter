@@ -87,7 +87,7 @@ class ReviewController extends AdminController
     {
         $form = new Form(new Review());
 
-        $form->text('user.name', __('ユーザー'));
+        $form->text('user.id', __('User_id'));
         $form->text('country.name', __('国名'));
         $form->decimal('recommend', __('Recommend'));
         $form->number('safe', __('Safe'));

@@ -21,9 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/{id}/like', 'LikesController@like');
 Route::post('/{id}/unlike', 'LikesController@unlike');
 
-//画像アップロード
-Route::post('/upload/img', 'ReviewController@upload');
-
 //ランキング
 Route::get('/area', 'CountryController@area');
 Route::get('/population', 'CountryController@population');
