@@ -25,9 +25,9 @@ class CreateCountriesTable extends Migration
             $table->integer('gdp')->comment('GDP');
             $table->integer('happiness')->comment('幸福度');
             $table->string('map')->nullable()->comment('地図');
-            $table->string('covid')->nullable()->comment('コロナ情報');
-            $table->string('detail', 600)->comment('詳細');
-            $table->string('comment')->nullable()->comment('コメント');
+            $table->string('covid', 250)->nullable()->comment('コロナ情報');
+            $table->string('detail', 500)->comment('詳細');
+            $table->string('comment', 20)->nullable()->comment('コメント');
             $table->timestamps();
         });
     }

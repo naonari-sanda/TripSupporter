@@ -46457,7 +46457,7 @@ var render = function() {
                 { staticClass: "fill mb-4" },
                 [
                   _c("validation-provider", {
-                    attrs: { name: "プロフィール", rules: "required|max:150" },
+                    attrs: { name: "プロフィール", rules: "required|max:300" },
                     scopedSlots: _vm._u([
                       {
                         key: "default",
@@ -47254,7 +47254,7 @@ var render = function() {
                 { staticClass: "fill mb-4" },
                 [
                   _c("validation-provider", {
-                    attrs: { name: "プロフィール", rules: "required|max:150" },
+                    attrs: { name: "プロフィール", rules: "required|max:300" },
                     scopedSlots: _vm._u([
                       {
                         key: "default",

@@ -24,16 +24,18 @@ class ImageRequest extends FormRequest
     public function rules()
     {
         return [
+            'country_id' => 'required',
+            'user_id' => 'required',
             'imgpath' => 'image|required',
-            'country_id' => 'required'
         ];
     }
 
     public function attributes()
     {
         return [
+            'user_id' => 'ユーザーID',
+            'country_id' => '国名',
             'imgpath' => '画像',
-            'country_id' => '国名'
         ];
     }
 }

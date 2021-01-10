@@ -18,7 +18,7 @@ class CreateAcountsTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->string('gender', 3)->comment('性別');
             $table->string('age', 6)->comment('年齢');
-            $table->string('profile', 300)->nullable()->comment('プロフィール');
+            $table->string('profile', 200)->nullable()->comment('プロフィール');
             $table->string('hobby', 50)->nullable()->comment('趣味');
             $table->string('icon')->nullable()->comment('アイコン');
             $table->timestamps();

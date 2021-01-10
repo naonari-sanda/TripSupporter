@@ -147,7 +147,7 @@
         <div class="fill mb-4">
           <validation-provider
             name="プロフィール"
-            rules="required|max:150"
+            rules="required|max:300"
             v-slot="{ errors }"
           >
             <textarea

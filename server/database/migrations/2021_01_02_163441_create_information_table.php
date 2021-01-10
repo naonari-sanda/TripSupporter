@@ -15,7 +15,7 @@ class CreateInformationTable extends Migration
     {
         Schema::create('information', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('information');
+            $table->text('information', 50);
             $table->timestamps();
         });
     }

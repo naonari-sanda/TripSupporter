@@ -26,9 +26,9 @@ class ProfileRequest extends FormRequest
         return [
             // 'user_id' => 'required|integer|unique:acounts,user_id',
             'user_id' => 'required|integer',
-            'gender' => 'required|string',
-            'age' => 'required|string',
-            'profile' => 'nullable|string|max:150',
+            'gender' => 'required|string|max:3',
+            'age' => 'required|string|max:6',
+            'profile' => 'nullable|string|max:300',
             'hobby' => 'nullable|string|max:50',
             'icon' => 'nullable|image',
         ];

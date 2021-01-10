@@ -24,6 +24,12 @@ class LoginControllerTest extends TestCase
     public function testUserListPageShow()
     {
         $user = factory(User::class)->create();
+
+        $response = $this
+            ->get(route('user.list'));
+        $response->assertStatus(302)
+            ->assertRedirect('/login');
+
         $response = $this
             ->actingAs($user)
             ->get(route('user.list'));
@@ -35,9 +41,15 @@ class LoginControllerTest extends TestCase
     }
 
     //ユーザー詳細ページチェック
-    public function testUserDetailpageShow()
+    public function testUserDetailPageShow()
     {
         $user = factory(User::class)->create();
+
+        $response = $this
+            ->get(route('user', ['id' => $user->id]));
+        $response->assertStatus(302)
+            ->assertRedirect('/login');
+
         $response = $this
             ->actingAs($user)
             ->get(route('user', ['id' => $user->id]));
@@ -83,7 +95,6 @@ class LoginControllerTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-
         $response = $this
             ->from(route('user', ['id' => $user->id]))
             ->post(route('delete.img'));
@@ -92,7 +103,7 @@ class LoginControllerTest extends TestCase
             ->assertStatus(302);
     }
 
-    //レビュー削除し指定したページに遷移するかチェック
+    //レビューを作成しページに遷移するかチェック
     public function testCreateReviewTest()
     {
         $country = factory(Country::class)->create();
@@ -103,11 +114,13 @@ class LoginControllerTest extends TestCase
             ->from(route('detail', ['id' => $country->id]))
             ->post(route('create.review'));
 
+
         $response
             ->assertStatus(302)
             ->assertRedirect(route('detail', ['id' => $country->id]));
     }
 
+    //レビュー削除し指定したページに遷移するかチェック
     public function testDeleteReviewTest()
     {
         $user = factory(User::class)->create();

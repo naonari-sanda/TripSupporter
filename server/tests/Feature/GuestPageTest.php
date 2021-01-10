@@ -35,6 +35,9 @@ class PageChangeTest extends TestCase
     {
         $country = factory(Country::class)->create();
 
+        $response = $this->get(route('detail', ['id' => 0]));
+        $response->assertStatus(404);
+
         $response = $this->get(route('detail', ['id' => $country->id]));
 
         $response->assertOk()
@@ -73,7 +76,7 @@ class PageChangeTest extends TestCase
     {
         $response = $this->get('/api/area');
 
-        $response->assertStatus(200);
+        $response->assertOk();
     }
 
     //ランキングページAPI遷移テスト
@@ -81,7 +84,7 @@ class PageChangeTest extends TestCase
     {
         $response = $this->get('/api/population');
 
-        $response->assertStatus(200);
+        $response->assertOk();
     }
 
     //ランキングページAPI遷移テスト
@@ -89,7 +92,7 @@ class PageChangeTest extends TestCase
     {
         $response = $this->get('/api/gdp');
 
-        $response->assertStatus(200);
+        $response->assertOk();
     }
 
     //ランキングページAPI遷移テスト
@@ -97,6 +100,13 @@ class PageChangeTest extends TestCase
     {
         $response = $this->get('/api/happiness');
 
-        $response->assertStatus(200);
+        $response->assertOk();
+    }
+
+    public function testNothingUrlShow()
+    {
+        $response = $this->get('/nothing_url');
+
+        $response->assertStatus(404);
     }
 }
