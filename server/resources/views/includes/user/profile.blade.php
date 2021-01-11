@@ -38,10 +38,16 @@
     </tr>
 </table>
 
+<div class=" mt-4">
 @if(Auth::id() == $user->id and !empty($user->acount))
-<div class="button mt-4">
+<div class="button mr-3 mb-4">
     <button class="btn btn-primary" @click="showProfileEdit">プロフィールを変更する</button>
 </div>
+<form action="{{ route('delete.acount') }}" method="post">
+                @csrf
+                <input type="hidden" name="id" value="{{ $user->acount->id }}">
+                <input onclick="return confirm('{{ $user->name }} さんのプロフィールを削除してもよろしいですか？')" class="btn btn-danger  mb-3" type="submit" value="プロフィールを削除する">
+            </form>
 @endif
-
+</div>
 <acount-edit-component v-show="profileEditModal" @profile-child="closeProfileEdit" :user-id="{{ $user->id }}" :user-data="{{ $user->acount ?? '[]' }}" />

@@ -1,0 +1,100 @@
+<?php
+
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Tests\TestCase;
+use App\Models\Image;
+use App\Models\User;
+
+class ImageControllerTest extends TestCase
+{
+    /**
+     *
+     * @return void
+     */
+
+    use RefreshDatabase;
+
+    public function testImageShowFromUserPage()
+    {
+        $file = UploadedFile::fake()->image('test.jpg');
+
+        $user = factory(User::class)->create();
+        $image = factory(Image::class)->create([
+            'user_id' => $user->id,
+            'imgpath' => $file
+        ]);
+
+        $response = $this
+            ->get(route('user', ['id' => $user->id]));
+        $response->assertStatus(302)
+            ->assertRedirect('/login');
+
+        $response = $this
+            ->actingAs($user)
+            ->get(route('user', ['id' => $user->id]));
+
+        $response->assertOk()
+            ->assertViewIs('pages.user')
+            ->assertViewHas('user')
+            ->assertSee($image->imgpath);
+    }
+
+    public function testImageCreate()
+    {
+        $this->withoutExceptionHandling();
+
+        Storage::Fake('local');
+        $file = UploadedFile::fake()->image('test.jpg');
+
+        $user = factory(User::class)->create();
+        $image = factory(Image::class)->make([
+            'user_id' => $user->id,
+            'imgpath' => $file
+        ]);
+
+        $this->assertDatabaseMissing('images',  ['user_id' => $image->user_id]);
+
+        $response = $this
+            ->actingAs($user)
+            ->from(route('user', ['id' => $user->id]))
+            ->post(route('create.img'), $image->toArray());
+
+        $response->assertOk();
+        $this->assertDatabaseHas('images', ['user_id' => $image->user_id]);
+
+        $fileName = 'public/' . time() . '.' . $file->getClientOriginalName();
+
+        Storage::disk('local')->assertMissing('test.jpg');
+        Storage::disk('local')->assertExists($fileName);
+    }
+
+    public function testImageDelete()
+    {
+        $this->withoutExceptionHandling();
+
+        Storage::Fake('local');
+        $file = UploadedFile::fake()->image('test.jpg');
+        $fileName = 'public/' . time() . '.' . $file->getClientOriginalName();
+        $user = factory(User::class)->create();
+        $image = factory(Image::class)->create([
+            'user_id' => $user->id,
+            'imgpath' => $fileName
+        ]);
+
+        $this->assertDatabaseHas('images', ['user_id' => $image->user_id]);
+
+        $response = $this
+            ->actingAs($user)
+            ->from(route('user', ['id' => $user->id]))
+            ->post(route('delete.img'), $image->toArray());
+
+        $this->assertDatabaseMissing('images',  ['user_id' => $image->user_id]);
+
+        $response->assertStatus(302)
+            ->assertRedirect(route('user', ['id' => $user->id]));
+    }
+}

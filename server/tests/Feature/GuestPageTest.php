@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Country;
 
-class PageChangeTest extends TestCase
+class GuestPageTest extends TestCase
 {
     /**
      * A basic test example.

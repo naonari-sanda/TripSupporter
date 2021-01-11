@@ -53,9 +53,13 @@ class ReviewController extends Controller
     public function delete(Request $request)
     {
         $review = Review::findOrFail($request->id);
-        $review->delete();
+        $delete = $review->delete();
 
-        session()->flash('flash_message', 'レビューを削除しました');
+        if($delete > 0) {
+            session()->flash('flash_message', 'レビューを削除しました');
+        } else {
+            session()->flash('danger_message', '削除に失敗しました');
+        }
 
         return back();
     }
@@ -84,9 +88,13 @@ class ReviewController extends Controller
     public function deleteImg(Request $request)
     {
         $img = Image::findOrFail($request->id);
-        $img->delete();
+        $delete = $img->delete();
 
-        session()->flash('flash_message', '画像を削除しました');
+        if($delete > 0) {
+            session()->flash('flash_message', '画像を削除しました');
+        } else {
+            session()->flash('danger_message', '削除に失敗しました');
+        }
 
         return back();
     }

@@ -18,8 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 //お気に入り追加
-Route::post('/{id}/like', 'LikesController@like');
-Route::post('/{id}/unlike', 'LikesController@unlike');
+Route::post('/{id}/like', 'LikesController@like')->name('like');
+Route::post('/{id}/unlike', 'LikesController@unlike')->name('unlike');
 
 //ランキング
 Route::get('/area', 'CountryController@area');

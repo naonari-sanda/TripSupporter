@@ -9,7 +9,7 @@ use App\Models\Like;
 class LikesController extends Controller
 {
     //いいね追加
-    public function like(int $id, Request $request)
+    public function like($id, Request $request)
     {
         $like = Like::create([
             'user_id' => $request->user_id,

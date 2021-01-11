@@ -6,6 +6,7 @@ use App\Model;
 use App\Models\User;
 use App\Models\Country;
 use Faker\Generator as Faker;
+use Illuminate\Http\UploadedFile;
 
 $factory->define(App\Models\Review::class, function (Faker $faker) {
     return [
@@ -24,6 +25,6 @@ $factory->define(App\Models\Review::class, function (Faker $faker) {
         'english' => $faker->numberBetween(1, 5),
         'city' => $faker->text(10),
         'review' => $faker->text(10),
-        'imgpath' => $faker->text(10),
+        'imgpath' => UploadedFile::fake()->image('test.jpg'),
     ];
 });

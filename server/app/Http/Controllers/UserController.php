@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Acount;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Http\Requests\ProfileRequest;
+use App\Http\Requests\AcountRequest;
 
 class UserController extends Controller
 {
@@ -27,8 +27,8 @@ class UserController extends Controller
         return view('pages.user_list', compact('users'));
     }
 
-    //ユーザーの詳細情報追加
-    public function create(ProfileRequest $request)
+    //プロフィール情報追加
+    public function create(AcountRequest $request)
     {
         if ($file = $request->icon) {
             $fileName = time() . '.' . $file->getClientOriginalName();
@@ -62,5 +62,21 @@ class UserController extends Controller
         }
 
         session()->flash('flash_message', $message);
+    }
+
+    //プロフィール情報削除
+    public function delete(Request $request)
+    {
+        $acount = Acount::findOrFail($request->id);
+
+        $delete = $acount->delete();
+
+        if($delete > 0) {
+            session()->flash('flash_message', 'プロフィール情報を削除しました');
+        } else {
+            session()->flash('danger_message', '削除に失敗しました');
+        }
+
+        return back();
     }
 }
