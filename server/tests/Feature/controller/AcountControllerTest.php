@@ -18,6 +18,7 @@ class AcountControllerTest extends TestCase
 
     use RefreshDatabase;
 
+
     public function testAcountPageShow()
     {
         $user = factory(User::class)->create();

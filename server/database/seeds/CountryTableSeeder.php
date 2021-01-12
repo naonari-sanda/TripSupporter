@@ -55,7 +55,7 @@ class CountryTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => 'メキシコ合衆国',
+                'name' => 'メキシコ',
                 'imgpath' => 'mexico.jpg',
                 'area' => '196',
                 'population' => '12619',
@@ -76,7 +76,7 @@ class CountryTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => 'ブラジル連邦共和国',
+                'name' => 'ブラジル',
                 'imgpath' => 'brazil.jpg',
                 'area' => '851',
                 'population' => '20947',
@@ -96,7 +96,7 @@ class CountryTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => 'アルゼンチン共和国',
+                'name' => 'アルゼンチン',
                 'imgpath' => 'argentine.jpg',
                 'area' => '278',
                 'population' => '4494',
@@ -139,7 +139,7 @@ class CountryTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => '中華人民共和国',
+                'name' => '中国',
                 'imgpath' => 'chaina.jpg',
                 'area' => '960',
                 'population' => '140000',
@@ -161,7 +161,7 @@ class CountryTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => '大韓民国',
+                'name' => '韓国',
                 'imgpath' => 'korea.jpg',
                 'area' => '10',
                 'population' => '5178',
@@ -184,7 +184,7 @@ class CountryTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => 'インドネシア共和国',
+                'name' => 'インドネシア',
                 'imgpath' => 'indnessia.jpg',
                 'area' => '192',
                 'population' => '26700',
@@ -224,7 +224,7 @@ class CountryTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => 'サウジアラビア王国',
+                'name' => 'サウジアラビア',
                 'imgpath' => 'saudi.jpg',
                 'area' => '215',
                 'population' => '3370',
@@ -246,7 +246,7 @@ class CountryTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => 'トルコ共和国',
+                'name' => 'トルコ',
                 'imgpath' => 'turkey.jpg',
                 'area' => '780',
                 'population' => '8315',
@@ -267,7 +267,7 @@ class CountryTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => 'フランス共和国',
+                'name' => 'フランス',
                 'imgpath' => 'france.jpg',
                 'area' => '54',
                 'population' => '6706',
@@ -288,7 +288,7 @@ class CountryTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => 'ドイツ連邦共和国',
+                'name' => 'ドイツ',
                 'imgpath' => 'germany.jpg',
                 'area' => '35',
                 'population' => '8315',
@@ -309,7 +309,7 @@ class CountryTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => 'イタリア共和国',
+                'name' => 'イタリア',
                 'imgpath' => 'italiana.jpg',
                 'area' => '30',
                 'population' => '6046',
@@ -331,7 +331,7 @@ class CountryTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => '英国',
+                'name' => 'イギリス',
                 'imgpath' => 'british.jpg',
                 'area' => '24',
                 'population' => '6680',
@@ -353,7 +353,7 @@ class CountryTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => 'ロシア連邦',
+                'name' => 'ロシア',
                 'imgpath' => 'rossia.jpg',
                 'area' => '1710',
                 'population' => '14680',
@@ -377,7 +377,7 @@ class CountryTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => '南アフリカ共和国',
+                'name' => '南アフリカ',
                 'imgpath' => 'southafrica.jpg',
                 'area' => '122',
                 'population' => '5778',
@@ -399,7 +399,7 @@ class CountryTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => 'オーストラリア連邦',
+                'name' => 'オーストラリア',
                 'imgpath' => 'australia.jpg',
                 'area' => '769',
                 'population' => '2565',

@@ -14,7 +14,7 @@
                 <div class="inner">
 
                     <form action="{{ route('serch') }}" method="get">
-                        @csrf
+
                         <div class="row justify-content-center">
                             <div class="">
                                 <label for="category">地域</label>
@@ -40,7 +40,7 @@
 
                             <div class="keyword">
                                 <label for="keyword">国名</label>
-                                <input id="keyword" type="text" name="keyword" class=" form-control" placeholder="入力てください...">
+                                <input id="keyword" type="text" name="keyword" class="form-control" placeholder="入力てください...">
                             </div>
                             <input type="submit" class="btn btn-primary px-4" value="検索">
                         </div>
@@ -94,9 +94,9 @@
     <hr class="featurette-divider" style="margin: 3rem 0;">
     @endisset
     @isset($message)
-    <h3 class="text-center text-primary font-weight-bold mb-5">{{$message}}</h3>
+    <h3 class="text-center mb-5">{{$message}}</h3>
     @endisset
-    <div class="row">
+    <div class="row pt-5">
 
         @foreach ($countries ?? '' as $country)
         <div class="col d-flex justify-content-center">

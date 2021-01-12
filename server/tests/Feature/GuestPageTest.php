@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Country;
+use Artisan;
 
 class GuestPageTest extends TestCase
 {
@@ -15,6 +16,13 @@ class GuestPageTest extends TestCase
      * @return void
      */
     use RefreshDatabase;
+
+    public function setUp():void
+    {
+        parent::setUp();
+        
+        Artisan::call('db:seed --class=CountryTableSeeder');
+    }
 
     //メインページ遷移テスト
     public function testMainPageShow()
@@ -56,7 +64,6 @@ class GuestPageTest extends TestCase
             ->assertViewHasAll([
                 'countries',
                 'information',
-                'message'
             ])
             ->assertSee('さあ 旅に出かけよう！');
     }

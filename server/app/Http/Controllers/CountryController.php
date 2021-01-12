@@ -91,19 +91,16 @@ class CountryController extends Controller
         if (!empty($keyword)) {
             $query->where('name', 'like', '%' . $keyword . '%');
             $message = $keyword;
-        } else {
-            $message = '';
         }
 
         $countries = $query->orderBy('created_at', 'desc')->paginate(12);
 
         if (count($countries) == 0) {
             session()->flash('danger_message', '検索結果がありません');
-        } else {
-            session()->flash('flash_message', '検索に成功しました');
+            $message = '検索結果がありません';
+        } elseif (!empty($message)) {
+            session()->flash('info_message', $message . 'を検索をしました');
         }
-
-
 
         return view('pages.main', compact('countries', 'information', 'message'));
     }
