@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Countroller;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
@@ -65,7 +65,7 @@ class ReviewControllerTest extends TestCase
 
         $fileName = 'public/' . time() . '.' . $file->getClientOriginalName();
 
-        Storage::disk('local')->assertMissing('test.jpg');
+        Storage::disk('local')->assertMissing($file);
         Storage::disk('local')->assertExists($fileName);
     }
 

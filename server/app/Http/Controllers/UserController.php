@@ -56,12 +56,10 @@ class UserController extends Controller
         );
 
         if ($check->wasRecentlyCreated) {
-            $message = 'プロフィールを追加しました';
+            session()->flash('success_message', 'プロフィールを追加しました');
         } else {
-            $message = 'プロフィールを変更しました';
+            session()->flash('info_message', 'プロフィールを変更しました');
         }
-
-        session()->flash('flash_message', $message);
     }
 
     //プロフィール情報削除
@@ -72,7 +70,7 @@ class UserController extends Controller
         $delete = $acount->delete();
 
         if($delete > 0) {
-            session()->flash('flash_message', 'プロフィール情報を削除しました');
+            session()->flash('success_message', 'プロフィール情報を削除しました');
         } else {
             session()->flash('danger_message', '削除に失敗しました');
         }

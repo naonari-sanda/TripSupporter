@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Countroller;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
@@ -63,12 +63,14 @@ class ImageControllerTest extends TestCase
             ->from(route('user', ['id' => $user->id]))
             ->post(route('create.img'), $image->toArray());
 
-        $response->assertOk();
+        $response->assertOk()
+        ->assertSessionHas('success_message');
+
         $this->assertDatabaseHas('images', ['user_id' => $image->user_id]);
 
         $fileName = 'public/' . time() . '.' . $file->getClientOriginalName();
 
-        Storage::disk('local')->assertMissing('test.jpg');
+        Storage::disk('local')->assertMissing($file);
         Storage::disk('local')->assertExists($fileName);
     }
 
@@ -95,6 +97,7 @@ class ImageControllerTest extends TestCase
         $this->assertDatabaseMissing('images',  ['user_id' => $image->user_id]);
 
         $response->assertStatus(302)
+        ->assertSessionHas('success_message')
             ->assertRedirect(route('user', ['id' => $user->id]));
     }
 }

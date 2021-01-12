@@ -41,12 +41,10 @@ class ReviewController extends Controller
         );
 
         if ($check->wasRecentlyCreated) {
-            $message = 'レビューを追加しました';
+            session()->flash('success_message', 'レビューを追加しました');
         } else {
-            $message = 'レビューを変更しました';
+            session()->flash('info_message', 'レビューを変更しました');
         }
-
-        session()->flash('flash_message', $message);
     }
 
     //レビュー削除
@@ -56,7 +54,7 @@ class ReviewController extends Controller
         $delete = $review->delete();
 
         if($delete > 0) {
-            session()->flash('flash_message', 'レビューを削除しました');
+            session()->flash('success_message', 'レビューを削除しました');
         } else {
             session()->flash('danger_message', '削除に失敗しました');
         }
@@ -82,7 +80,7 @@ class ReviewController extends Controller
             ]
         );
 
-        session()->flash('flash_message', '画像を追加しました');
+        session()->flash('success_message', '画像を追加しました');
     }
 
     public function deleteImg(Request $request)
@@ -91,7 +89,7 @@ class ReviewController extends Controller
         $delete = $img->delete();
 
         if($delete > 0) {
-            session()->flash('flash_message', '画像を削除しました');
+            session()->flash('success_message', '画像を削除しました');
         } else {
             session()->flash('danger_message', '削除に失敗しました');
         }

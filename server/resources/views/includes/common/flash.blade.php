@@ -1,10 +1,14 @@
-@if(session('flash_message'))
+@if(session('success_message'))
 <script>
-    toastr.success("{{  session('flash_message')  }}");
+    toastr.success("{{  session('success_message')  }}");
 </script>
 @elseif (session('danger_message'))
 <script>
     toastr.error("{{  session('danger_message')  }}");
+</script>
+@elseif (session('info_message'))
+<script>
+    toastr.info("{{ session('info_message') }}");
 </script>
 @endif
 @if(count($errors) !== 0)

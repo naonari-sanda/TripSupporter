@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Countroller;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
@@ -45,12 +45,16 @@ class AcountControllerTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
+        Storage::Fake('local');
+        $file = UploadedFile::fake()->image('test.jpg');
+
         $user = factory(User::class)->create();
         $acount = factory(Acount::class)->make([
             'user_id' => $user->id,
+            'icon' => $file
         ]);
 
-$this->assertDatabaseMissing('acounts', ['profile' => $acount->profile]);
+        $this->assertDatabaseMissing('acounts', ['profile' => $acount->profile]);
 
         $response = $this
             ->actingAs($user)
@@ -60,7 +64,13 @@ $this->assertDatabaseMissing('acounts', ['profile' => $acount->profile]);
             $this->assertDatabaseHas('acounts', ['profile' => $acount->profile]);
 
         $response
-        ->assertOk();
+        ->assertOk()
+        ->assertSessionHas('success_message');
+
+        $fileName = 'public/' . time() . '.' . $file->getClientOriginalName();
+
+        Storage::disk('local')->assertMissing($file);
+        Storage::disk('local')->assertExists($fileName);
     }
 
     public function testupdateAcount()
@@ -82,7 +92,8 @@ $this->assertDatabaseMissing('acounts', ['profile' => $acount->profile]);
             ->from(route('user', ['id' => $user->id]))
             ->post(route('create.acount'), $acount->toArray());
 
-            $response->assertOk();
+            $response->assertOk()
+            ->assertSessionHas('info_message');
 
             $this->assertDatabaseMissing('acounts', ['profile' => 'test_profile']);
             $this->assertDatabaseHas('acounts', ['profile' => 'update_profile']);
@@ -107,6 +118,7 @@ $this->assertDatabaseMissing('acounts', ['profile' => $acount->profile]);
             $this->assertDatabaseMissing('acounts', ['id' => $acount->id]);
         $response
             ->assertStatus(302)
-            ->assertRedirect(route('user', ['id' => $user->id]));
+            ->assertRedirect(route('user', ['id' => $user->id]))
+            ->assertSessionHas('success_message');
     }
 }
