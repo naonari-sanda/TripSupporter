@@ -21,7 +21,7 @@ class GuestPageTest extends TestCase
     {
         parent::setUp();
         
-        Artisan::call('db:seed --class=CountryTableSeeder');
+        // Artisan::call('db:seed --class=CountryTableSeeder');
     }
 
     //メインページ遷移テスト

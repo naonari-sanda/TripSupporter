@@ -9,7 +9,9 @@
         />
         <div class="container text">
           <div class="mb-0">
-            <h1 class="jumbotron-heading text-light mb-0">ランキング</h1>
+            <h1 class="jumbotron-heading text-light mb-0 font-weight-bold">
+              ランキング
+            </h1>
           </div>
           <p class="lead text-light">check your favorite countris ranking</p>
 

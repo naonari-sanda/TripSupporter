@@ -8,11 +8,11 @@
         <div class="container text">
             <div class="mb-0">
                 @if(Auth::id() === $user->id)
-                <h1 class="jumbotron-heading text-light mb-0">
+                <h1 class="jumbotron-heading text-light mb-0 font-weight-bold">
                     マイページ
                 </h1>
                 @else
-                <h1 class="jumbotron-heading text-light mb-0">
+                <h1 class="jumbotron-heading text-light mb-0 font-weight-bold">
                     {{ $user->name }}さんのページ
                 </h1>
                 @endif

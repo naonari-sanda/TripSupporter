@@ -12,7 +12,7 @@
             <h1 class="jumbotron-heading text-light mb-3 font-weight-bold">
                 {{ $country->name }}
             </h1>
-            <h6 class="text-light mb-3">{{ Str::limit($country->detail, $limit =90, $end = '...') }}
+            <h6 class="text-light mb-3">{{ Str::limit($country->detail,200, $end = '...') }}
             </h6>
 
             @if(count($country->reviews->where('user_id', Auth::id())) !== 0)

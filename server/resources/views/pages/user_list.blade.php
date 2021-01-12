@@ -6,8 +6,8 @@
     <div class="bg">
         <img class="card-img-top country_img" src="{{ asset('/storage/user.jpg' ) }}" alt="Card image cap" />
         <div class="container text">
-            <h1 class="jumbotron-heading text-light mb-0">
-                ユーザー一覧ページ
+            <h1 class="jumbotron-heading text-light mb-0 font-weight-bold">
+                ユーザー一覧
             </h1>
             <p class="lead text-light">Find your favorite user</p>
 

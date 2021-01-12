@@ -8,7 +8,7 @@
         <img class="card-img-top country_img" src="{{ asset('/storage/main.jpg') }}" alt="Card image cap" />
 
         <div class="container text">
-            <h1 class="jumbotron-heading font-weight-bold text-light mb-4">さあ 旅に出かけよう！</h1>
+            <h1 class="jumbotron-heading font-weight-bold text-light mb-4 h1">さあ 旅に出かけよう！</h1>
 
             <div id="search">
                 <div class="inner">
@@ -66,7 +66,6 @@
         <p class="text-center">新型コロナウィルス感染拡大中のヨーロッパではロックダウン中の国も多め。日本からの入国規制解除や緩和を発表した国にも変化が出ています。</p>
         <div class="d-flex justify-content-center">
             <form action="{{ route('serch') }}" method="get">
-                @csrf
                 <input type="hidden" name="special" value="corona">
                 <input type="submit" class="btn  btn-primary" value="見つける &raquo;" />
             </form>
@@ -78,7 +77,6 @@
         <p class="text-center">働きながら旅行をしたりということが出来るのはワーキングホリデーという制度だけです。ただお金の為に働くのではなく海外の文化を楽しもう！</p>
         <div class="d-flex justify-content-center">
             <form action="{{ route('serch') }}" method="get">
-                @csrf
                 <input type="hidden" name="special" value="wh">
                 <input type="submit" class="btn  btn-primary" value="見つける &raquo;" />
             </form>
@@ -89,15 +87,17 @@
 <hr class="featurette-divider" style="margin: 3rem 0;">
 
 <div class="container main">
+
     @isset($information)
     <h3 class="text-center">{{ $information->information }}</h3>
     <hr class="featurette-divider" style="margin: 3rem 0;">
     @endisset
+
     @isset($message)
     <h3 class="text-center mb-5">{{$message}}</h3>
     @endisset
-    <div class="row pt-5">
 
+    <div class="row pt-5">
         @foreach ($countries ?? '' as $country)
         <div class="col d-flex justify-content-center">
             <div class="card shadow">
@@ -121,7 +121,6 @@
             </div>
         </div>
         @endforeach
-
     </div>
     {{$countries->links()}}
 </div>

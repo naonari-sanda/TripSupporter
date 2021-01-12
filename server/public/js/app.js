@@ -2348,6 +2348,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -45469,9 +45471,11 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container text" }, [
       _c("div", { staticClass: "mb-0" }, [
-        _c("h1", { staticClass: "jumbotron-heading text-light mb-0" }, [
-          _vm._v("ランキング")
-        ])
+        _c(
+          "h1",
+          { staticClass: "jumbotron-heading text-light mb-0 font-weight-bold" },
+          [_vm._v("\n            ランキング\n          ")]
+        )
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "lead text-light" }, [
