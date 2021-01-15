@@ -254,7 +254,7 @@ class ReviewTableSeeder extends Seeder
                 'user_id' => '2',
                 'country_id' => '8',
                 'recommend' => '3.5',
-                'safe' => '4.0',
+                'safe' => '4',
                 'cost' => '3',
                 'fun' => '4',
                 'tourism' => '3',
