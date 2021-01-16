@@ -17,6 +17,8 @@
         "laravel/framework": "^7.24",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.4",
+        "league/flysystem": "^1.1",
+        "league/flysystem-aws-s3-v3": "^1.0",
         "symfony/error-handler": "^5.1"
     },
     "require-dev": {

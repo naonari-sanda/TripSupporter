@@ -32,7 +32,7 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        session()->flash('flash_message', 'ログインしました');
+        session()->flash('info_message', 'ログインしました');
     }
 
     public function logout(Request $request)
@@ -43,7 +43,7 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        session()->flash('flash_message', 'ログアウトしました');
+        session()->flash('info_message', 'ログアウトしました');
 
         return $this->loggedOut($request) ?: redirect('/');
     }

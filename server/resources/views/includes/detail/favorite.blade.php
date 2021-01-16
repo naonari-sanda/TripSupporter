@@ -28,7 +28,7 @@
                     @elseif(optional($like->user->acount)->gender === "女性")
                     <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/women.png') }}" alt="女性アイコン" />
                     @else
-                    <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/none.png') }}" alt="女性アイコン" />
+                    <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/none.png') }}" alt="アイコン" />
                     @endif
                     {{ $like->user->name }}</a>
                 @else
@@ -40,7 +40,7 @@
                     @elseif(optional($like->user->acount)->gender === "女性")
                     <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/women.png') }}" alt="女性アイコン" />
                     @else
-                    <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/none.png') }}" alt="女性アイコン" />
+                    <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/none.png') }}" alt="アイコン" />
                     @endif
                     {{ $like->user->name }}</a>
                 @endauth
@@ -65,4 +65,4 @@
     <a href="{{ route('main') }}" type="button" class="btn btn-primary">お気に入りの国をさがそう！</a>
 </div>
 
-@endif
+@endif 

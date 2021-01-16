@@ -1,5 +1,5 @@
 FROM php:7.2-apache
-COPY ./php/php.ini /usr/local/etc/php/
+COPY ./php/  /usr/local/etc/php/
 COPY ./apache/*.conf /etc/apache2/sites-enabled/
 
 RUN apt-get update \

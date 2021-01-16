@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light  bg-white shadow-sm">
     <div class="container">
         <a class="navbar-brand text-dark font-weight-bold" href="{{ route('main') }}">
-        <i class="fas fa-globe-americas mr-1"></i>{{ config('app.name', 'Laravel') }}
+            <i class="fas fa-globe-americas mr-1"></i>{{ config('app.name', 'Laravel') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@
                         @elseif(optional(Auth::user()->acount)->gender === "女性")
                         <img class="cycle header-img img-thumbnail" src="{{ asset('/storage/women.png') }}" alt="女性アイコン" />
                         @else
-                        <img class="cycle header-img img-thumbnail" src="{{ asset('/storage/none.png') }}" alt="女性アイコン" />
+                        <img class="cycle header-img img-thumbnail" src="{{ asset('/storage/none.png') }}" alt="アイコン" />
                         @endif
                         {{ Auth::user()->name }}
                     </a>
@@ -72,4 +72,4 @@
             </ul>
         </div>
     </div>
-</nav>
+</nav> 
