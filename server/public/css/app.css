@@ -11057,6 +11057,94 @@ article h2 {
   opacity: 0.6;
 }
 
+.back {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fafafa;
+}
+
+.back .wrapper {
+  margin: 60px 0 100px;
+  position: relative;
+  top: -20%;
+  max-width: 340px;
+  width: 100%;
+  border: 1px solid #dbdbdb;
+  background-color: #fff;
+  padding: 20px 30px;
+}
+
+.back .wrapper h2 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.back .wrapper hr {
+  margin-bottom: 30px;
+}
+
+.back .wrapper .fill {
+  margin-bottom: 12px;
+}
+
+.back .wrapper input {
+  background-color: #fafafa;
+}
+
+.back .wrapper .button .btn {
+  width: 100%;
+}
+
+.back .wrapper .button .btn-success {
+  width: 100%;
+}
+
+.back .wrapper .forget {
+  display: block;
+  margin: 0 auto;
+}
+
+.back .wrapper .else {
+  margin: 18px 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.back .wrapper .else .line {
+  background-color: #dbdbdb;
+  height: 1px;
+  width: 40%;
+}
+
+.back .wrapper .else .text {
+  font-size: 13px;
+  margin: 0 10px;
+  white-space: nowrap;
+}
+
+.back .alert {
+  padding: 0.5rem 1.25rem;
+}
+
+@media screen and (max-width: 767px) {
+  /*　画面サイズが767px以下の場合読み込む　*/
+
+  .back {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fafafa;
+  }
+
+  .back .wrapper {
+    width: 100%;
+    margin: 50px 0 60px;
+  }
+}
+
 @media screen and (max-width: 567px) {
   /*　画面サイズが567px以下の場合読み込む　*/
 
