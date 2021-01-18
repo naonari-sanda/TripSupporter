@@ -36,11 +36,15 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+            'host' => env('MAIL_HOST', 'smtp.gmail.com'),
             'port' => env('MAIL_PORT', 587),
+            'from' => [
+                'address' => env('MAIL_FROM_ADDRESS', 'n.sanda0013@gmail.com'),
+                'name' => env('MAIL_FROM_NAME', 'Tripsupporter'),
+            ],
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'username' => env('MAIL_USERNAME', 'n.sanda0013@gmail.com'),
+            'password' => env('MAIL_PASSWORD', ''),
             'timeout' => null,
             'auth_mode' => null,
         ],
