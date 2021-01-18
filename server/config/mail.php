@@ -40,14 +40,15 @@ return [
             'port' => env('MAIL_PORT', 587),
             'from' => [
                 'address' => env('MAIL_FROM_ADDRESS', 'n.sanda0013@gmail.com'),
-                'name' => env('MAIL_FROM_NAME', 'Tripsupporter'),
+                'name' => env('MAIL_FROM_NAME', 'Naonari'),
             ],
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'username' => env('MAIL_USERNAME', 'n.sanda0013@gmail.com'),
-            'password' => env('MAIL_PASSWORD', ''),
+            'password' => env('MAIL_PASSWORD', 'yhcfowaioftmxzwa'),
             'timeout' => null,
             'auth_mode' => null,
         ],
+
 
         'ses' => [
             'transport' => 'ses',
