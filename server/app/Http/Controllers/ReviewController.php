@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Session;
+use Storage;
 use App\Models\Review;
 use App\Models\Image;
 use Illuminate\Http\Request;
@@ -53,7 +54,7 @@ class ReviewController extends Controller
         $review = Review::findOrFail($request->id);
         $delete = $review->delete();
 
-        if($delete > 0) {
+        if ($delete > 0) {
             session()->flash('success_message', 'レビューを削除しました');
         } else {
             session()->flash('danger_message', '削除に失敗しました');
@@ -67,16 +68,17 @@ class ReviewController extends Controller
     {
         if ($file = $request->imgpath) {
             $fileName = time() . '.' . $file->getClientOriginalName();
-            $file->storeAs('public', $fileName);
+            // $file->storeAs('public', $fileName, 's3');
+            $path = Storage::disk('s3')->put('/', $fileName, 'public');
         } else {
-            $fileName = '';
+            $path = '';
         }
 
         Image::create(
             [
                 'user_id' => $request->user_id,
                 'country_id' => $request->country_id,
-                'imgpath' => $fileName,
+                'imgpath' => Storage::disk('s3')->url($path)
             ]
         );
 
@@ -88,7 +90,7 @@ class ReviewController extends Controller
         $img = Image::findOrFail($request->id);
         $delete = $img->delete();
 
-        if($delete > 0) {
+        if ($delete > 0) {
             session()->flash('success_message', '画像を削除しました');
         } else {
             session()->flash('danger_message', '削除に失敗しました');

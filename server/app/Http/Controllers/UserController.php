@@ -69,7 +69,7 @@ class UserController extends Controller
 
         $delete = $acount->delete();
 
-        if($delete > 0) {
+        if ($delete > 0) {
             session()->flash('success_message', 'プロフィール情報を削除しました');
         } else {
             session()->flash('danger_message', '削除に失敗しました');

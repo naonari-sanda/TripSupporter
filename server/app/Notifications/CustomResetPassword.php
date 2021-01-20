@@ -60,8 +60,6 @@ class CustomResetPassword extends ResetPassword
      */
     public function toArray($notifiable)
     {
-        return [
-            //
-        ];
+        return [];
     }
 }

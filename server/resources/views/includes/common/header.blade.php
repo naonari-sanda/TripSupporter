@@ -19,16 +19,16 @@
                 <li class="nav-item">
                     @auth
                     <a class="nav-link text-dark" href="{{ route('user.list') }}">
-                        ユーザー一覧
+                        <i class="fas fa-users mr-1"></i>ユーザー一覧
                     </a>
                     @else
                     <a class="nav-link text-dark" data-toggle="modal" data-target="#guestModal">
-                        ユーザー一覧
+                        <i class="fas fa-users mr-1"></i>ユーザー一覧
                     </a>
                     @endauth
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('ranking') }}" class="nav-link text-dark">ランキング</a>
+                    <a href="{{ route('ranking') }}" class="nav-link text-dark"><i class="fas fa-chart-line mr-1"></i>ランキング</a>
                 </li>
                 @guest
                 <li class="nav-item">
