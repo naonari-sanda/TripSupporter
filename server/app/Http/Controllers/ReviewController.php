@@ -16,8 +16,8 @@ class ReviewController extends Controller
     public function createReview(ReviewRequest $request)
     {
         if ($file = $request->imgpath) {
-            $fileName = time() . '.' . $file->getClientOriginalName();
-            $file->storeAs('public', $fileName);
+            $path = Storage::disk('s3')->put('/', $file, 'public');
+            $fileName = Storage::disk('s3')->url($path);
         } else {
             $fileName = '';
         }
@@ -37,7 +37,7 @@ class ReviewController extends Controller
                 'english' => $request->english,
                 'city' => $request->city,
                 'review' => $request->review,
-                'imgpath' => $fileName,
+                'imgpath' => $fileName
             ]
         );
 
@@ -67,9 +67,7 @@ class ReviewController extends Controller
     public function upload(ImageRequest $request)
     {
         if ($file = $request->imgpath) {
-            $fileName = time() . '.' . $file->getClientOriginalName();
-            // $file->storeAs('public', $fileName, 's3');
-            $path = Storage::disk('s3')->put('/', $fileName, 'public');
+            $path = Storage::disk('s3')->put('/', $file, 'public');
         } else {
             $path = '';
         }

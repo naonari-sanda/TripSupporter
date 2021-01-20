@@ -20,7 +20,7 @@
 
         <tr>
 
-            <th><a class="text-dark d-flex align-items-center" href="{{ route('detail' , $like->country_id) }}"><img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/' . $like->country->imgpath) }}" alt="{{ $like->country->name }}のアイコン" />{{ $like->country->name }}</a></th>
+            <th><a class="text-dark d-flex align-items-center" href="{{ route('detail' , $like->country_id) }}"><img class="cycle img-thumbnail mr-2" src="{{ $like->country->imgpath }}" alt="{{ $like->country->name }}のアイコン" />{{ $like->country->name }}</a></th>
             <td>
                 <i class=" fas fa-star mr-1 text-danger"></i>{{ number_format($like->country->reviews->avg('recommend'),1) }}
             </td>
@@ -46,4 +46,4 @@
     <h5 class=" mb-5">＊いいねがありません</h5>
     <a href="{{ route('main') }}" type="button" class="btn btn-primary">お気に入りの国をさがそう！</a>
 </div>
-@endif
+@endif 

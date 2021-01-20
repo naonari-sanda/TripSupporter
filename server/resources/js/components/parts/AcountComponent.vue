@@ -194,15 +194,19 @@
           <img v-if="preview" class="img-thumbnail" :src="preview" alt="" />
           <img
             v-else-if="gender === '男性'"
-            src="http://localhost/storage/men.png"
+            src="https://tripsupporter.s3-ap-northeast-1.amazonaws.com/men.png"
             alt=""
           />
           <img
             v-else-if="gender === '女性'"
-            src="http://localhost/storage/women.png"
+            src="https://tripsupporter.s3-ap-northeast-1.amazonaws.com/women.png"
             alt=""
           />
-          <img v-else src="http://localhost/storage/none.png" alt="" />
+          <img
+            v-else
+            src="https://tripsupporter.s3-ap-northeast-1.amazonaws.com/none.png"
+            alt=""
+          />
         </div>
 
         <div class="fill mb-3">

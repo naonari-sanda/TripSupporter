@@ -19,7 +19,7 @@ class AcountTableSeeder extends Seeder
                 'profile' => 'アジアを彷徨うバックパッカーです。
                 旅、アジア全般(イスラム圏、チベット圏、ヒンドゥ圏が特に好き)、アジアの屋台、野球(スワローズ、ファイターズ)、欅坂46の世界観とパフォーマンスに衝撃を受ける。',
                 'hobby' => '映画鑑賞、アジアの屋台巡り',
-                'icon' => '1608636526.images-1.jpg',
+                'icon' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/1608636526.images-1.jpg',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
@@ -32,7 +32,7 @@ class AcountTableSeeder extends Seeder
                 好きなときに、好きな場所で、自分のもっとも適したスタイルで。
                 そんなマインドを軸に、気ままな海外田舎生活を満喫中.',
                 'hobby' => 'サンバ、ハーモニカ',
-                'icon' => 'images-2.jpg',
+                'icon' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/images-2.jpg',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
@@ -43,7 +43,7 @@ class AcountTableSeeder extends Seeder
                 'profile' => 'バックパック or 自転車のキャンパーです_(:3 」∠)_
                 なので、軽量化しつつ、私なりのスタイルを追い求めて行きます♫',
                 'hobby' => 'サイクリング、アウトドア',
-                'icon' => 'images-1.jpg',
+                'icon' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/images-1.jpg',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
@@ -54,7 +54,7 @@ class AcountTableSeeder extends Seeder
                 'profile' => '洋画・洋楽・EDM・ラーメンが好き /大学3年生になってウェブ制作に出会い遅めのスタートダッシュ！
                 常に新しいことに挑戦',
                 'hobby' => '洋画・洋楽・EDM',
-                'icon' => 'saren.jpg',
+                'icon' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/saren.jpg',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
@@ -66,7 +66,7 @@ class AcountTableSeeder extends Seeder
                 大体の国は1人でまわりましたよ‼︎
                 (挑戦することが好きな方)',
                 'hobby' => 'サーフィン、ショッピング',
-                'icon' => 'o0386045014284708929.jpg',
+                'icon' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/o0386045014284708929.jpg',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
@@ -78,7 +78,7 @@ class AcountTableSeeder extends Seeder
                 『おしゃれで映える、週末女子一人旅』を毎週末にYouTubeへ投稿中！
                 旅行/海外在住/WACKとCUBERSのヲタクとしても生きています',
                 'hobby' => 'アニメ',
-                'icon' => '1608634921.images.jpg',
+                'icon' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/1608634921.images.jpg',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
@@ -90,7 +90,7 @@ class AcountTableSeeder extends Seeder
                 50ヵ国以上旅しました✈。
                 現在、旅の仕事&ライターメインのフリーランス。ブランド立ち上げも挑戦中',
                 'hobby' => '旅,ライター',
-                'icon' => 'download-1.jpg',
+                'icon' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/download-1.jpg',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],

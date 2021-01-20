@@ -10,8 +10,8 @@
         @foreach($user->reviews as $review)
         @if(!empty($review->imgpath))
         <div class="bg col-md-3 col-6 mb-3">
-            <a class="d-block" href="{{ asset('/storage/' . $review->imgpath ) }}" data-lightbox="example-1" title="<p class='title'>{{ $review->country->name }}の思い出。</p><p class='text mb-1'>{{ $review->review }}</p><p>{{ $review->updated_at->format('Y年m月d日') }}に投稿</p>">
-                <img class="img img-thumbnail" src="{{ asset('/storage/' . $review->imgpath ) }}" />
+            <a class="d-block" href="{{ $review->imgpath }}" data-lightbox="example-1" title="<p class='title'>{{ $review->country->name }}の思い出。</p><p class='text mb-1'>{{ $review->review }}</p><p>{{ $review->updated_at->format('Y年m月d日') }}に投稿</p>">
+                <img class="img img-thumbnail" src="{{ $review->imgpath }}" />
             </a>
             <p class="text">{{ $review->country->name }} </p>
         </div>
@@ -27,8 +27,8 @@
         @foreach($user->images as $img)
         @if(!empty($img->imgpath))
         <div class="bg col-md-3 col-6 mb-3">
-            <a class="d-block" href="{{ asset('/storage/' . $img->imgpath ) }}" data-lightbox="example-1" title="<p class='title'>{{ $img->country->name }}の思い出。</p><p>{{ $img->created_at->format('Y年m月d日') }}に投稿</p>">
-                <img class="img img-thumbnail" src="{{ asset('/storage/' . $img->imgpath ) }}" />
+            <a class="d-block" href="{{ $img->imgpath }}" data-lightbox="example-1" title="<p class='title'>{{ $img->country->name }}の思い出。</p><p>{{ $img->created_at->format('Y年m月d日') }}に投稿</p>">
+                <img class="img img-thumbnail" src="{{ $img->imgpath }}" />
             </a>
             <p class="text mb-1">{{ $img->country->name }} </p>
             @if(Auth::id() == $user->id)
@@ -48,4 +48,4 @@
 
 
 
-<img-upload-component v-show="imageModal" @image-child="closeImage" :user-id="{{ Auth::id() ?? '0' }}" country-id="{{ $country->id ?? '0' }}" />
+<img-upload-component v-show="imageModal" @image-child="closeImage" :user-id="{{ Auth::id() ?? '0' }}" country-id="{{ $country->id ?? '0' }}" /> 

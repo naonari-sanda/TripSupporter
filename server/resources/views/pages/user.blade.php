@@ -4,7 +4,7 @@
 @section('content')
 <section class="jumbotron text-center d-flex align-items-center visual">
     <div class="bg">
-        <img class="card-img-top country_img" src="{{ asset('/storage/user.jpg' ) }}" alt="Card image cap" />
+        <img class="card-img-top country_img" src="https://tripsupporter.s3-ap-northeast-1.amazonaws.com/user.jpg" alt="Card image cap" />
         <div class="container text">
             <div class="mb-0">
                 @if(Auth::id() === $user->id)
@@ -56,4 +56,4 @@
 
     <acount-component v-show="profileModal" @profile-child="closeProfile" :user-id="{{ $user->id }}" />
 </div>
-@endsection
+@endsection 

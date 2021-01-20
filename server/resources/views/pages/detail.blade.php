@@ -4,7 +4,7 @@
 @section('content')
 <section class="jumbotron text-center d-flex align-items-center visual">
     <div class="bg">
-        <img class="card-img-top country_img" src="{{ asset('/storage/' . $country->imgpath ) }}" alt="Card image cap" />
+        <img class="card-img-top country_img" src="{{ $country->imgpath }}" alt="Card image cap" />
 
 
         <div class="container text">
@@ -64,4 +64,4 @@
 
 
 </div>
-@endsection
+@endsection 

@@ -14,7 +14,7 @@ class CountryTableSeeder extends Seeder
         DB::table('countries')->insert([
             [
                 'name' => 'アメリカ合衆国',
-                'imgpath' => 'usa.jpg',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/usa.jpg',
                 'area' => '371',
                 'population' => '32775',
                 'capital' => 'ワシントンD.C.',
@@ -37,7 +37,7 @@ class CountryTableSeeder extends Seeder
             ],
             [
                 'name' => 'カナダ',
-                'imgpath' => 'canada.jpg',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/canada.jpg',
                 'area' => '998',
                 'population' => '32775',
                 'capital' => 'オタワ',
@@ -56,7 +56,7 @@ class CountryTableSeeder extends Seeder
             ],
             [
                 'name' => 'メキシコ',
-                'imgpath' => 'mexico.jpg',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/mexico.jpg',
                 'area' => '196',
                 'population' => '12619',
                 'capital' => 'メキシコシティ',
@@ -77,7 +77,7 @@ class CountryTableSeeder extends Seeder
             ],
             [
                 'name' => 'ブラジル',
-                'imgpath' => 'brazil.jpg',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/brazil.jpg',
                 'area' => '851',
                 'population' => '20947',
                 'capital' => 'ブラジリア',
@@ -97,7 +97,7 @@ class CountryTableSeeder extends Seeder
             ],
             [
                 'name' => 'アルゼンチン',
-                'imgpath' => 'argentine.jpg',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/argentine.jpg',
                 'area' => '278',
                 'population' => '4494',
                 'capital' => 'ブエノスアイレス',
@@ -120,7 +120,7 @@ class CountryTableSeeder extends Seeder
             ],
             [
                 'name' => '日本',
-                'imgpath' => 'japan.jpg',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/japan.jpg',
                 'area' => '37',
                 'population' => '12581',
                 'capital' => '東京都',
@@ -140,7 +140,7 @@ class CountryTableSeeder extends Seeder
             ],
             [
                 'name' => '中国',
-                'imgpath' => 'chaina.jpg',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/chaina.jpg',
                 'area' => '960',
                 'population' => '140000',
                 'capital' => '北京',
@@ -162,7 +162,7 @@ class CountryTableSeeder extends Seeder
             ],
             [
                 'name' => '韓国',
-                'imgpath' => 'korea.jpg',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/korea.jpg',
                 'area' => '10',
                 'population' => '5178',
                 'capital' => 'ソウル',
@@ -185,7 +185,7 @@ class CountryTableSeeder extends Seeder
             ],
             [
                 'name' => 'インドネシア',
-                'imgpath' => 'indnessia.jpg',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/indnessia.jpg',
                 'area' => '192',
                 'population' => '26700',
                 'capital' => 'ジャカルタ',
@@ -205,7 +205,7 @@ class CountryTableSeeder extends Seeder
             ],
             [
                 'name' => 'インド',
-                'imgpath' => 'india.jpg',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/india.jpg',
                 'area' => '328',
                 'population' => '121057',
                 'capital' => 'ニューデリー',
@@ -225,7 +225,7 @@ class CountryTableSeeder extends Seeder
             ],
             [
                 'name' => 'サウジアラビア',
-                'imgpath' => 'saudi.jpg',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/saudi.jpg',
                 'area' => '215',
                 'population' => '3370',
                 'capital' => 'リヤド',
@@ -247,7 +247,7 @@ class CountryTableSeeder extends Seeder
             ],
             [
                 'name' => 'トルコ',
-                'imgpath' => 'turkey.jpg',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/turkey.jpg',
                 'area' => '780',
                 'population' => '8315',
                 'capital' => 'アンカラ',
@@ -268,7 +268,7 @@ class CountryTableSeeder extends Seeder
             ],
             [
                 'name' => 'フランス',
-                'imgpath' => 'france.jpg',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/france.jpg',
                 'area' => '54',
                 'population' => '6706',
                 'capital' => 'パリ',
@@ -289,7 +289,7 @@ class CountryTableSeeder extends Seeder
             ],
             [
                 'name' => 'ドイツ',
-                'imgpath' => 'germany.jpg',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/germany.jpg',
                 'area' => '35',
                 'population' => '8315',
                 'capital' => 'ベルリン',
@@ -310,7 +310,7 @@ class CountryTableSeeder extends Seeder
             ],
             [
                 'name' => 'イタリア',
-                'imgpath' => 'italiana.jpg',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/italiana.jpg',
                 'area' => '30',
                 'population' => '6046',
                 'capital' => 'ローマ',
@@ -332,7 +332,7 @@ class CountryTableSeeder extends Seeder
             ],
             [
                 'name' => 'イギリス',
-                'imgpath' => 'british.jpg',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/british.jpg',
                 'area' => '24',
                 'population' => '6680',
                 'capital' => 'ロンドン',
@@ -354,7 +354,7 @@ class CountryTableSeeder extends Seeder
             ],
             [
                 'name' => 'ロシア',
-                'imgpath' => 'rossia.jpg',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/rossia.jpg',
                 'area' => '1710',
                 'population' => '14680',
                 'capital' => 'モスクワ',
@@ -378,7 +378,7 @@ class CountryTableSeeder extends Seeder
             ],
             [
                 'name' => '南アフリカ',
-                'imgpath' => 'southafrica.jpg',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/southafrica.jpg',
                 'area' => '122',
                 'population' => '5778',
                 'capital' => 'プレトリア',
@@ -400,7 +400,7 @@ class CountryTableSeeder extends Seeder
             ],
             [
                 'name' => 'オーストラリア',
-                'imgpath' => 'australia.jpg',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/australia.jpg',
                 'area' => '769',
                 'population' => '2565',
                 'capital' => 'キャンベラ',
@@ -422,7 +422,7 @@ class CountryTableSeeder extends Seeder
             ],
             [
                 'name' => 'ニュージーランド',
-                'imgpath' => 'newzealand.jpg',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/newzealand.jpg',
                 'area' => '27',
                 'population' => '504',
                 'capital' => 'ウェリントン',

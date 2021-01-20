@@ -2910,6 +2910,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])("required", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_2__["required"]), {}, {
@@ -3043,6 +3047,10 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
 //
 //
 //
@@ -46603,17 +46611,26 @@ var render = function() {
                   })
                 : _vm.gender === "男性"
                 ? _c("img", {
-                    attrs: { src: "http://localhost/storage/men.png", alt: "" }
+                    attrs: {
+                      src:
+                        "https://tripsupporter.s3-ap-northeast-1.amazonaws.com/men.png",
+                      alt: ""
+                    }
                   })
                 : _vm.gender === "女性"
                 ? _c("img", {
                     attrs: {
-                      src: "http://localhost/storage/women.png",
+                      src:
+                        "https://tripsupporter.s3-ap-northeast-1.amazonaws.com/women.png",
                       alt: ""
                     }
                   })
                 : _c("img", {
-                    attrs: { src: "http://localhost/storage/none.png", alt: "" }
+                    attrs: {
+                      src:
+                        "https://tripsupporter.s3-ap-northeast-1.amazonaws.com/none.png",
+                      alt: ""
+                    }
                   })
             ]),
             _vm._v(" "),
@@ -47404,17 +47421,26 @@ var render = function() {
                   })
                 : _vm.gender === "男性"
                 ? _c("img", {
-                    attrs: { src: "http://localhost/storage/men.png", alt: "" }
+                    attrs: {
+                      src:
+                        "https://tripsupporter.s3-ap-northeast-1.amazonaws.com/men.png",
+                      alt: ""
+                    }
                   })
                 : _vm.gender === "女性"
                 ? _c("img", {
                     attrs: {
-                      src: "http://localhost/storage/women.png",
+                      src:
+                        "https://tripsupporter.s3-ap-northeast-1.amazonaws.com/women.png",
                       alt: ""
                     }
                   })
                 : _c("img", {
-                    attrs: { src: "http://localhost/storage/none.png", alt: "" }
+                    attrs: {
+                      src:
+                        "https://tripsupporter.s3-ap-northeast-1.amazonaws.com/none.png",
+                      alt: ""
+                    }
                   })
             ]),
             _vm._v(" "),

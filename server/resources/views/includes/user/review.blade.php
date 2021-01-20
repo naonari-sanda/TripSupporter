@@ -8,7 +8,7 @@
 <div class="wrapper">
     <div class="header d-flex">
         <a class="text-dark d-flex align-items-center font-weight-bold mb-0 mr-auto" href="{{ route('detail' , $review->country_id) }}">
-            <img class="cycle img-thumbnail mr-2" src="{{ asset('/storage/' . $review->country->imgpath ) }}" alt="ユーザーアイコン" />{{ $review->country->name }}</a>
+            <img class="cycle img-thumbnail mr-2" src="{{ $review->country->imgpath }}" alt="{{ $review->country->name }}アイコン" />{{ $review->country->name }}</a>
         @if(Auth::id() == $review->user->id)
         <div class="btn-box d-flex">
             <button class="btn btn-success mr-1 mb-3" @click="showReview({{ $review->country_id }},{{ json_encode( $review->country->name ) }},{{ json_encode($review) }})">編集</button>
@@ -75,8 +75,8 @@
     </div>
 
     @if(!empty($review->imgpath))
-    <a class="d-block" style="width: 200px;" href="{{ asset('/storage/' . $review->imgpath ) }}" data-lightbox="review-{{ $review->id }}" title="<p class='title'>{{ $review->user->name }}さんの{{ $review->country->name  }}の思い出。</p><p class='text'>{{ $review->updated_at->format('Y年m月d日') }}に投稿">
-        <img class="img img-thumbnail" src="{{ asset('/storage/' . $review->imgpath ) }}" />
+    <a class="d-block" style="width: 200px;" href="{{ $review->imgpath }}" data-lightbox="review-{{ $review->id }}" title="<p class='title'>{{ $review->user->name }}さんの{{ $review->country->name  }}の思い出。</p><p class='text'>{{ $review->updated_at->format('Y年m月d日') }}に投稿">
+        <img class="img img-thumbnail" src="{{ $review->imgpath }}" />
     </a>
     @endif
 
@@ -95,4 +95,4 @@
     <h5 class="mb-5">＊レビューの投稿がありません</h5>
     <a href="{{ route('main') }}" type="button" class="btn btn-primary">レビューを投稿しよう!</a>
 </div>
-@endif
+@endif 

@@ -43,13 +43,13 @@
                 <li class=" nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark d-flex align-items-center font-weight-bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         @if(!empty(Auth::user()->acount->icon))
-                        <img class="cycle header-img" src="{{ asset('/storage/' . Auth::user()->acount->icon ) }}" alt="ユーザーアイコン" />
+                        <img class="cycle header-img" src="{{ Auth::user()->acount->icon }}" alt="ユーザーアイコン" />
                         @elseif(optional(Auth::user()->acount)->gender == "男性")
-                        <img class="cycle header-img img-thumbnail" src="{{ asset('/storage/men.png') }}" alt="男性アイコン" />
+                        <img class="cycle header-img img-thumbnail" src="https://tripsupporter.s3-ap-northeast-1.amazonaws.com/men.png" alt="男性アイコン" />
                         @elseif(optional(Auth::user()->acount)->gender === "女性")
-                        <img class="cycle header-img img-thumbnail" src="{{ asset('/storage/women.png') }}" alt="女性アイコン" />
+                        <img class="cycle header-img img-thumbnail" src="https://tripsupporter.s3-ap-northeast-1.amazonaws.com/women.png" alt="女性アイコン" />
                         @else
-                        <img class="cycle header-img img-thumbnail" src="{{ asset('/storage/none.png') }}" alt="アイコン" />
+                        <img class="cycle header-img img-thumbnail" src="https://tripsupporter.s3-ap-northeast-1.amazonaws.com/none.png" alt="アイコン" />
                         @endif
                         {{ Auth::user()->name }}
                     </a>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Session;
+use Storage;
 use App\Models\User;
 use App\Models\Acount;
 use Illuminate\Support\Facades\Auth;
@@ -31,11 +32,13 @@ class UserController extends Controller
     public function create(AcountRequest $request)
     {
         if ($file = $request->icon) {
-            $fileName = time() . '.' . $file->getClientOriginalName();
-            $file->storeAs('public', $fileName);
+            $path = Storage::disk('s3')->put('/', $file, 'public');
+            $fileName = Storage::disk('s3')->url($path);
         } else {
             $fileName = '';
         }
+
+
         if (!isset($request->hobby)) {
             $hobby = '回答なし';
         } else {

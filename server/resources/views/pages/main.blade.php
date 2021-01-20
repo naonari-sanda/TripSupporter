@@ -5,7 +5,7 @@
 
 <section class="jumbotron text-center visual mainvisual" style="margin-bottom: 6rem">
     <div class="bg">
-        <img class="card-img-top country_img" src="{{ asset('/storage/main.jpg') }}" alt="Card image cap" />
+        <img class="card-img-top country_img" src="https://tripsupporter.s3-ap-northeast-1.amazonaws.com/main.jpg" alt="Card image cap" />
 
         <div class="container text">
             <h1 class="jumbotron-heading font-weight-bold text-light mb-4 h1">さあ 旅に出かけよう！</h1>
@@ -53,7 +53,7 @@
 
 <div class="container row mx-auto">
     <div class="col-lg-4 mb-2">
-        <img class="rounded-circle mx-auto d-flex justify-content-center mb-3" src="{{ asset('/storage/find.png') }}" alt="" width="140" height="140">
+        <img class="rounded-circle mx-auto d-flex justify-content-center mb-3" src="https://tripsupporter.s3-ap-northeast-1.amazonaws.com/find.png" alt="" width="140" height="140">
         <h2 class="text-center">見つけよう</h2>
         <p class="text-center">「海外に行きたい！」しかし「どこに行くか？」。国々のそれぞれの良いところを紹介します。ぜひ、次の旅行先の決定の参考にしてみてくださいね。</p>
         <p class="d-flex justify-content-center">
@@ -61,7 +61,7 @@
         </p>
     </div>
     <div class="col-lg-4 mb-2">
-        <img class="rounded-circle mx-auto d-flex justify-content-center mb-3" src="{{ asset('/storage/corona.png')  }}" alt="" width="140" height="140">
+        <img class="rounded-circle mx-auto d-flex justify-content-center mb-3" src="https://tripsupporter.s3-ap-northeast-1.amazonaws.com/corona.png" alt="" width="140" height="140">
         <h2 class="text-center">入国可能国</h2>
         <p class="text-center">新型コロナウィルス感染拡大中のヨーロッパではロックダウン中の国も多め。日本からの入国規制解除や緩和を発表した国にも変化が出ています。</p>
         <div class="d-flex justify-content-center">
@@ -72,7 +72,7 @@
         </div>
     </div>
     <div class="col-lg-4 mb-2">
-        <img class="rounded-circle mx-auto d-flex justify-content-center mb-3" src="{{ asset('/storage/waking.png') }}" alt="" width="140" height="140">
+        <img class="rounded-circle mx-auto d-flex justify-content-center mb-3" src="https://tripsupporter.s3-ap-northeast-1.amazonaws.com/waking.png" alt="" width="140" height="140">
         <h2 class="text-center">ワーキングホリデー</h2>
         <p class="text-center">働きながら旅行をしたりということが出来るのはワーキングホリデーという制度だけです。ただお金の為に働くのではなく海外の文化を楽しもう！</p>
         <div class="d-flex justify-content-center">
@@ -102,7 +102,7 @@
         <div class="col d-flex justify-content-center">
             <div class="card shadow">
                 <div class="bg">
-                    <img class="card-img-top country_img" src="{{ asset('/storage/' . $country->imgpath ) }}" alt="Card image cap" />
+                    <img class="card-img-top country_img" src="{{ $country->imgpath }}" alt="Card image cap" />
                     <h5 class="text">{{ $country->name }}</h5>
                 </div>
                 <div class="card-body">

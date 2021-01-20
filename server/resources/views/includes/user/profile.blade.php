@@ -1,12 +1,12 @@
 <h2 font-weight-bold>Profile</h2>
 @if(!empty($user->acount->icon))
-<img class="img-thumbnail mb-4" src="{{ asset('/storage/' . $user->acount->icon ) }}" alt="ユーザーアイコン" />
+<img class="img-thumbnail mb-4" src="{{ $user->acount->icon }}" alt="ユーザーアイコン" />
 @elseif(optional($user->acount)->gender == "男性")
-<img class="img-thumbnail mb-4" src="{{ asset('/storage/men.png') }}" alt="男性アイコン" />
+<img class="img-thumbnail mb-4" src="https://tripsupporter.s3-ap-northeast-1.amazonaws.com/men.png" alt="男性アイコン" />
 @elseif(optional($user->acount)->gender === "女性")
-<img class="img-thumbnail mb-4" src="{{ asset('/storage/women.png') }}" alt="女性アイコン" />
+<img class="img-thumbnail mb-4" src="https://tripsupporter.s3-ap-northeast-1.amazonaws.com/women.png" alt="女性アイコン" />
 @else
-<img class="img-thumbnail mb-4" src="{{ asset('/storage/none.png') }}" alt="アイコン" />
+<img class="img-thumbnail mb-4" src="https://tripsupporter.s3-ap-northeast-1.amazonaws.com/none.png" alt="アイコン" />
 
 @endif
 
@@ -28,7 +28,7 @@
         <td>{{ optional($user->acount)->hobby }}</td>
     </tr>
 </table>
-<table class="table table-striped">
+<table class=" table table-striped">
     <tr>
         <th>プロフィール</th>
     </tr>
