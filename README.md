@@ -49,11 +49,19 @@
 
 # 技術
 
-php7.3.3, Laravel5.8.15
-Bootstrap4
-MySQL5.7.25
-AWS
-EC2へデプロイ
-Route53でDNSレコードを管理
-ACMでSSL証明書を管理、ALBで使用
-Docker、Laradock
+* PHP /7.2.34
+* Laravel /7.30.3
+* Server /Apache
+* database /mysql:5.7
+* vue:2.6.12
+* sass
+* jquery （お知らせ）toaster
+* axios:^0.19.0
+
+### 管理者
+* Laravel-admin
+
+ ## 構築環境
+* Heroku
+* 画像保存(aws:s3)
+* Docker
