@@ -2149,6 +2149,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])("required", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_2__["required"]), {}, {
@@ -2206,6 +2209,33 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])("email", _objectSpre
             }
           }
         }, _callee);
+      }))();
+    },
+    easyLogin: function easyLogin() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                axios.post("/login", {
+                  email: "test@icloud.com",
+                  password: "wqwqwqwq",
+                  remember: _this2.remember
+                }).then(function (response) {
+                  window.location.href = "/";
+                })["catch"](function (error) {
+                  _this2.errors = error.response.data.errors;
+                  _this2.success = false;
+                });
+
+              case 1:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
       }))();
     }
   }
@@ -45144,6 +45174,15 @@ var render = function() {
             attrs: { href: "/password/reset" }
           },
           [_vm._v("\n      パスワードをお忘れですか？\n    ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "forget btn-link text-center",
+            on: { click: _vm.easyLogin }
+          },
+          [_vm._v("\n      簡単ログイン\n    ")]
         ),
         _vm._v(" "),
         _vm._m(1),

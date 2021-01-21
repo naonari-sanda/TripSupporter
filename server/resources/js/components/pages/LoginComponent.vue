@@ -89,6 +89,9 @@
       <a class="forget btn-link text-center" href="/password/reset">
         パスワードをお忘れですか？
       </a>
+      <a class="forget btn-link text-center" @click="easyLogin">
+        簡単ログイン
+      </a>
 
       <div class="else d-flex">
         <div class="line"></div>
@@ -148,6 +151,22 @@ export default {
             this.success = false;
           });
       }
+    },
+
+    async easyLogin() {
+      axios
+        .post("/login", {
+          email: "test@icloud.com",
+          password: "wqwqwqwq",
+          remember: this.remember,
+        })
+        .then((response) => {
+          window.location.href = "/";
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+          this.success = false;
+        });
     },
   },
 };

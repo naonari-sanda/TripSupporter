@@ -33,7 +33,7 @@
         <th>プロフィール</th>
     </tr>
     <tr class="text" style="border-bottom: 1px solid #dee2e6;">
-        <td class="br">{!! nl2br(optional($user->acount)->profile) !!}</td>
+        <td class="br">{!! nl2br(e(optional($user->acount)->profile)) !!}</td>
 
     </tr>
 </table>
