@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '{{ $user->name }}さんのページ')
+@section('title', 'ユーザーページ')
 
 @section('content')
 <section class="jumbotron text-center d-flex align-items-center visual">
