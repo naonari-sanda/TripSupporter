@@ -4,7 +4,7 @@
       <div class="bg">
         <img
           class="card-img-top country_img"
-          :src="'/storage/ranking.jpg'"
+          src="https://tripsupporter.s3-ap-northeast-1.amazonaws.com/ranking.jpg"
           alt="Card image cap"
         />
         <div class="container text">
@@ -94,7 +94,7 @@
                 >
                   <img
                     class="cycle img-thumbnail mr-2"
-                    :src="'/storage/' + country.imgpath"
+                    :src="country.imgpath"
                     :alt="country.name + 'の画像'"
                   />
                   {{ country.name }}</a

@@ -12,7 +12,7 @@
         @if(!empty($review->user->acount->icon))
         <img class="cycle img-thumbnail mr-2" src="{{ $review->user->acount->icon }}" alt="ユーザーアイコン" />
         @elseif(optional($review->user->acount)->gender == "男性")
-        <img class="cycle img-thumbnail mr-2" src="https://tripsupporter.s3-ap-northeast-1.amazonaws.com/storage/men.png" alt="男性アイコン" />
+        <img class="cycle img-thumbnail mr-2" src="https://tripsupporter.s3-ap-northeast-1.amazonaws.com/men.png" alt="男性アイコン" />
         @elseif(optional($review->user->acount)->gender === "女性")
         <img class="cycle img-thumbnail mr-2" src="https://tripsupporter.s3-ap-northeast-1.amazonaws.com/women.png" alt="女性アイコン" />
         @else

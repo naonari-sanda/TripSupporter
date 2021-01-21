@@ -45210,20 +45210,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "section",
-      { staticClass: "jumbotron text-center d-flex align-items-center visual" },
-      [
-        _c("div", { staticClass: "bg" }, [
-          _c("img", {
-            staticClass: "card-img-top country_img",
-            attrs: { src: "/storage/ranking.jpg", alt: "Card image cap" }
-          }),
-          _vm._v(" "),
-          _vm._m(0)
-        ])
-      ]
-    ),
+    _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
       _c(
@@ -45396,7 +45383,7 @@ var render = function() {
                       _c("img", {
                         staticClass: "cycle img-thumbnail mr-2",
                         attrs: {
-                          src: "/storage/" + country.imgpath,
+                          src: country.imgpath,
                           alt: country.name + "の画像"
                         }
                       }),
@@ -45477,28 +45464,48 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container text" }, [
-      _c("div", { staticClass: "mb-0" }, [
-        _c(
-          "h1",
-          { staticClass: "jumbotron-heading text-light mb-0 font-weight-bold" },
-          [_vm._v("\n            ランキング\n          ")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "lead text-light" }, [
-        _vm._v("check your favorite countris ranking")
-      ]),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "btn btn-primary",
-          attrs: { href: "#", type: "button" }
-        },
-        [_vm._v("お気に入りの国をさがそう!")]
-      )
-    ])
+    return _c(
+      "section",
+      { staticClass: "jumbotron text-center d-flex align-items-center visual" },
+      [
+        _c("div", { staticClass: "bg" }, [
+          _c("img", {
+            staticClass: "card-img-top country_img",
+            attrs: {
+              src:
+                "https://tripsupporter.s3-ap-northeast-1.amazonaws.com/ranking.jpg",
+              alt: "Card image cap"
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "container text" }, [
+            _c("div", { staticClass: "mb-0" }, [
+              _c(
+                "h1",
+                {
+                  staticClass:
+                    "jumbotron-heading text-light mb-0 font-weight-bold"
+                },
+                [_vm._v("\n            ランキング\n          ")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "lead text-light" }, [
+              _vm._v("check your favorite countris ranking")
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { href: "#", type: "button" }
+              },
+              [_vm._v("お気に入りの国をさがそう!")]
+            )
+          ])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
