@@ -48728,7 +48728,7 @@ var render = function() {
                     { staticClass: "mx-auto" },
                     [
                       _c("validation-provider", {
-                        attrs: { name: "レビュー", rules: "required|max:200" },
+                        attrs: { name: "レビュー", rules: "required|max:300" },
                         scopedSlots: _vm._u([
                           {
                             key: "default",

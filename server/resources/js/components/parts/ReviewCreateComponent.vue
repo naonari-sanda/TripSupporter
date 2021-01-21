@@ -205,7 +205,7 @@
             <div class="mx-auto">
               <validation-provider
                 name="レビュー"
-                rules="required|max:200"
+                rules="required|max:300"
                 v-slot="{ errors }"
               >
                 <textarea class="form-control" rows="3" v-model="review" />

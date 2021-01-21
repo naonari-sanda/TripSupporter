@@ -94,6 +94,19 @@ class AcountTableSeeder extends Seeder
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
+            [
+                'user_id' => '9',
+                'gender' => '男性',
+                'age' => '30代〜',
+                'profile' => '「世界は広い。自分の目で世界を見て感じて来い。」
+
+                という言葉がきっかけとなり海外へ１人旅に出る決意をする。
+                19歳の時に神戸港から船で中国天津へ。',
+                'hobby' => 'ダンス,筋トレ,プログラマー',
+                'icon' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/1209272top.jpg',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
         ]);
     }
 }

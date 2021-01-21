@@ -25,7 +25,7 @@ class CreateReviewsTable extends Migration
             $table->integer('food')->comment('料理');
             $table->integer('english')->comment('英語');
             $table->string('city', 15)->comment('お気に入りの国');
-            $table->string('review', 200)->nullable()->comment('レビュー');
+            $table->string('review', 300)->nullable()->comment('レビュー');
             $table->string('imgpath')->nullable()->comment('画像');
             $table->timestamps();
 

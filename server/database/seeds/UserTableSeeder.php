@@ -80,7 +80,7 @@ class UserTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => 'テスト',
+                'name' => 'ゲスト',
                 'email' => 'test@icloud.com',
                 'password' => Hash::make('wqwqwqwq'),
                 'remember_token' => Str::random(10),

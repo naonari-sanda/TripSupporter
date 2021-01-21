@@ -528,6 +528,63 @@ class LikeTableSeeder extends Seeder
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
+
+
+            [
+                'user_id' => '9',
+                'country_id' => '1',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'user_id' => '9',
+                'country_id' => '3',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'user_id' => '9',
+                'country_id' => '5',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'user_id' => '9',
+                'country_id' => '7',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'user_id' => '9',
+                'country_id' => '9',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'user_id' => '9',
+                'country_id' => '11',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'user_id' => '9',
+                'country_id' => '13',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'user_id' => '9',
+                'country_id' => '15',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'user_id' => '9',
+                'country_id' => '19',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+
         ]);
     }
 }

@@ -34,7 +34,7 @@ class ReviewRequest extends FormRequest
             'food' => 'required|integer|between:1,5',
             'english' => 'required|integer|between:1,5',
             'city' => 'required|max:15',
-            'review' => 'required|max:200',
+            'review' => 'required|max:300',
             'imgpath' => 'nullable|image'
         ];
     }
