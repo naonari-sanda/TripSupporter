@@ -39,7 +39,7 @@ class CountryTableSeeder extends Seeder
                 'name' => 'カナダ',
                 'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/canada.jpg',
                 'area' => '998',
-                'population' => '35467',
+                'population' => '3546',
                 'capital' => 'オタワ',
                 'language' => '英語、フランス語が公用語',
                 'religion' => '国民の3分の2以上（67.3％）がキリスト教徒（国民の約39％がローマ・カトリック）、約2割（23.9％）が無宗教（2011年カナダ統計局',
