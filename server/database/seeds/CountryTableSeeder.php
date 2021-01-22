@@ -39,7 +39,7 @@ class CountryTableSeeder extends Seeder
                 'name' => 'カナダ',
                 'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/canada.jpg',
                 'area' => '998',
-                'population' => '32775',
+                'population' => '35467',
                 'capital' => 'オタワ',
                 'language' => '英語、フランス語が公用語',
                 'religion' => '国民の3分の2以上（67.3％）がキリスト教徒（国民の約39％がローマ・カトリック）、約2割（23.9％）が無宗教（2011年カナダ統計局',
@@ -141,29 +141,6 @@ class CountryTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => '中国',
-                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/chaina.jpg',
-                'area' => '960',
-                'population' => '140000',
-                'capital' => '北京',
-                'language' => '中国語',
-                'religion' => '仏教・イスラム教・キリスト教など',
-                'gdp' => '	10356',
-                'happiness' => '5191',
-                'covid' => '外国人は外交、公務、礼遇、乗務員（C）ビザ、3月27日以降に発行されたビザ、永久居留許可を持つ外国人のみ入境可能
-                ＊感染者（96,894
-                ＊死亡者（4,791）
-                ',
-                'detail' => '長い歴史と広大な土地をもつ中国。日本がもっとも古くからつながりをもつ国だ。
-                中国を代表する大都市北京、上海は近代化の波にのり毎日違った顔を見せてくれる。西安、広州、桂林など魅力的な都市は中国全土に広がる。
-                偉大なる歴史的文化遺産、美麗な景色、なにをとってもそのスケールの大きさに驚かされる。
-                またどこへ行ってもおいしい本場中国の味に舌鼓を打つことだろう。
-                東西南北、中国への興味は尽きることがない。',
-                'comment' => 'ajia',
-                'created_at' => new DateTime(),
-                'updated_at' => new DateTime(),
-            ],
-            [
                 'name' => '韓国',
                 'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/korea.jpg',
                 'area' => '10',
@@ -184,6 +161,29 @@ class CountryTableSeeder extends Seeder
                 日本人を魅了するノンバーバルパフォーマンスや伝統芸能も、ぜひ現地で体感してみたい。
                 また、韓国ならではのビューティー体験も、女性の旅には欠かせない。韓国で、人情ゆたかでおいしい旅を楽しもう！',
                 'comment' => 'ajia,wh',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => '中国',
+                'imgpath' => 'https://tripsupporter.s3-ap-northeast-1.amazonaws.com/chaina.jpg',
+                'area' => '960',
+                'population' => '140000',
+                'capital' => '北京',
+                'language' => '中国語',
+                'religion' => '仏教・イスラム教・キリスト教など',
+                'gdp' => '	10356',
+                'happiness' => '5191',
+                'covid' => '外国人は外交、公務、礼遇、乗務員（C）ビザ、3月27日以降に発行されたビザ、永久居留許可を持つ外国人のみ入境可能
+                ＊感染者（96,894
+                ＊死亡者（4,791）
+                ',
+                'detail' => '長い歴史と広大な土地をもつ中国。日本がもっとも古くからつながりをもつ国だ。
+                中国を代表する大都市北京、上海は近代化の波にのり毎日違った顔を見せてくれる。西安、広州、桂林など魅力的な都市は中国全土に広がる。
+                偉大なる歴史的文化遺産、美麗な景色、なにをとってもそのスケールの大きさに驚かされる。
+                またどこへ行ってもおいしい本場中国の味に舌鼓を打つことだろう。
+                東西南北、中国への興味は尽きることがない。',
+                'comment' => 'ajia',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],

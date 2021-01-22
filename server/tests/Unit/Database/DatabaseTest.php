@@ -27,7 +27,6 @@ class DatabaseTest extends TestCase
                 'created_at',
                 'updated_at'
             ]),
-            1
         );
     }
 
@@ -35,7 +34,7 @@ class DatabaseTest extends TestCase
     {
         $this->assertTrue(
             Schema::hasColumns('countries', [
-                'id', 
+                'id',
                 'name',
                 'imgpath',
                 'area',
@@ -51,7 +50,6 @@ class DatabaseTest extends TestCase
                 'created_at',
                 'updated_at'
             ]),
-            1
         );
     }
 
@@ -74,7 +72,6 @@ class DatabaseTest extends TestCase
                 'created_at',
                 'updated_at'
             ]),
-            1
         );
     }
 
@@ -88,7 +85,6 @@ class DatabaseTest extends TestCase
                 'created_at',
                 'updated_at'
             ]),
-            1
         );
     }
 
@@ -106,7 +102,6 @@ class DatabaseTest extends TestCase
                 'created_at',
                 'updated_at'
             ]),
-            1
         );
     }
 
@@ -121,7 +116,6 @@ class DatabaseTest extends TestCase
                 'created_at',
                 'updated_at'
             ]),
-            1
         );
     }
 }
