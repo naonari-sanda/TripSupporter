@@ -74,7 +74,7 @@
 
 * https://tripsupporter.herokuapp.com/
 
-#　今後の予定
+# 今後の予定
 
 * SPI化
 * AWSを利用しデプロイ
