@@ -70,3 +70,11 @@
 * デプロイ/Heroku
 * 画像保存(aws:s3)
 
+## アプリ
+
+* https://tripsupporter.herokuapp.com/
+
+#　今後の予定
+
+* SPI化
+* AWSを利用しデプロイ
