@@ -4,7 +4,7 @@
 <a @click="showImage" type="button" class="btn btn-danger mb-2">画像を投稿しよう！</a>
 @endauth
 <hr>
-@if(count($country->reviews) > 0)
+@if(!empty($country->reviews))
 <div id="lightgallery ">
     <div class="row">
         @foreach($country->reviews as $review)
