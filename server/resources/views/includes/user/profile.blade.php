@@ -25,7 +25,11 @@
     </tr>
     <tr>
         <th>趣味</th>
+        @if(empty($user->acount->hobby))
+        <td>回答がありません</td>
+        @else
         <td>{{ optional($user->acount)->hobby }}</td>
+        @endif
     </tr>
 </table>
 <table class=" table table-striped">

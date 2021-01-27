@@ -52,9 +52,9 @@ class ReviewController extends Controller
     public function delete(Request $request)
     {
         $review = Review::findOrFail($request->id);
-        $delete = $review->delete();
+        $check = $review->delete();
 
-        if ($delete > 0) {
+        if ($check) {
             session()->flash('success_message', 'レビューを削除しました');
         } else {
             session()->flash('danger_message', '削除に失敗しました');
@@ -72,7 +72,7 @@ class ReviewController extends Controller
             $path = '';
         }
 
-        Image::create(
+        $check = Image::create(
             [
                 'user_id' => $request->user_id,
                 'country_id' => $request->country_id,
@@ -80,15 +80,22 @@ class ReviewController extends Controller
             ]
         );
 
-        session()->flash('success_message', '画像を追加しました');
+
+        if ($check) {
+            session()->flash('success_message', '画像を追加しました');
+        } else {
+            session()->flash('danger_message', '画像の追加に失敗しました');
+        }
+
+        return back();
     }
 
     public function deleteImg(Request $request)
     {
         $img = Image::findOrFail($request->id);
-        $delete = $img->delete();
+        $check = $img->delete();
 
-        if ($delete > 0) {
+        if ($check) {
             session()->flash('success_message', '画像を削除しました');
         } else {
             session()->flash('danger_message', '削除に失敗しました');
