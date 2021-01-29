@@ -26,7 +26,7 @@ class DatabaseTest extends TestCase
                 'remember_token',
                 'created_at',
                 'updated_at'
-            ]),
+            ])
         );
     }
 
@@ -49,7 +49,7 @@ class DatabaseTest extends TestCase
                 'detail',
                 'created_at',
                 'updated_at'
-            ]),
+            ])
         );
     }
 
@@ -71,7 +71,7 @@ class DatabaseTest extends TestCase
                 'imgpath',
                 'created_at',
                 'updated_at'
-            ]),
+            ])
         );
     }
 
@@ -84,7 +84,7 @@ class DatabaseTest extends TestCase
                 'country_id',
                 'created_at',
                 'updated_at'
-            ]),
+            ])
         );
     }
 
@@ -101,7 +101,7 @@ class DatabaseTest extends TestCase
                 'icon',
                 'created_at',
                 'updated_at'
-            ]),
+            ])
         );
     }
 
@@ -115,7 +115,7 @@ class DatabaseTest extends TestCase
                 'imgpath',
                 'created_at',
                 'updated_at'
-            ]),
+            ])
         );
     }
 }

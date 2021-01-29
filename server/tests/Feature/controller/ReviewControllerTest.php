@@ -44,7 +44,7 @@ class ReviewControllerTest extends TestCase
         $user = factory(User::class)->create();
         $country = factory(Country::class)->create();
 
-        Storage::Fake('local');
+        Storage::Fake('s3');
         $file = UploadedFile::fake()->image('test.jpg');
 
         $review = factory(Review::class)->make([
@@ -62,17 +62,13 @@ class ReviewControllerTest extends TestCase
 
         $this->assertDatabaseHas('reviews', ['review' => $review->review]);
         $response->assertOk();
-
-        $fileName = 'public/' . time() . '.' . $file->getClientOriginalName();
-
-        Storage::disk('local')->assertMissing($file);
-        Storage::disk('local')->assertExists($fileName);
     }
 
     public function testReviewUpdate()
     {
         $this->withoutExceptionHandling();
 
+        Storage::Fake('s3');
         $user = factory(User::class)->create();
         $country = factory(Country::class)->create();
         $review = factory(Review::class)->create([
