@@ -46,7 +46,7 @@ class AcountControllerTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        Storage::Fake('local');
+        Storage::Fake('s3');
         $file = UploadedFile::fake()->image('test.jpg');
 
         $user = factory(User::class)->create();
@@ -62,30 +62,26 @@ class AcountControllerTest extends TestCase
             ->from(route('user', ['id' => $user->id]))
             ->post(route('create.acount'), $acount->toArray());
 
-            $this->assertDatabaseHas('acounts', ['profile' => $acount->profile]);
+        $this->assertDatabaseHas('acounts', ['profile' => $acount->profile]);
 
         $response
-        ->assertOk()
-        ->assertSessionHas('success_message');
-
-        $fileName = 'public/' . time() . '.' . $file->getClientOriginalName();
-
-        Storage::disk('local')->assertMissing($file);
-        Storage::disk('local')->assertExists($fileName);
+            ->assertOk()
+            ->assertSessionHas('success_message');
     }
 
     public function testupdateAcount()
     {
         $this->withoutExceptionHandling();
 
+        Storage::Fake('s3');
         $user = factory(User::class)->create();
         $acount = factory(Acount::class)->create([
             'user_id' => $user->id,
             'profile' => 'test_profile'
         ]);
-        
+
         $this->assertDatabaseHas('acounts', ['profile' => 'test_profile']);
-        
+
         $acount->profile = 'update_profile';
 
         $response = $this
@@ -93,17 +89,17 @@ class AcountControllerTest extends TestCase
             ->from(route('user', ['id' => $user->id]))
             ->post(route('create.acount'), $acount->toArray());
 
-            $response->assertOk()
+        $response->assertOk()
             ->assertSessionHas('info_message');
 
-            $this->assertDatabaseMissing('acounts', ['profile' => 'test_profile']);
-            $this->assertDatabaseHas('acounts', ['profile' => 'update_profile']);
+        $this->assertDatabaseMissing('acounts', ['profile' => 'test_profile']);
+        $this->assertDatabaseHas('acounts', ['profile' => 'update_profile']);
     }
 
     public function testAcountDelete()
     {
         $this->withoutExceptionHandling();
-        
+
         $user = factory(User::class)->create();
         $acount = factory(Acount::class)->create([
             'user_id' => $user->id,
@@ -116,7 +112,7 @@ class AcountControllerTest extends TestCase
             ->from(route('user', ['id' => $user->id]))
             ->post(route('delete.acount'), $acount->toArray());
 
-            $this->assertDatabaseMissing('acounts', ['id' => $acount->id]);
+        $this->assertDatabaseMissing('acounts', ['id' => $acount->id]);
         $response
             ->assertStatus(302)
             ->assertRedirect(route('user', ['id' => $user->id]))

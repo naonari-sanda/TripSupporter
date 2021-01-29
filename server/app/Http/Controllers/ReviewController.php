@@ -68,26 +68,22 @@ class ReviewController extends Controller
     {
         if ($file = $request->imgpath) {
             $path = Storage::disk('s3')->put('/', $file, 'public');
-        } else {
-            $path = '';
+            $faliName = Storage::disk('s3')->url($path);
         }
 
         $check = Image::create(
             [
                 'user_id' => $request->user_id,
                 'country_id' => $request->country_id,
-                'imgpath' => Storage::disk('s3')->url($path)
+                'imgpath' => $faliName
             ]
         );
-
 
         if ($check) {
             session()->flash('success_message', '画像を追加しました');
         } else {
-            session()->flash('danger_message', '画像の追加に失敗しました');
+            session()->flash('danger_message', '画像の保存に失敗しました');
         }
-
-        return back();
     }
 
     public function deleteImg(Request $request)

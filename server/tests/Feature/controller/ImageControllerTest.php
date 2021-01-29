@@ -47,7 +47,7 @@ class ImageControllerTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        Storage::Fake('local');
+        Storage::Fake('s3');
         $file = UploadedFile::fake()->image('test.jpg');
 
         $user = factory(User::class)->create();
@@ -64,21 +64,16 @@ class ImageControllerTest extends TestCase
             ->post(route('create.img'), $image->toArray());
 
         $response->assertOk()
-        ->assertSessionHas('success_message');
+            ->assertSessionHas('success_message');
 
         $this->assertDatabaseHas('images', ['user_id' => $image->user_id]);
-
-        $fileName = 'public/' . time() . '.' . $file->getClientOriginalName();
-
-        Storage::disk('local')->assertMissing($file);
-        Storage::disk('local')->assertExists($fileName);
     }
 
     public function testImageDelete()
     {
         $this->withoutExceptionHandling();
 
-        Storage::Fake('local');
+        Storage::Fake('s3');
         $file = UploadedFile::fake()->image('test.jpg');
         $fileName = 'public/' . time() . '.' . $file->getClientOriginalName();
         $user = factory(User::class)->create();
@@ -97,7 +92,7 @@ class ImageControllerTest extends TestCase
         $this->assertDatabaseMissing('images',  ['user_id' => $image->user_id]);
 
         $response->assertStatus(302)
-        ->assertSessionHas('success_message')
+            ->assertSessionHas('success_message')
             ->assertRedirect(route('user', ['id' => $user->id]));
     }
 }
