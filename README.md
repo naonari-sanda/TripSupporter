@@ -2,7 +2,7 @@
 
 - 海外に興味ある方がお気に入りの国を見つけるwebアプリ(国は主にG20)
 - 現在入国可能な国を見るけられる
-https://tripsupporter.herokuapp.com
+- https://tripsupporter.herokuapp.com
 
 # なぜこのアプリを制作したか
 
