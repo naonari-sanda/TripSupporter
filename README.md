@@ -1,9 +1,14 @@
+
+## URL
+
+- https://tripsupporter.herokuapp.com/
+- ＊ログイン画面にて簡単ログインができます。
+
 # 概要
 
 - 海外に興味ある方がお気に入りの国を見つけるwebアプリ(国は主にG20)
 - コロナ禍現在入国可能な国を見るけられる
 - https://tripsupporter.herokuapp.com
-- ＊ログイン画面にて簡単ログインができます
 
 # なぜこのアプリを制作したか
 
@@ -49,8 +54,6 @@
 * faker ダミーデーター作成
 * Featureテスト機能
 
-##　黒
-
 # 技術
 
 * PHP /7.2.34
@@ -73,10 +76,6 @@
  * Docker
 * デプロイ/Heroku
 * 画像保存(aws:s3)
-
-## アプリ
-
-* https://tripsupporter.herokuapp.com/
 
 # 今後の予定
 
