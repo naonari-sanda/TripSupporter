@@ -2,13 +2,11 @@
 @if(Auth::id() == $user->id)
 <a @click="showImage" type="button" class="btn btn-success mb-2">画像を投稿しよう！</a>
 @endif
-<<<<<<< HEAD
+
 
 @if(count($user->reviews) > 0)
 <hr>
-=======
 @if(!empty($user->reviews))
->>>>>>> develop
 <div id="lightgallery ">
     <div class="row">
         @foreach($user->reviews as $review)
@@ -48,8 +46,9 @@
     </div>
 </div>
 @endif
+@endif
 
 
 
 
-<img-upload-component v-show="imageModal" @image-child="closeImage" :user-id="{{ Auth::id() ?? '0' }}" country-id="{{ $country->id ?? '0' }}" /> 
+<img-upload-component v-show="imageModal" @image-child="closeImage" :user-id="{{ Auth::id() ?? '0' }}" country-id="{{ $country->id ?? '0' }}" />
