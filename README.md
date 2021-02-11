@@ -52,23 +52,21 @@
 * faker ダミーデーター作成
 * Featureテスト機能
 
-# 技術
+# 使用技術
 
 * ### フロントエンド
-
-* Vue.js /2.6.12
-* Sass /1.20.1
-* jQuery /3.2
-* Node.js /10.16.0
-* 星レビュー /vue-star-rating /1.7.0
-*　フロントバリデーション　/vee-validate/3.0.11
+  * Vue.js /2.6.12
+  * Sass /1.20.1
+  * jQuery /3.2
+  * Node.js /10.16.0
+  * 星レビュー /vue-star-rating /1.7.0
+  *　フロントバリデーション　/vee-validate/3.0.11
 
 * ### バックエンド
-
-* PHP /7.2.34
-* Laravel /7.30.3
-* テスト /phpunit
-* Axios /0.19.0
+  * PHP /7.2.34
+  * Laravel /7.30.3
+  * テスト /phpunit
+  * Axios /0.19.0
 
 
 ### 管理者ページ
