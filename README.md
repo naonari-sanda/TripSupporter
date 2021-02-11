@@ -54,6 +54,8 @@
 
 # 技術
 
+* ## フロントエンド
+
 * PHP /7.2.34
 * Laravel /7.30.3
 * Server /Apache
