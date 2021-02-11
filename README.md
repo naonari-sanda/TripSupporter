@@ -54,22 +54,24 @@
 
 # 技術
 
-* ## フロントエンド
+* ### フロントエンド
+
+* Vue.js /2.6.12
+* Sass /1.20.1
+* jQuery /3.2
+* Node.js /10.16.0
+* 星レビュー /vue-star-rating /1.7.0
+*　フロントバリデーション　/vee-validate/3.0.11
+
+* ### バックエンド
 
 * PHP /7.2.34
 * Laravel /7.30.3
-* Server /Apache
-* database /mysql:5.7
-* node.js /10.16.0
 * テスト /phpunit
-* vue.js /2.6.12
-* sass /1.20.1
-* jquery （お知らせ）toaster
-* axios /0.19.0
-* 星レビュー /vue-star-rating
-*　フロントバリデーション　/vee-validate
+* Axios /0.19.0
 
-### 管理者
+
+### 管理者ページ
 * Laravel-admin
 
  ## 構築環境
