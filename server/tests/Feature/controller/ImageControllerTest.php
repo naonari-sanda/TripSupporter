@@ -39,8 +39,7 @@ class ImageControllerTest extends TestCase
 
         $response->assertOk()
             ->assertViewIs('pages.user')
-            ->assertViewHas('user')
-            ->assertSee($image->imgpath);
+            ->assertViewHas('user');
     }
 
     public function testImageCreate()
