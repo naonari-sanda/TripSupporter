@@ -125,4 +125,4 @@
     {{$countries->links()}}
 </div>
 
-@endsection 
+@endsection
