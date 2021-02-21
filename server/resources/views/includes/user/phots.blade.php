@@ -6,7 +6,6 @@
 
 @if(count($user->reviews) > 0)
 <hr>
-@if(!empty($user->reviews))
 <div id="lightgallery ">
     <div class="row">
         @foreach($user->reviews as $review)
@@ -22,7 +21,7 @@
     </div>
 </div>
 @endif
-@if(!empty($user->images))
+@if(count($user->images) > 0)
 <hr>
 <div id="lightgallery ">
     <div class="row">
@@ -45,7 +44,7 @@
         @endforeach
     </div>
 </div>
-@endif
+
 @endif
 
 

@@ -5,7 +5,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- ファビコン -->
-<link rel="icon" type="image/x-icon" href="{{ asset('/storage/favicon.png') }}">
+<link rel="icon" type="image/x-icon" href="https://tripsupporter.s3-ap-northeast-1.amazonaws.com/favicon.png">
 
 <!-- jquery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
