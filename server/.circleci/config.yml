@@ -59,12 +59,7 @@ jobs:
                 name: deploy
                 command: |
                     ssh -o StrictHostKeyChecking=no -t ec2-user@${HOST_NAME} "cd /var/www/html/AWS-Tripsupporter/ && \
-                        git pull origin master && \
-                        composer install -n --no-dev --prefer-dist && \
-                        npm ci && \
-                        npm run prod && \
-                        php artisan migrate --force && \
-                        php artisan config:cache"
+                        git pull origin master"
 
 workflows:
     version: 2
