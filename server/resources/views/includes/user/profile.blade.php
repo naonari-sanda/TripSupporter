@@ -12,16 +12,16 @@
 
 <table class="table table-striped mb-0">
     <tr>
-        <th>アカウント名</th>
-        <td>{{ $user->name }}</td>
+        <th class="bg-color">アカウント名</th>
+        <td class="bg-color">{{ $user->name }}</td>
     </tr>
     <tr>
         <th>年齢</th>
         <td>{{ optional($user->acount)->age }}</td>
     </tr>
     <tr>
-        <th>性別</th>
-        <td>{{ optional($user->acount)->gender }}</td>
+        <th class="bg-color">性別</th>
+        <td class="bg-color">{{ optional($user->acount)->gender }}</td>
     </tr>
     <tr>
         <th>趣味</th>
@@ -33,7 +33,7 @@
     </tr>
 </table>
 <table class=" table table-striped">
-    <tr>
+    <tr class="bg-color">
         <th>プロフィール</th>
     </tr>
     <tr class="text" style="border-bottom: 1px solid #dee2e6;">
@@ -54,4 +54,4 @@
     </form>
     @endif
 </div>
-<acount-edit-component v-show="profileEditModal" @profile-child="closeProfileEdit" :user-id="{{ $user->id }}" :user-data="{{ $user->acount ?? '[]' }}" /> 
+<acount-edit-component v-show="profileEditModal" @profile-child="closeProfileEdit" :user-id="{{ $user->id }}" :user-data="{{ $user->acount ?? '[]' }}" />

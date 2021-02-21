@@ -1,6 +1,6 @@
 <template>
   <div class="back">
-    <div class="wrapper">
+    <div class="wrapper shadow">
       <div class="header">
         <h2>ユーザー登録</h2>
       </div>

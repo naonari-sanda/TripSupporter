@@ -44684,7 +44684,7 @@ var render = function() {
   return _c("div", { staticClass: "back" }, [
     _c(
       "div",
-      { staticClass: "wrapper" },
+      { staticClass: "wrapper shadow" },
       [
         _vm._m(0),
         _vm._v(" "),
@@ -44903,7 +44903,7 @@ var render = function() {
   return _c("div", { staticClass: "back" }, [
     _c(
       "div",
-      { staticClass: "wrapper" },
+      { staticClass: "wrapper shadow" },
       [
         _vm._m(0),
         _vm._v(" "),
@@ -45329,7 +45329,7 @@ var render = function() {
                       "https://ja.wikipedia.org/wiki/%E4%B8%96%E7%95%8C%E5%B9%B8%E7%A6%8F%E5%BA%A6%E5%A0%B1%E5%91%8A"
                   }
                 },
-                [_vm._v("(世界幸福度報告)")]
+                [_vm._v("(世界幸福度報告:wikipedia)")]
               )
             ])
           : _vm._e(),
@@ -45571,7 +45571,7 @@ var render = function() {
   return _c("div", { staticClass: "back" }, [
     _c(
       "div",
-      { staticClass: "wrapper" },
+      { staticClass: "wrapper shadow" },
       [
         _vm._m(0),
         _vm._v(" "),

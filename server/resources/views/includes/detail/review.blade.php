@@ -5,7 +5,7 @@
 
 @foreach($country->reviews as $review)
 
-<div class="wrapper">
+<div class="wrapper bg-color">
     @auth
     <a class="text-dark d-flex align-items-center font-weight-bold mb-0" href="{{ route('user', $review->user_id) }}">
 
@@ -105,4 +105,4 @@
     <a href="{{ route('main') }}" type="button" class="btn btn-primary">お気に入りの国をさがそう！</a>
 </div>
 
-@endif 
+@endif

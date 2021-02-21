@@ -1,6 +1,6 @@
 <template>
   <div class="back">
-    <div class="wrapper">
+    <div class="wrapper shadow">
       <div class="header">
         <h2>ログイン</h2>
       </div>

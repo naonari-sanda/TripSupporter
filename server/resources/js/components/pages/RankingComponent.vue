@@ -40,7 +40,7 @@
           <a
             href="https://ja.wikipedia.org/wiki/%E4%B8%96%E7%95%8C%E5%B9%B8%E7%A6%8F%E5%BA%A6%E5%A0%B1%E5%91%8A"
             class="h4"
-            >(世界幸福度報告)</a
+            >(世界幸福度報告:wikipedia)</a
           >
         </h2>
 

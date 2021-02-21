@@ -5,7 +5,7 @@
 
 @foreach($user->reviews as $review)
 
-<div class="wrapper">
+<div class="wrapper bg-color">
     <div class="header d-flex">
         <a class="text-dark d-flex align-items-center font-weight-bold mb-0 mr-auto" href="{{ route('detail' , $review->country_id) }}">
             <img class="cycle img-thumbnail mr-2" src="{{ $review->country->imgpath }}" alt="{{ $review->country->name }}アイコン" />{{ $review->country->name }}</a>
@@ -95,4 +95,4 @@
     <h5 class="mb-5">＊レビューの投稿がありません</h5>
     <a href="{{ route('main') }}" type="button" class="btn btn-primary">レビューを投稿しよう!</a>
 </div>
-@endif 
+@endif
