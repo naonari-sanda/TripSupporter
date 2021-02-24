@@ -16,9 +16,8 @@ jobs:
             - run: sudo apt update
             - run: sudo composer self-update --1
             - run: sudo docker-php-ext-install pdo_mysql
-            # Install Library 
+            # テストで使用するダミーの写真を作成するパッケージ
             - run: sudo apt-get install -y libpng-dev libjpeg-dev
-            # Install PHP Extension 
             - run: sudo docker-php-ext-configure gd --with-png-dir=/usr/include --with-jpeg-dir=/usr/include
             - run: sudo docker-php-ext-install gd
             
