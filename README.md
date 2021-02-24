@@ -1,11 +1,12 @@
 ## URL
 
-- https://tripsupporter.herokuapp.com/
+- https://aws-tripsupporter.com/
 - ログイン画面にて簡単ログインができます。
 
 ## 概要
 
 - 海外旅行に興味ある方がお気に入りの国を見つけられるアプリ(国は主にG20)
+- 海外旅行の思い出話や貴重な体験を共有する
 - 現在入国可能な国を見るけられる（コロナ禍）
 
 ## なぜこのアプリを制作したか
@@ -40,14 +41,19 @@
   * 画像アップロード機能(AWSのS3保存)
   * フォームリクエストを使用しバリデーション
   * メール送信機能
-  *　管理者ページ　各データーを編集、作成、削除(laravel-adminを使用)
+  *　管理者ページ　各データーの編集、作成、削除(laravel-adminを使用)
   * faker ダミーデーター作成
   * Featureテスト機能
 
-# 使用技術
+* ### CirclCi
+  * 自動PHPUnitテスト
+  * AWSに自動デプロイ
+
+## 使用技術
 
 * ### フロントエンド
   * Vue.js /2.6.12
+  * Bootstrap /4.0
   * Sass /1.20.1
   * jQuery /3.2
   * Node.js /10.16.0
@@ -61,17 +67,18 @@
   * Axios /0.19.0
   
 * ### インフラ
-  * Heroku 
   * Docker /20.10.2
   * Docker-compose /1.27.4
+  * CircleCi
+  * AWS (VPC,Route53,ALB,EC2,RDS,S3,ACM,EIP)
   * mysql /5.8
-  * Apache /2.4.38 
-  * AWS S3 画像データーの保存・表示
+  * Apache /2.4.46
 
-### 管理者ページ
-* Laravel-admin
+* ### 管理者ページ
+  * Laravel-admin (各データーの編集、作成、削除管理者によるデーター)
 
 ## 今後の予定
 
-* SPI化
-* AWSを利用しデプロイ
+* SPA化
+* ~~AWSを利用しデプロイ~~
+* ~~SSL化~~
