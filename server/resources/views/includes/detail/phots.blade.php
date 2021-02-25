@@ -1,11 +1,11 @@
-<h2 font-weight-bold>Photo gallery</h2>
+<h2 font-weight-bold>Photo Gallery</h2>
 
 @auth
-<a @click="showImage" type="button" class="btn btn-danger mb-2">画像を投稿しよう！</a>
+<button @click="showImage" type="button" class="btn btn-success mb-2">画像を投稿しよう！</button>
 @endauth
 <hr>
 
-<div id="lightgallery ">
+<div id="lightgallery">
     <div class="row">
         @if(count($country->reviews) > 0)
         @foreach($country->reviews as $review)

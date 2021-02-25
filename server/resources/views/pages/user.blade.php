@@ -50,7 +50,7 @@
         @include('includes.user.favorite')
     </article>
 
-    <article v-else-if="isActive === 4" class="phots ">
+    <article v-else-if="isActive === 4" class="phots">
         @include('includes.user.phots')
     </article>
 

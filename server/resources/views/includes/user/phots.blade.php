@@ -1,12 +1,12 @@
-<h2 font-weight-bold>Photo gallery</h2>
+<h2 font-weight-bold>Photo Gallery</h2>
 @if(Auth::id() == $user->id)
-<a @click="showImage" type="button" class="btn btn-success mb-2">画像を投稿しよう！</a>
+<button @click="showImage" type="button" class="btn btn-success mb-2">画像を投稿しよう！</button>
 @endif
 
 
 @if(count($user->reviews) > 0)
 <hr>
-<div id="lightgallery ">
+<div id="lightgallery">
     <div class="row">
         @foreach($user->reviews as $review)
         @if(!empty($review->imgpath))
@@ -23,7 +23,7 @@
 @endif
 @if(count($user->images) > 0)
 <hr>
-<div id="lightgallery ">
+<div id="lightgallery">
     <div class="row">
         @foreach($user->images as $img)
         @if(!empty($img->imgpath))

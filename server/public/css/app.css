@@ -11666,27 +11666,37 @@ nav .dropdown-menu {
   vertical-align: middle;
 }
 
-.detail .phots .row {
+.detail .phots hr {
+  margin-bottom: 50px;
+}
+
+.detail .phots #lightgallery {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.detail .phots #lightgallery .row {
   width: 100%;
 }
 
-.detail .phots .bg {
+.detail .phots #lightgallery .row .bg {
   position: relative;
 }
 
-.detail .phots .bg a {
+.detail .phots #lightgallery .row .bg a {
   position: relative;
   width: 100%;
   margin: auto;
 }
 
-.detail .phots .bg a:before {
+.detail .phots #lightgallery .row .bg a:before {
   content: "";
   display: block;
   padding-top: 75%;
 }
 
-.detail .phots .bg a img {
+.detail .phots #lightgallery .row .bg a img {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -11699,10 +11709,10 @@ nav .dropdown-menu {
      object-fit: cover;
 }
 
-.detail .phots .bg .text {
+.detail .phots #lightgallery .row .bg .text {
   display: block;
   font-size: 14px;
-  margin-left: 2.5%;
+  margin-left: 2%;
   margin-bottom: 0;
 }
 
@@ -11750,27 +11760,33 @@ nav .dropdown-menu {
   margin-bottom: 0;
 }
 
-.mypage .phots .row {
+.mypage .phots #lightgallery {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.mypage .phots #lightgallery .row {
   width: 100%;
 }
 
-.mypage .phots .bg {
+.mypage .phots #lightgallery .row .bg {
   position: relative;
 }
 
-.mypage .phots .bg a {
+.mypage .phots #lightgallery .row .bg a {
   position: relative;
   width: 100%;
   margin: auto;
 }
 
-.mypage .phots .bg a:before {
+.mypage .phots #lightgallery .row .bg a:before {
   content: "";
   display: block;
   padding-top: 75%;
 }
 
-.mypage .phots .bg a img {
+.mypage .phots #lightgallery .row .bg a img {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -11783,10 +11799,21 @@ nav .dropdown-menu {
      object-fit: cover;
 }
 
-.mypage .phots .bg .text {
+.mypage .phots #lightgallery .row .bg .text {
   display: block;
   font-size: 14px;
   margin-left: 2.5%;
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 567px) {
+  .mypage {
+    /*　画面サイズが567px以下の場合読み込む　*/
+  }
+
+  .mypage .mb {
+    display: none;
+  }
 }
 
 .error {

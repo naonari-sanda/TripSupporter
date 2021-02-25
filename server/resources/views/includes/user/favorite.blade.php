@@ -8,9 +8,9 @@
     <thead class="">
         <tr>
             <th scope="col">国名</th>
-            <th scope="col">評価</th>
-            <th scope="col">レビュー数</th>
-            <th scope="col">いいね数</th>
+            <th class="mb" scope="col">評価</th>
+            <th class="mb" scope="col">レビュー数</th>
+            <th class="mb" scope="col">いいね数</th>
             <th scope="col">国詳細</th>
         </tr>
     </thead>
@@ -21,13 +21,13 @@
         <tr>
 
             <th><a class="text-dark d-flex align-items-center" href="{{ route('detail' , $like->country_id) }}"><img class="cycle img-thumbnail mr-2" src="{{ $like->country->imgpath }}" alt="{{ $like->country->name }}のアイコン" />{{ $like->country->name }}</a></th>
-            <td>
+            <td class="mb">
                 <i class=" fas fa-star mr-1 text-danger"></i>{{ number_format($like->country->reviews->avg('recommend'),1) }}
             </td>
-            <td class="text-center">
+            <td class="text-center mb">
                 {{ count($like->country->reviews)}}件
             </td>
-            <td class="float-left">
+            <td class="float-left mb">
                 <like-component :country-id="{{ json_encode($like->country->id) }}" :auth-id="{{ json_encode(Auth::user()->id ?? '[]') }}" :like-check="{{ count($like->country->likes->where('user_id', Auth::id())) > 0 ? 'true' : 'false' }}" :like-count="{{ json_encode(count($like->country->likes)) }}" />
             </td>
             <td>
@@ -46,4 +46,4 @@
     <h5 class=" mb-5">＊いいねがありません</h5>
     <a href="{{ route('main') }}" type="button" class="btn btn-primary">お気に入りの国をさがそう！</a>
 </div>
-@endif 
+@endif
