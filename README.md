@@ -71,7 +71,7 @@
   * Docker-compose /1.27.4
   * CircleCi
   * AWS (VPC,Route53,ALB,EC2,RDS,S3,ACM,EIP)
-  * mysql /5.8
+  * MySQL /5.8
   * Apache /2.4.46
 
 * ### 管理者ページ
