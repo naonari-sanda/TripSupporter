@@ -1,4 +1,4 @@
-<h2>profile</h2>
+<h2>国詳細</h2>
 <table class="table table-striped">
 
     <tr>

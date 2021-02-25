@@ -11,7 +11,7 @@
             </h1>
             <p class="lead text-light">Find your favorite user</p>
 
-            <a href="{{ route('main') }}" type="button" class="btn btn-primary">お気に入りの国をさがそう！</a>
+            <a href="{{ route('main') }}" role="button" class="btn btn-primary">お気に入りの国をさがそう！</a>
         </div>
     </div>
 </section>
@@ -59,4 +59,4 @@
         </table>
     </article>
 </div>
-@endsection 
+@endsection

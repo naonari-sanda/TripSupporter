@@ -23,7 +23,7 @@
             @if(Auth::id() == $user->id and empty($user->acount))
             <button type="button" class="btn btn-danger" @click="showProfile">プロフィールを追加する</button>
             @else
-            <a href="{{ route('main') }}" type="button" class="btn btn-primary">お気に入りの国をさがそう!</a>
+            <a href="{{ route('main') }}" role="button" class="btn btn-primary">お気に入りの国をさがそう!</a>
             @endif
         </div>
     </div>
@@ -56,4 +56,4 @@
 
     <acount-component v-show="profileModal" @profile-child="closeProfile" :user-id="{{ $user->id }}" />
 </div>
-@endsection 
+@endsection
