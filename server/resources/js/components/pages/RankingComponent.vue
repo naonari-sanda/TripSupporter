@@ -15,7 +15,7 @@
           </div>
           <p class="lead text-light">check your favorite countris ranking</p>
 
-          <a href="#" type="button" class="btn btn-primary"
+          <a href="/" type="button" class="btn btn-primary"
             >お気に入りの国をさがそう!</a
           >
         </div>

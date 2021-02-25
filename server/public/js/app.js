@@ -45537,7 +45537,7 @@ var staticRenderFns = [
               "a",
               {
                 staticClass: "btn btn-primary",
-                attrs: { href: "#", type: "button" }
+                attrs: { href: "/", type: "button" }
               },
               [_vm._v("お気に入りの国をさがそう!")]
             )
