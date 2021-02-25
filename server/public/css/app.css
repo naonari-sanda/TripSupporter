@@ -11157,6 +11157,10 @@ button.toast-close-button {
   }
 }
 
+#app {
+  overflow: hidden;
+}
+
 body {
   background-color: #fff !important;
 }
