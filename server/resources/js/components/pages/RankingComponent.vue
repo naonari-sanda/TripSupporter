@@ -179,10 +179,13 @@ export default {
     },
   },
   mounted() {
+    const loader = this.$loading.show();
+
     axios
       .get("/api/area")
       .then((res) => {
         this.countries = res.data;
+        loader.hide();
       })
       .catch((error) => {
         alert("失敗");

@@ -8,6 +8,8 @@ import Vue from 'vue'
 import axios from 'axios'
 import StarRating from "vue-star-rating";
 import Notifications from 'vue-notification'
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 import RankingComponent from './components/pages/RankingComponent'
 import LoginComponent from './components/pages/LoginComponent'
 import RegisterComponent from './components/pages/RegisterComponent'
@@ -24,6 +26,7 @@ import LikeComponent from './components/parts/LikeComponent'
 Vue.prototype.$http = axios;
 
 Vue.use(Notifications);
+Vue.use(Loading);
 
 
 const app = new Vue({
