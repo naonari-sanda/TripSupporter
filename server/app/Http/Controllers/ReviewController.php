@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Session;
 use Storage;
+use InterventionImage;
 use App\Models\Review;
 use App\Models\Image;
 use Illuminate\Http\Request;
@@ -67,19 +68,32 @@ class ReviewController extends Controller
     public function upload(ImageRequest $request)
     {
         if ($file = $request->imgpath) {
-            $path = Storage::disk('s3')->put('/', $file, 'public');
-            $faliName = Storage::disk('s3')->url($path);
+            $img = \InterventionImage::make($file)
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+
+            $data = $img->__toString();
+
+
+            // $path = Storage::disk('s3')->put('/',  $data, 'public');
+            // $fileName = Storage::disk('s3')->url($path);
         }
 
-        $check = Image::create(
-            [
-                'user_id' => $request->user_id,
-                'country_id' => $request->country_id,
-                'imgpath' => $faliName
-            ]
-        );
 
-        if ($check) {
+        // $check = Image::create(
+        //     [
+        //         'user_id' => $request->user_id,
+        //         'country_id' => $request->country_id,
+        //         'imgpath' => $fileName
+        //     ]
+        // );
+        \Debugbar::info($data);
+        debug('test');
+
+        return;
+
+        if ($data) {
             session()->flash('success_message', '画像を追加しました');
         } else {
             session()->flash('danger_message', '画像の保存に失敗しました');
