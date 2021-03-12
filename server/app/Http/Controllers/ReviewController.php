@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Session;
 use Storage;
+use Carbon\Carbon;
 use Illuminate\Http\File;
-use \InterventionImage;
-
 use App\Models\Review;
 use App\Models\Image;
 use Illuminate\Http\Request;
@@ -70,14 +69,18 @@ class ReviewController extends Controller
     public function upload(ImageRequest $request)
     {
         if ($file = $request->file('imgpath')) {
+            $now = date_format(Carbon::now(), 'YmdHis');
+            $name = $file->getClientOriginalName();
 
-            $file_path = storage_path('app/temp');
+            $file_path =  storage_path('app/tmp/') . $now . '_' . $name;
 
-            $img = \InterventionImage::make($file)->resize(300, 150)->save($file_path . '/test.jpg');
+            $img = \InterventionImage::make($file)
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($file_path);
 
 
-            $path = Storage::disk('s3')->putFile('/test', new File($file_path . '/test.jpg'), 'public');
-
+            $path = Storage::disk('s3')->putFile('/test', new File($file_path), 'public');
             $fileName = Storage::disk('s3')->url($path);
         }
 
