@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/test', function () {
+
+    $image = \InterventionImage::make(file_get_contents('http://goo.gl/uDTEzv'));
+
+    $image->resize(100, 100);
+
+    return $image->response('jpg');
+});
+
 // メイン画面
 Route::get('/', 'CountryController@index')->name('main');
 
@@ -43,8 +53,8 @@ Route::group(['middleware' => ['auth']], function () {
     // //プロフィール追加
     Route::post('/user/create/profile', 'UserController@create')->name('create.acount');
 
-        // //プロフィール削除
-        Route::post('/user/delete/profile', 'UserController@delete')->name('delete.acount');
+    // //プロフィール削除
+    Route::post('/user/delete/profile', 'UserController@delete')->name('delete.acount');
 
     //画像アップロード
     Route::post('/upload/img', 'ReviewController@upload')->name('create.img');

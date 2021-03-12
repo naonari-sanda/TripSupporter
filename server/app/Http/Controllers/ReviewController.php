@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Session;
 use Storage;
-use InterventionImage;
+use Illuminate\Http\File;
+use \InterventionImage;
+
 use App\Models\Review;
 use App\Models\Image;
 use Illuminate\Http\Request;
@@ -67,38 +69,63 @@ class ReviewController extends Controller
     //画像アップロード
     public function upload(ImageRequest $request)
     {
-        if ($file = $request->imgpath) {
-            $img = \InterventionImage::make($file)
-                ->resize(300, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
+        if ($file = $request->file('imgpath')) {
 
-            $data = $img->__toString();
+            $file_path = storage_path('app/temp');
+
+            $img = \InterventionImage::make($file)->resize(300, 150)->save($file_path . '/test.jpg');
 
 
-            // $path = Storage::disk('s3')->put('/',  $data, 'public');
-            // $fileName = Storage::disk('s3')->url($path);
+            $path = Storage::disk('s3')->putFile('/test', new File($file_path . '/test.jpg'), 'public');
+
+            $fileName = Storage::disk('s3')->url($path);
         }
 
+        $check = Image::create(
+            [
+                'user_id' => $request->user_id,
+                'country_id' => $request->country_id,
+                'imgpath' => $fileName
+            ]
+        );
 
-        // $check = Image::create(
-        //     [
-        //         'user_id' => $request->user_id,
-        //         'country_id' => $request->country_id,
-        //         'imgpath' => $fileName
-        //     ]
-        // );
-        \Debugbar::info($data);
-        debug('test');
-
-        return;
-
-        if ($data) {
+        if ($img) {
             session()->flash('success_message', '画像を追加しました');
         } else {
             session()->flash('danger_message', '画像の保存に失敗しました');
         }
     }
+
+    //画像アップロード
+    //   public function upload(ImageRequest $request)
+    //   {
+    //       if ($file = $request->file('imgpath')) {
+    //           $extension = $request->file('imgpath')->getClientOriginalExtension();
+
+    //           $img = \InterventionImage::make($file)
+    //               ->resize(400, null, function ($constraint) {
+    //                   $constraint->aspectRatio();
+    //               })->encode($extension);
+
+    //           $path = Storage::disk('s3')->put('/test', $img, 'public');
+    //           $fileName = Storage::disk('s3')->url($path);
+    //       }
+
+
+    //       $check = Image::create(
+    //           [
+    //               'user_id' => $request->user_id,
+    //               'country_id' => $request->country_id,
+    //               'imgpath' => $fileName
+    //           ]
+    //       );
+
+    //       if ($img) {
+    //           session()->flash('success_message', '画像を追加しました');
+    //       } else {
+    //           session()->flash('danger_message', '画像の保存に失敗しました');
+    //       }
+    //   }
 
     public function deleteImg(Request $request)
     {
