@@ -17,8 +17,19 @@ class ReviewController extends Controller
     //ログインユーザーレビュー追加orアップデート
     public function createReview(ReviewRequest $request)
     {
-        if ($file = $request->imgpath) {
-            $path = Storage::disk('s3')->put('/', $file, 'public');
+        if ($file = $request->file('imgpath')) {
+            $now = date_format(Carbon::now(), 'YmdHis');
+            $name = $file->getClientOriginalName();
+
+            $file_path = storage_path('app/tmp/') . $now . '_' . $name;
+
+            $img = \InterventionImage::make($file)
+                ->resize(600, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($file_path);
+
+
+            $path = Storage::disk('s3')->put('/review', new File($file_path), 'public');
             $fileName = Storage::disk('s3')->url($path);
         } else {
             $fileName = '';
@@ -72,15 +83,15 @@ class ReviewController extends Controller
             $now = date_format(Carbon::now(), 'YmdHis');
             $name = $file->getClientOriginalName();
 
-            $file_path =  storage_path('app/tmp/') . $now . '_' . $name;
+            $file_path = storage_path('app/tmp/') . $now . '_' . $name;
 
             $img = \InterventionImage::make($file)
-                ->resize(300, null, function ($constraint) {
+                ->resize(600, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($file_path);
 
 
-            $path = Storage::disk('s3')->putFile('/test', new File($file_path), 'public');
+            $path = Storage::disk('s3')->putFile('/photo', new File($file_path), 'public');
             $fileName = Storage::disk('s3')->url($path);
         }
 
@@ -98,37 +109,6 @@ class ReviewController extends Controller
             session()->flash('danger_message', '画像の保存に失敗しました');
         }
     }
-
-    //画像アップロード
-    //   public function upload(ImageRequest $request)
-    //   {
-    //       if ($file = $request->file('imgpath')) {
-    //           $extension = $request->file('imgpath')->getClientOriginalExtension();
-
-    //           $img = \InterventionImage::make($file)
-    //               ->resize(400, null, function ($constraint) {
-    //                   $constraint->aspectRatio();
-    //               })->encode($extension);
-
-    //           $path = Storage::disk('s3')->put('/test', $img, 'public');
-    //           $fileName = Storage::disk('s3')->url($path);
-    //       }
-
-
-    //       $check = Image::create(
-    //           [
-    //               'user_id' => $request->user_id,
-    //               'country_id' => $request->country_id,
-    //               'imgpath' => $fileName
-    //           ]
-    //       );
-
-    //       if ($img) {
-    //           session()->flash('success_message', '画像を追加しました');
-    //       } else {
-    //           session()->flash('danger_message', '画像の保存に失敗しました');
-    //       }
-    //   }
 
     public function deleteImg(Request $request)
     {

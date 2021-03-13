@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Session;
 use Storage;
+use Carbon\Carbon;
+use Illuminate\Http\File;
 use App\Models\User;
 use App\Models\Acount;
 use Illuminate\Http\Request;
@@ -30,8 +32,18 @@ class UserController extends Controller
     //プロフィール情報追加
     public function create(AcountRequest $request)
     {
-        if ($file = $request->icon) {
-            $path = Storage::disk('s3')->put('/', $file, 'public');
+        if ($file = $request->file('icon')) {
+            $now = date_format(Carbon::now(), 'YmdHis');
+            $name = $file->getClientOriginalName();
+
+            $file_path = storage_path('app/tmp/') . $now . '_' . $name;
+
+            $img = \InterventionImage::make($file)
+                ->resize(600, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($file_path);
+
+            $path = Storage::disk('s3')->put('/icon', new File($file_path), 'public');
             $fileName = Storage::disk('s3')->url($path);
         } else {
             $fileName = '';
