@@ -103,7 +103,7 @@ class ReviewController extends Controller
             ]
         );
 
-        if ($img) {
+        if ($check->wasRecentlyCreated) {
             session()->flash('success_message', '画像を追加しました');
         } else {
             session()->flash('danger_message', '画像の保存に失敗しました');
