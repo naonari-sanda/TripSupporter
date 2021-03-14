@@ -22,7 +22,7 @@ class CountryController extends Controller
     public function index(Request $request)
     {
 
-        $countries = Country::paginate(12);
+        $countries = Country::with('reviews')->paginate(12);
 
         $information = Information::orderBy('created_at', 'desc')->first();
 
@@ -42,7 +42,11 @@ class CountryController extends Controller
     public function detail(int $id, Review $review)
     {
         $user_id = Auth::id();
-        $country = Country::findOrFail($id);
+        $country = Country::with([
+            'reviews',
+            'likes',
+            'images'
+        ])->findOrFail($id);
         $user = User::where('id', $user_id)->first();
 
         return view('pages.detail', ['id' => $country->id], compact('country'));

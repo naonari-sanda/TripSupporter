@@ -16,7 +16,12 @@ class UserController extends Controller
     //ユーザーページ表示
     public function index(int $id)
     {
-        $user = User::findOrFail($id);
+        $user = User::with([
+            'acount',
+            'reviews',
+            'likes',
+            'images',
+        ])->findOrFail($id);
 
         return view('pages.user', compact('user'));
     }
@@ -24,7 +29,7 @@ class UserController extends Controller
     //ユーザー一覧表示
     public function list()
     {
-        $users = User::all();
+        $users = User::with('acount')->get();
 
         return view('pages.user_list', compact('users'));
     }
