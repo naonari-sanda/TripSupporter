@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Session;
 use Storage;
+use InterventionImage;
 use Carbon\Carbon;
 use Illuminate\Http\File;
 use App\Models\Review;
@@ -23,7 +24,7 @@ class ReviewController extends Controller
 
             $file_path = storage_path('app/tmp/') . $now . '_' . $name;
 
-            $img = \InterventionImage::make($file)
+            $img = InterventionImage::make($file)
                 ->resize(600, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($file_path);
@@ -85,7 +86,7 @@ class ReviewController extends Controller
 
             $file_path = storage_path('app/tmp/') . $now . '_' . $name;
 
-            $img = \InterventionImage::make($file)
+            $img = InterventionImage::make($file)
                 ->resize(600, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($file_path);
